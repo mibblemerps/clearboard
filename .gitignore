@@ -3,6 +3,8 @@
 ### NetBeans ###
 nbproject/
 
+### PhpStorm ###
+.idea/
 
 ### Vagrant ###
 .vagrant/
@@ -12,7 +14,6 @@ nbproject/
 .env.*.php
 .env.php
 .env
-
 
 ### Composer ###
 composer.phar
