@@ -4,6 +4,7 @@ nbproject/
 
 ### PhpStorm ###
 .idea/
+.phpstorm.meta.php
 
 ### Vagrant ###
 .vagrant/
