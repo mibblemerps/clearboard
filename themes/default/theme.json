@@ -1,0 +1,9 @@
+{
+    "name": "Clearboard",
+    "vendor": "Clearboard Team",
+    "version": "1.0.0",
+
+    "license": "MIT",
+
+    "description": "The default Clearboard theme."
+}
