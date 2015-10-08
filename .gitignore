@@ -1,0 +1,19 @@
+# Modified from https://www.gitignore.io/api/netbeans,vagrant,laravel,composer
+
+### NetBeans ###
+nbproject/
+
+
+### Vagrant ###
+.vagrant/
+
+### Laravel ###
+/bootstrap/compiled.php
+.env.*.php
+.env.php
+.env
+
+
+### Composer ###
+composer.phar
+vendor/
