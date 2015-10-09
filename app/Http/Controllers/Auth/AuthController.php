@@ -67,11 +67,10 @@ class AuthController extends Controller
 
     public function authAjax(Request $request) {
         // Ensure arguments are present.
-        /*if ( ($request->input('username') === false) ||
-            ($request->input('password') === false)) {
+        if (!($request->has('username') && $request->has('password'))) {
             // Missing arguments!
             abort(400); // Bad Request
-        }*/
+        }
 
         $username = $request->input('username');
         $password = $request->input('password');
