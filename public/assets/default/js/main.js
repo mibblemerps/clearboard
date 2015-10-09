@@ -9,9 +9,19 @@ function collapseUserbox() {
 
 $(document).ready(function(){
 
-    // Userbox click handler
-    $("#userbox-dropdown").css("display", "block").hide(); // to allow use of jQuery's hide and show methods
-    $("#userbox").mouseenter(expandUserbox);
-    $("#userbox").mouseleave(collapseUserbox);
+    // To allow use of jQuery's hide and show methods
+    $("#userbox-dropdown").css("display", "block").hide();
+
+    // Userbox click handler (for logged in users)
+    if (window.isLoggedIn) {
+        $("#userbox").mouseenter(expandUserbox);
+        $("#userbox").mouseleave(collapseUserbox);
+    }
+
+    // Userbox click handler (for non-logged in users)
+    if (!window.isLoggedIn) {
+        $("#loginbtn").click(expandUserbox);
+        $("#userbox").mouseleave(collapseUserbox);
+    }
 
 });
