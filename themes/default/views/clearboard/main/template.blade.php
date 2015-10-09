@@ -35,7 +35,7 @@
                                     <div class="userbox-dropdown-item">My Profile</div>
                                     <div class="userbox-dropdown-item">My Settings</div>
                                     <div class="userbox-dropdown-item">Support</div>
-                                    <div class="userbox-dropdown-item userbox-dropdown-item-warning">Logout</div>
+                                    <a href="{{ url('auth/logout') }}"><div class="userbox-dropdown-item userbox-dropdown-item-warning">Logout</div></a>
                                 </div>
                             @endif
                         </div>
