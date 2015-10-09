@@ -11,12 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('clearboard.welcome');
+Route::get('/', function() {
+    return view('clearboard.pages.index');
 });
 
-Route::get('/test', function() {
-    return view('clearboard.pages.index');
+Route::get('/forum/{fid}-{_}', function($fid) {
+    $forum = \App\Forum::where('id', $fid)->first();
+    return view('clearboard.pages.forum', ['forum' => $forum]);
+});
+
+Route::get('/welcome', function () {
+    return view('clearboard.welcome');
 });
 
 /* AUTHENTICATION ROUTES */
