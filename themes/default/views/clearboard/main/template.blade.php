@@ -29,7 +29,7 @@
                                     <div class="userbox-dropdown-item">My Profile</div>
                                     <div class="userbox-dropdown-item">My Settings</div>
                                     <div class="userbox-dropdown-item">Support</div>
-                                    <div class="userbox-dropdown-item userbox-dropdown-item-warning">Logout</div>
+                                    <a href="{{ url('/auth/logout') }}"><div class="userbox-dropdown-item userbox-dropdown-item-warning">Logout</div></a>
                                 </div>
                             @else
                                 <span class="vertical-align"></span>
@@ -39,8 +39,8 @@
                                 <div id="userbox-dropdown">
                                     <form id="loginform" action="{{ url('/auth/login') }}" method="POST">
                                         {!! csrf_field(); !!}
-                                        <input type="text" class="input-field" id="login-username" placeholder="Username"><br>
-                                        <input type="password" class="input-field" id="login-password" placeholder="Password"><br>
+                                        <input type="text" class="input-field" id="login-username" name="username" placeholder="Username"><br>
+                                        <input type="password" class="input-field" id="login-password" name="password" placeholder="Password"><br>
                                         <input type="submit" id="login-button" class="button" value="Login">
                                     </form>
                                 </div>

@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use Validator;
+use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -61,5 +63,30 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    public function authAjax(Request $request) {
+        // Ensure arguments are present.
+        /*if ( ($request->input('username') === false) ||
+            ($request->input('password') === false)) {
+            // Missing arguments!
+            abort(400); // Bad Request
+        }*/
+
+        $username = $request->input('username');
+        $password = $request->input('password');
+
+        // Attempt login
+        if (Auth::attempt(['email' => $username, 'password' => $password])) {
+            // Return success response
+            return json_encode(array(
+                'success' => true
+            ));
+        } else {
+            // Return failure response
+            return json_encode(array(
+                'success' => false
+            ));
+        }
     }
 }
