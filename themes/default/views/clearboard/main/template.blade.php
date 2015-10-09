@@ -17,7 +17,7 @@
     <body>
         <div id="header">
             <div class="content-width">
-                <img src="{{ asset('header.png') }}" alt="{{ config('clearboard.sitename') }}" id="header-img">
+                <a href="{{ url('/') }}"><img src="{{ asset('header.png') }}" alt="{{ config('clearboard.sitename') }}" id="header-img"></a>
                 <div id="header-rightside">
                     <div id="header-rightside-inner">
                         <div id="userbox" class="{{ Auth::check() ? 'userbox-loggedin' : 'userbox-notloggedin' }}">
