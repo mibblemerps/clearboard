@@ -1,0 +1,141 @@
+
+html,body { margin: 0; padding: 0; }
+
+body {
+    background-color: #202126;
+}
+
+
+/* GENERAL */
+.content-width {
+    width: 81%;
+    margin: 0 auto;
+}
+
+/* HEADER */
+#header {
+    width: 100%;
+    height: 90px;
+
+    background-color: #2d58a3;
+}
+
+#header-rightside {
+    display: flex;
+    float: right;
+    width: 330px;
+    height: 90px;
+    box-sizing: border-box;
+
+    text-align: right;
+}
+#header-rightside-inner { align-self: center; }
+
+#header-img {
+    height: 100%;
+}
+
+#userbox {
+    position: relative;
+    display: inline-block;
+
+    box-sizing: border-box;
+    width: 320px;
+    height: 70px;
+    margin: 10px;
+
+    text-align: left;
+
+    background-color: #3672cb;
+}
+#userbox-img { display: inline-block; border: none; height: 100%; vertical-align: middle; }
+#userbox-name {
+    display: inline-block;
+    margin: 3px 7px 0 5px;
+    vertical-align: middle;
+
+    font-size: 22px;
+    font-family: "open sans", "arial", sans-serif;
+    font-weight: bold;
+
+    color: white;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.75);
+}
+
+#userbox-dropdown {
+    display: none; /* hidden by default */
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin: 0;
+    width: 320px;
+    height: 200px;
+
+    overflow: hidden;
+
+    background-color: #919191;
+}
+
+.userbox-dropdown-item {
+    display: inline-block;
+    box-sizing: border-box;
+
+    width: 100%;
+    padding: 8px 14px;
+    margin-top: 6px;
+
+    background-color: #646464;
+    cursor: pointer;
+
+    color: white;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+    font-family: "open sans", "arial", sans-serif;
+    font-weight: bold;
+
+    transition: background-color 0.25s;
+}
+.userbox-dropdown-item:hover {
+    background-color: #2a2a2a;
+}
+.userbox-dropdown-item-warning:hover {
+    background-color: #f03800;
+}
+
+/* CONTENT AREA */
+#wrapper {
+    box-sizing: border-box;
+    padding: 14px;
+
+    background-color: white;
+
+    border: solid 1px #48484e;
+    border-top: none;
+}
+
+/* FOOTER */
+#footer {
+    margin-top: 5px;
+    text-align: center;
+
+    font-family: "open sans", "arial", sans-serif;
+    font-size: 14px;
+
+    color: #e1e1e1;
+    text-shadow: 0 0 3px black;
+}
+#footer a {
+    color: inherit;
+    text-decoration: none;
+}
+#footer a:hover {
+    text-decoration: underline;
+}
+
+/* FORMATTING */
+h1,h2,h3,h4,h5,h6 {
+    display: inline-block;
+    margin: 0;
+
+    font-family: "Lato", "helvectia", "arial", sans-serif;
+}
