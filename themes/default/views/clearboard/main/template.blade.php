@@ -9,7 +9,9 @@
         <script src="{{ theme_asset('js/main.js') }}"></script>
 
         <script type="text/javascript">
+            window.base_path = "{{ url() }}";
             window.isLoggedIn = {{ Auth::check() ? 'true' : 'false' }};
+            window.csrf_token = "{{ csrf_token() }}";
         </script>
 
         @yield('head')

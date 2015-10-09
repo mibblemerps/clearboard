@@ -25,5 +25,5 @@ Route::get('/welcome', function () {
 });
 
 /* AUTHENTICATION ROUTES */
-Route::post('auth/login', 'Auth\AuthController@authAjax');
+Route::post('auth/login', 'LoginController@authenticateJson');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
