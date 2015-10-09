@@ -76,7 +76,7 @@ class AuthController extends Controller
         $password = $request->input('password');
 
         // Attempt login
-        if (Auth::attempt(['email' => $username, 'password' => $password])) {
+        if (Auth::attempt(['name' => $username, 'password' => $password])) {
             // Return success response
             return json_encode(array(
                 'success' => true
