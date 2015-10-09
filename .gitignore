@@ -1,8 +1,10 @@
-# Modified from https://www.gitignore.io/api/netbeans,vagrant,laravel,composer
 
 ### NetBeans ###
 nbproject/
 
+### PhpStorm ###
+.idea/
+.phpstorm.meta.php
 
 ### Vagrant ###
 .vagrant/
@@ -13,7 +15,12 @@ nbproject/
 .env.php
 .env
 
-
 ### Composer ###
 composer.phar
 vendor/
+
+### PHPMyAdmin ###
+public/phpmyadmin/
+
+### Project ###
+update.sh

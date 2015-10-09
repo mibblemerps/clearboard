@@ -36,4 +36,18 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    public function avatarUrl()
+    {
+        if ($this->icon == '$gravatar') {
+            // Generate gravatar link
+            $email = trim($this->email);
+            $gravatarEndpoint = '//www.gravatar.com/avatar/';
+            $gravatarUrl = $gravatarEndpoint . md5($email) . '?size=150';
+            return $gravatarUrl;
+        } elseif ($this->icon == '') {
+            // Using default avatar
+            return theme_asset('img/profile.png');
+        }
+    }
 }

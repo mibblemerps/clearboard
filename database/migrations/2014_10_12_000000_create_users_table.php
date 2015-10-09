@@ -13,12 +13,14 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->increments('id'); // User ID
+            $table->string('name'); // Username
+            $table->string('email')->unique(); // Email address
             $table->string('password', 60);
             $table->rememberToken();
             $table->timestamps();
+
+            $table->string('icon'); // Users avatar. Can be filename, "$gravatar" or "$default".
         });
     }
 
