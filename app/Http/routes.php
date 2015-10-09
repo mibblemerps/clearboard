@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('clearboard.welcome');
 });
+
+Route::get('/test', function() {
+    return view('clearboard.pages.index');
+});
