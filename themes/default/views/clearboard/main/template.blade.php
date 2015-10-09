@@ -23,8 +23,8 @@
                         <div id="userbox" class="{{ Auth::check() ? 'userbox-loggedin' : 'userbox-notloggedin' }}">
                             @if (Auth::check())
                                 <img id="userbox-img" alt="Mitchfizz05"
-                                    src="http://www.gravatar.com/avatar/4083e548052988dbd2b4c47e39efa7ce.png?size=70">
-                                <span id="userbox-name">Mitchfizz05</span>
+                                    src="{{ Auth::user()->avatarUrl() }}">
+                                <span id="userbox-name">{{ Auth::user()->name }}</span>
                                 <div id="userbox-dropdown">
                                     <div class="userbox-dropdown-item">My Profile</div>
                                     <div class="userbox-dropdown-item">My Settings</div>
