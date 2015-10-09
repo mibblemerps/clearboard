@@ -25,6 +25,7 @@
 .forumlisting-forum .forumlisting-forum-name { margin-bottom: 4px; }
 
 .forumlisting-forum .forumlisting-forum-desc {
+    color: #5d5d5d;
     font-family: "open sans", sans-serif;
     font-size: 14px;
 }
