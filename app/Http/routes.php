@@ -18,3 +18,6 @@ Route::get('/', function () {
 Route::get('/test', function() {
     return view('clearboard.pages.index');
 });
+
+/* AUTHENTICATION ROUTES */
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
