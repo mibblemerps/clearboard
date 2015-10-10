@@ -21,6 +21,9 @@ function login(username, password) {
     });
 }
 
+// Is the mouse currently hovering over the userbox?
+var userboxHasMouse = false;
+
 function expandUserbox() {
     $("#userbox-dropdown").stop().slideDown(250);
 }
@@ -34,6 +37,10 @@ $(document).ready(function(){
     // To allow use of jQuery's hide and show methods
     $("#userbox-dropdown").css("display", "block").hide();
 
+    // Apply the event handlers to maintain the userboxHasMouse variable
+    $("#userbox").mouseenter(function(){ userboxHasMouse = true; });
+    $("#userbox").mouseleave(function(){ userboxHasMouse = false; });
+
     // Userbox click handler (for logged in users)
     if (window.isLoggedIn) {
         $("#userbox").mouseenter(expandUserbox);
@@ -43,7 +50,11 @@ $(document).ready(function(){
     // Userbox click handler (for non-logged in users)
     if (!window.isLoggedIn) {
         $("#loginbtn").click(expandUserbox);
-        $("#userbox").mouseleave(collapseUserbox);
+        $("body").click(function(){
+            if (!userboxHasMouse) {
+                collapseUserbox();
+            }
+        });
 
         // Bind form submit event to the login form
         $("#loginform").submit(function(e){
