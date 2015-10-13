@@ -1,4 +1,7 @@
 <?php
+namespace App;
+
+use \Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,11 +15,11 @@
 */
 
 Route::get('/', function() {
-    return view('clearboard.pages.index', ['forums' => \App\Forum::all()]);
+    return view('clearboard.pages.index', ['forums' => Forum::all()]);
 });
 
 Route::get('/forum/{fid}-{_}', function($fid) {
-    $forum = \App\Forum::where('id', $fid)->first();
+    $forum = Forum::where('id', $fid)->first();
     return view('clearboard.pages.forum', ['forum' => $forum]);
 });
 
