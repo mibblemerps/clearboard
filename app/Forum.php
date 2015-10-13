@@ -10,6 +10,6 @@ class Forum extends Model
 
     public function threads()
     {
-        $this->hasMany('App\Thread');
+        return $this->hasMany('App\Thread');
     }
 }
