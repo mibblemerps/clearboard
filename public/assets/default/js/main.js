@@ -50,7 +50,7 @@ $(document).ready(function(){
     // Userbox click handler (for non-logged in users)
     if (!window.isLoggedIn) {
         $("#loginbtn").click(expandUserbox);
-        $("body").click(function(){
+        $(document).click(function(){
             if (!userboxHasMouse) {
                 collapseUserbox();
             }
