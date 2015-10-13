@@ -8,7 +8,8 @@ class Thread extends Model
 {
     protected $table = 'threads';
 
-    public function posts() {
+    public function posts()
+    {
         return $this->hasMany('App\Post');
     }
 }
