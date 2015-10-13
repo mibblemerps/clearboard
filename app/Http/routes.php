@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function() {
-    return view('clearboard.pages.index');
+    return view('clearboard.pages.index', ['forums' => \App\Forum::all()]);
 });
 
 Route::get('/forum/{fid}-{_}', function($fid) {
