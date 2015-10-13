@@ -1,11 +1,11 @@
-<div class="forumlisting-forum">
-    <img src="{{ theme_asset('img/unread.png') }}" alt="" class="forumlisting-forum-hasread">
+<div class="listing-entry">
+    <img src="{{ theme_asset('img/unread.png') }}" alt="" class="listing-forum-hasread">
     <div>
-        <div class="forumlisting-forum-name">
+        <div class="listing-entry-name">
             <a href="{{ url('forum/' . $forum->id . '-' . urlencode(str_replace(' ', '_', $forum->name))) }}">{{ $forum->name }}</a>
         </div>
         <br>
-        <div class="forumlisting-forum-desc">
+        <div class="listing-entry-desc">
             {{ $forum->description }}
         </div>
     </div>

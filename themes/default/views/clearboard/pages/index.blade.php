@@ -9,12 +9,12 @@
 @section('content')
     <h1>Forums</h1>
 
-    <div id="forumlisting">
+    <div id="listing">
         @foreach( $forums->sortBy('position') as $forum )
             @if( ($forum->type == 0) || ($forum->type == 2) )
                 @include('clearboard.parts.forumlisting', ['forum' => $forum])
             @elseif($forum->type == 1)
-                <div class="forumlisting-category">{{ $forum->name }}</div>
+                <div class="listing-category">{{ $forum->name }}</div>
             @endif
         @endforeach
     </div>
