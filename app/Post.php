@@ -16,4 +16,13 @@ class Post extends Model
     {
         return $this->belongsTo('App\Thread');
     }
+
+    /**
+     * Get the original poster of the post
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function poster()
+    {
+        return $this->hasOne('App\User', 'poster_id');
+    }
 }
