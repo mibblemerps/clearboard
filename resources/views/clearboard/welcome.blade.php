@@ -41,7 +41,7 @@
                         if (elmPhase === undefined) { return; }
 
                         if (elmPhase == phase) {
-                            $(this).fadeIn(250);
+                            $(this).fadeIn(375);
                         }
                     });
 
