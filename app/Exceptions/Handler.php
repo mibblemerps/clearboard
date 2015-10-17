@@ -49,7 +49,11 @@ class Handler extends ExceptionHandler
         if ($e instanceof HttpException) {
             // HTTP Exception detected, render custom error view
             $statuscode = $e->getStatusCode();
-            return response()->view("clearboard.pages.errors.$statuscode");
+            $viewpath = "clearboard.pages.errors.$statuscode";
+
+            if (view()->exists($viewpath)) {
+                return response()->view($viewpath);
+            }
         }
 
         return parent::render($request, $e);
