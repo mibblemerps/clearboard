@@ -20,7 +20,15 @@ Route::get('/', function() {
 
 Route::get('/forum/{fid}-{_}', function($fid) {
     $forum = Forum::where('id', $fid)->first();
-    return view('clearboard.pages.forum', ['forum' => $forum]);
+    if ($forum->type == 0) { // Viewing standard forum
+        return view('clearboard.pages.forum', ['forum' => $forum]);
+    } elseif ($forum->type == 1) { // Viewing category
+        // @TODO implement viewing of categories
+        abort(501); // Not Implemented
+    } elseif ($forum->type == 2) { // Viewing redirect
+        $redirect = $forum->meta;
+        return redirect($redirect);
+    }
 });
 
 Route::get('/welcome', function () {
