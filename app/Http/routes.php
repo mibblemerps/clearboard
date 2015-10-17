@@ -36,5 +36,8 @@ Route::get('/welcome', function () {
 });
 
 /* AUTHENTICATION ROUTES */
-Route::post('auth/login', 'LoginController@authenticateJson');
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
+Route::group(array('prefix' => '/auth'), function() {
+    Route::post('login', 'LoginController@authenticateJson');
+    Route::get('logout', 'Auth\AuthController@getLogout');
+});
+
