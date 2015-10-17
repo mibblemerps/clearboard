@@ -48,6 +48,11 @@
                     // Next transition phase
                     phase++;
                 }, 500);
+
+                // Redirect to site after 5 seconds
+                window.setTimeout(function(){
+                    window.location = "{{ url() }}";
+                }, 5000);
             });
         </script>
     </head>
