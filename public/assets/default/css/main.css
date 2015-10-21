@@ -3,6 +3,8 @@ html,body { margin: 0; padding: 0; }
 
 body {
     background-color: #202126;
+
+    font-family: "open sans", "helvetica", "arial", sans-serif;
 }
 
 
@@ -189,6 +191,55 @@ body {
 }
 #footer a:hover {
     text-decoration: underline;
+}
+
+/* LISTINGS */
+#listing {
+    padding: 10px;
+}
+
+.listing-entry { margin-bottom: 10px; }
+.listing-entry div,img { display: inline-block; }
+
+.listing-entry .listing-entry-hasread {
+    margin-right: 5px;
+}
+
+.listing-entry .listing-entry-name a {
+    color: #216aa4;
+    font-family: "lato", "arial", sans-serif;
+    font-weight: lighter;
+    font-size: 20px;
+
+    transition: color 0.20s;
+}
+.listing-entry .listing-entry-name a:hover {
+    color: #001878;
+}
+.listing-entry .listing-entry-name { margin-bottom: 4px; }
+
+.listing-entry .listing-entry-desc {
+    color: #5d5d5d;
+    font-family: "open sans", sans-serif;
+    font-size: 14px;
+}
+
+
+.listing-category {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 9px 14px;
+
+    border-radius: 4px 4px 0 0;
+
+    font-family: "lato", "arial", sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+
+    color: white;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.75);
+    background-color: #376491;
 }
 
 /* FORMATTING */

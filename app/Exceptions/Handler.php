@@ -46,6 +46,16 @@ class Handler extends ExceptionHandler
             $e = new NotFoundHttpException($e->getMessage(), $e);
         }
 
+        if ($e instanceof HttpException) {
+            // HTTP Exception detected, render custom error view
+            $statuscode = $e->getStatusCode();
+            $viewpath = "clearboard.pages.errors.$statuscode";
+
+            if (view()->exists($viewpath)) {
+                return response()->view($viewpath);
+            }
+        }
+
         return parent::render($request, $e);
     }
 }

@@ -1,4 +1,7 @@
 <?php
+namespace App;
+
+use \Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,12 +15,20 @@
 */
 
 Route::get('/', function() {
-    return view('clearboard.pages.index');
+    return view('clearboard.pages.index', ['forums' => Forum::all()]);
 });
 
 Route::get('/forum/{fid}-{_}', function($fid) {
-    $forum = \App\Forum::where('id', $fid)->first();
-    return view('clearboard.pages.forum', ['forum' => $forum]);
+    $forum = Forum::where('id', $fid)->first();
+    if ($forum->type == 0) { // Viewing standard forum
+        return view('clearboard.pages.forum', ['forum' => $forum]);
+    } elseif ($forum->type == 1) { // Viewing category
+        // @TODO implement viewing of categories
+        abort(501); // Not Implemented
+    } elseif ($forum->type == 2) { // Viewing redirect
+        $redirect = $forum->meta;
+        return redirect($redirect);
+    }
 });
 
 Route::get('/welcome', function () {
@@ -25,5 +36,8 @@ Route::get('/welcome', function () {
 });
 
 /* AUTHENTICATION ROUTES */
-Route::post('auth/login', 'LoginController@authenticateJson');
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
+Route::group(array('prefix' => '/auth'), function() {
+    Route::post('login', 'LoginController@authenticateJson');
+    Route::get('logout', 'Auth\AuthController@getLogout');
+});
+

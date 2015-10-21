@@ -7,7 +7,13 @@
 @endsection
 
 @section('content')
-    <h1>{{ $forum->name }}</h1>
+    <h1>Viewing Forum &dash; {{ $forum->name }}</h1><br>
+    <div id="listing">
+        <div class="listing-category">{{ $forum->name }}</div>
 
+        @foreach($forum->threads as $thread)
+            @include('clearboard.parts.threadlisting', ['thread' => $thread])
+        @endforeach
+    </div>
     
 @endsection
