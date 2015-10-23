@@ -12,7 +12,7 @@
         <div class="listing-category">{{ $forum->name }}</div>
 
         @foreach($forum->threads as $thread)
-            @include('clearboard.parts.threadlisting', ['thread' => $thread])
+            @include('clearboard.partials.threadlisting', ['thread' => $thread])
         @endforeach
     </div>
     
