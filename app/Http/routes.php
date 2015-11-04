@@ -31,6 +31,17 @@ Route::get('/forum/{fid}-{_}', function($fid) {
     }
 });
 
+Route::get('/thread/{tid}-{_}', function($tid) {
+    $thread = Thread::where('id', $tid)->firstOrFail();
+
+    if ($thread->hidden) {
+        // Thread hidden, abort request
+        abort(403);
+    }
+
+    return view('clearboard.pages.thread', ['thread' => $thread]);
+});
+
 Route::get('/welcome', function () {
     return view('clearboard.welcome');
 });
