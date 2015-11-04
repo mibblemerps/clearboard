@@ -20,7 +20,7 @@ sites:
       to: "/home/vagrant/clearboard/public"
 
 databases:
-    - homestead
+    - clearboard
 
 variables:
     - key: APP_ENV
