@@ -11,9 +11,7 @@
         <div class="listing-category">{{ $thread->name }}</div>
         <div id="thread_wrapper">
             @foreach($thread->posts as $post)
-                <div class="post">
-                    <p>{{ $post->body }}</p>
-                </div>
+                @include('clearboard.partials.post')
             @endforeach
         </div>
     </div>
