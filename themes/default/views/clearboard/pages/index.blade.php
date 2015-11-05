@@ -12,7 +12,7 @@
     <div id="listing">
         @foreach( $forums->sortBy('position') as $forum )
             @if( ($forum->type == 0) || ($forum->type == 2) )
-                @include('clearboard.parts.forumlisting', ['forum' => $forum])
+                @include('clearboard.partials.forumlisting', ['forum' => $forum])
             @elseif($forum->type == 1)
                 <div class="listing-category">{{ $forum->name }}</div>
             @endif

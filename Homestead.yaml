@@ -16,11 +16,11 @@ folders:
       to: "/home/vagrant/clearboard"
 
 sites:
-    - map: homestead.app
+    - map: clearboard.app
       to: "/home/vagrant/clearboard/public"
 
 databases:
-    - homestead
+    - clearboard
 
 variables:
     - key: APP_ENV

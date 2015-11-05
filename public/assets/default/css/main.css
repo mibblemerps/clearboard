@@ -14,6 +14,8 @@ body {
     margin: 0 auto;
 }
 
+.clear { clear: both; }
+
 .vertical-align {
     display: inline-block;
     vertical-align: middle;
@@ -119,6 +121,7 @@ body {
 
     background-color: #919191;
 }
+.userbox-notloggedin #userbox-dropdown { background-color: #676767; }
 
 .userbox-dropdown-item {
     display: inline-block;
@@ -158,9 +161,15 @@ body {
     font-family: "lato", "arial", sans-serif;
     font-weight: lighter;
     font-size: 15px;
-}
-#loginform #login-button {
 
+    outline: 0;
+    border: solid 2px #adadad;
+
+    transition: border-color 0.3s;
+}
+#loginform .input-field:focus { border-color: #54b6ff; }
+#loginform #login-button {
+    margin-top: 4px;
 }
 
 /* CONTENT AREA */

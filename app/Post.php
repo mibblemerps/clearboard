@@ -23,6 +23,6 @@ class Post extends Model
      */
     public function poster()
     {
-        return $this->hasOne('App\User', 'poster_id');
+        return $this->hasOne('App\User', 'id', 'poster_id');
     }
 }

@@ -6,7 +6,7 @@
         </div>
         <br>
         <div class="listing-entry-desc">
-
+            Started by <strong>{{ $thread->getPoster()->name }} </strong>
         </div>
     </div>
 </div>
