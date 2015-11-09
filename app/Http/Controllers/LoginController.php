@@ -9,7 +9,8 @@ use Auth;
 
 class LoginController extends Controller
 {
-    public function authenticateJson(Request $request) {
+    public function postLogin(Request $request)
+    {
         // Ensure arguments are present.
         if (!($request->has('username') && $request->has('password'))) {
             // Missing arguments!
