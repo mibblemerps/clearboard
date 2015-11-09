@@ -61,6 +61,8 @@ $(document).ready(function(){
             // Perform login
             login( $("#login-username").val(), $("#login-password").val() );
 
+            collapseUserbox();
+
             e.preventDefault();
         });
     }

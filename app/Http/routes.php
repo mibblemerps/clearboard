@@ -48,7 +48,7 @@ Route::get('/welcome', function () {
 
 /* AUTHENTICATION ROUTES */
 Route::group(array('prefix' => '/auth'), function() {
-    Route::post('login', 'LoginController@authenticateJson');
+    Route::post('login', 'LoginController@postLogin');
     Route::get('logout', 'Auth\AuthController@getLogout');
 });
 
