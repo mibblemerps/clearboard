@@ -8,6 +8,15 @@ $(document).ready(function(){
             delay: 2000,
             unique_id: "thread-" + window.thread_id // save drafts based on thread id
         },*/
-        spellChecker: false
+        spellChecker: false,
+
+        // Use remote server to process markdown preview, for best accuracy.
+        previewRender: function(content, preview){
+            processMarkdown(content, false, function(data){
+                preview.innerHTML = data;
+            });
+
+            return '<span style="color:#575757;font-weight:bold;">Loading, please wait...</span>';
+        }
     });
 });

@@ -68,3 +68,17 @@ $(document).ready(function(){
     }
 
 });
+
+function processMarkdown(markdown, inline, callback) {
+    var request = $.post(window.base_path + "/ajax/markdown" + (inline ? "_inline" : ""), {
+        _token: window.csrf_token,
+        markdown: markdown
+    });
+    request.done(callback);
+    request.fail(function(){
+        // Request failed!
+        console.log("Warning! Failed to get response from server to parse markdown!");
+        callback(null);
+    });
+}
+
