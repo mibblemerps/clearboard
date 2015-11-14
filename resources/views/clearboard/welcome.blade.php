@@ -60,7 +60,6 @@
         <div id="wrapper">
             <img src="{{ asset('clearboard/assets/header-inverted.png') }}" data-phase="1" class="component"><br>
             <h1 data-phase="2" class="component">Hello there</h1><br>
-            <p data-phase="3" class="component">Welcome to Clearboard</p>
         </div>
     </body>
 </html>
