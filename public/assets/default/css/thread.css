@@ -24,7 +24,7 @@
 }
 
 .post .post-right {
-    width: 100%;
+    width: calc(100% - 160px);
 
     vertical-align: top;
 }
@@ -40,7 +40,8 @@
 
 .post .post-timestamp {
     float: right;
-    margin: 5px;
+
+    margin: 5px 5px 10px 10px;
 
     color: #a7a7a7;
     font-style: italic;
@@ -74,3 +75,8 @@
     font-weight: bold;
     color: #bb1429;
 }
+
+#postreply-wrapper .CodeMirror, .CodeMirror-scroll {
+    min-height: 175px !important;
+}
+
