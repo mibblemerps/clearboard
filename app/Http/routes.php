@@ -14,6 +14,10 @@ Route::get('/', function() {
 Route::get('/forum/{fid}-{_}', 'ForumController@getForum');
 Route::get('/thread/{tid}-{_}', 'ThreadController@getThread');
 
+// Route for processing markdown to HTML.
+Route::post('/ajax/markdown', 'MarkdownController@postParse');
+Route::post('/ajax/markdown_inline', 'MarkdownController@postInlineParse'); // for parsing inline markdown
+
 // Authentication routes
 Route::group(array('prefix' => '/auth'), function() {
     Route::post('login', 'LoginController@postLogin');
