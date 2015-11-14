@@ -1,19 +1,11 @@
-
-@section('head')
-    Test
-@endsection
-
-<h2>Post Reply</h2>
-<div class="post">
-    <div class="post-left">
-        <img src="{{ $post->poster()->first()->avatarUrl() }}" alt="" class="post-avatar">
-    </div>
-    <div class="post-right">
-        <div class="post-content">
+@if (Auth::check())
+    <div id="postreply">
+        <img src="{{ Auth::user()->avatarUrl() }}" id="postreply-icon">
+        <h2 id="postreply-header">Post Reply</h2>
+        <div class="post">
             <div id="postreply-wrapper">
-                <textarea id="postreply"></textarea>
+                <textarea id="postreply-box"></textarea>
             </div>
         </div>
     </div>
-    <br class="clear">
-</div>
+@endif

@@ -1,7 +1,7 @@
 
 $(document).ready(function(){
     var simplemde = new SimpleMDE({
-        element: $("#postreply")[0],
+        element: $("#postreply-box")[0],
         // Autosave disabled temporarily because it keeps it's content even after submitting (Clearboard will use a custom AJAX submit function)
         /*autosave: {
             enabled: true,
