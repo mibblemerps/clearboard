@@ -118,7 +118,23 @@ function collapseUserbox() {
     $("#userbox-dropdown").stop().slideUp(250);
 }
 
-$(document).ready(function(){
+function processMarkdown(markdown, inline, callback) {
+    var request = $.post(window.base_path + "/ajax/markdown" + (inline ? "_inline" : ""), {
+        _token: window.csrf_token,
+        markdown: markdown
+    });
+    request.done(callback);
+    request.fail(function(){
+        // Request failed!
+        console.log("Warning! Failed to get response from server to parse markdown!");
+        callback(null);
+    });
+}
+
+/**
+ * Initialize page
+ */
+function init() {
     // Init promptbox
     $("#promptbox").css("display", "block").hide();
     $("#cover").css("display", "block").hide();
@@ -155,19 +171,7 @@ $(document).ready(function(){
             e.preventDefault();
         });
     }
-
-});
-
-function processMarkdown(markdown, inline, callback) {
-    var request = $.post(window.base_path + "/ajax/markdown" + (inline ? "_inline" : ""), {
-        _token: window.csrf_token,
-        markdown: markdown
-    });
-    request.done(callback);
-    request.fail(function(){
-        // Request failed!
-        console.log("Warning! Failed to get response from server to parse markdown!");
-        callback(null);
-    });
 }
 
+// Run init on page change
+$(document).ready(init);

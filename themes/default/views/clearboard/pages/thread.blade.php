@@ -2,7 +2,7 @@
 
 @section('title', $thread->name)
 
-@section('head')
+@section('page_assets')
     <link rel="stylesheet" type="text/css" href="{{ theme_asset('css/thread.css') }}">
 
     <link rel="stylesheet" href="//cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">

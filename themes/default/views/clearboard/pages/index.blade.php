@@ -2,7 +2,7 @@
 
 @section('title', 'Index')
 
-@section('head')
+@section('page_assets')
     <link rel="stylesheet" type="text/css" href="{{ theme_asset('css/index.css') }}">
 @endsection
 
