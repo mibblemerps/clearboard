@@ -22,6 +22,69 @@ body {
     height: 100%;
 }
 
+#cover {
+    display: none;
+
+    position: fixed;
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    z-index: 50;
+
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* DIALOG BOX */
+.promptbox {
+    display: none;
+
+    position: fixed;
+    width: 480px;
+
+    left: calc(50% - 230px);
+    margin-top: 60px;
+    padding: 0 0 10px 0;
+
+    z-index: 51;
+
+    background-color: white;
+    border: solid 2px #808080;
+    border-radius: 5px;
+}
+
+.promptbox p {
+    font-family: "open sans", sans-serif;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.promptbox .promptbox-header {
+    width: 480px;
+    padding: 7px 12px;
+    box-sizing: border-box;
+
+    background-color: #5e43ce;
+    color: white;
+
+    font-family: "lato", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+}
+
+.promptbox-buttons {
+    text-align: right;
+    padding-right: 10px;
+}
+
+.promptbox-buttons .button {
+    margin-left: 6px;
+}
+
+/* BUTTONS */
 .button {
     display: inline-block;
     vertical-align: middle;

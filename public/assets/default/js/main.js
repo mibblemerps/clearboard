@@ -1,4 +1,48 @@
 
+function cbPromptDismiss() {
+    $("#promptbox").fadeOut(200);
+    $("#cover").fadeOut(200);
+}
+
+function cbPrompt(title, message, buttons) {
+    // Set prompt title and message
+    $("#promptbox .promptbox-header").html(title);
+    $("#promptbox .promptbox-message").html(message);
+
+    // Clear existing buttons
+    $("#promptbox .promptbox-buttons").html("");
+
+    // Setup buttons
+    for (var i = 0; i < buttons.length; i++) {
+        // Add button html markup
+        $("#promptbox .promptbox-buttons").append('<span class="button promptbox-button promptbox-button-'+i+'"></span>');
+
+        var button = $("#promptbox .promptbox-buttons .promptbox-button-" + i);
+
+        // Add text
+        button.html(buttons[i].label);
+
+        // Add color class if needed
+        switch (buttons[i].color) {
+            case 'green':
+                button.addClass("button-green");
+                break;
+            case 'red':
+                button.addClass("button-red");
+                break;
+        }
+
+        // Assign callback
+        if (typeof buttons[i].click === "function") {
+            button.click(buttons[i].click);
+        }
+
+        // Display prompt
+        $("#promptbox").fadeIn(200);
+        $("#cover").fadeIn(200);
+    }
+}
+
 /**
  * Send AJAX request to server to login
  * @param username
@@ -33,6 +77,9 @@ function collapseUserbox() {
 }
 
 $(document).ready(function(){
+    // Init promptbox
+    $("#promptbox").css("display", "block").hide();
+    $("#cover").css("display", "block").hide();
 
     // To allow use of jQuery's hide and show methods
     $("#userbox-dropdown").css("display", "block").hide();

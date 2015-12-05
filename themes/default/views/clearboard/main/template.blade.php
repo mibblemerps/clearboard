@@ -17,6 +17,14 @@
         @yield('head')
     </head>
     <body>
+        <div id="cover"></div>
+
+        <div class="promptbox" id="promptbox">
+            <div class="promptbox-header">Prompt Header</div>
+            <p class="promptbox-message">Prompt Body</p>
+            <div class="promptbox-buttons"></div>
+        </div>
+
         <div id="header">
             <div class="content-width">
                 <a href="{{ url('/') }}"><img src="{{ asset('header.png') }}" alt="{{ config('clearboard.sitename') }}" id="header-img"></a>
@@ -58,7 +66,6 @@
         <div id="footer" class="content-width">
             @include('clearboard.main.footer')
         </div>
-
 
         <!-- Low priority assets -->
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Lato|Merriweather'">
