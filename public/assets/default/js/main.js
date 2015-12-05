@@ -1,9 +1,18 @@
 
+/**
+ * Dismiss currently active prompt box
+ */
 function cbPromptDismiss() {
     $("#promptbox").fadeOut(200);
     $("#cover").fadeOut(200);
 }
 
+/**
+ * Display a new prompt box.
+ * @param title Text to display in title bar
+ * @param message Message to display
+ * @param buttons Array of objects containing: 'label', 'color' and 'click' (click is a callback function).
+ */
 function cbPrompt(title, message, buttons) {
     // Default buttons
     if (typeof buttons === "undefined") {
