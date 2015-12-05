@@ -8,12 +8,17 @@
 /* POST */
 
 .post {
-    margin: 9px;
+    display: table;
+
+    width: calc(100% - 20px);
+    margin: 10px;
+
     background-color: white;
 }
 
 .post .post-left {
-    float: left;
+    display: table-cell;
+
     width: 160px;
     box-sizing: border-box;
     padding: 14px 4px;
@@ -24,6 +29,8 @@
 }
 
 .post .post-right {
+    display: table-cell;
+
     width: calc(100% - 160px);
 
     vertical-align: top;
@@ -32,7 +39,6 @@
 .post .post-content {
     box-sizing: border-box;
     width: 100%;
-    margin-left: 160px;
     padding: 10px;
 
     font-family: "arial", sans-serif;
