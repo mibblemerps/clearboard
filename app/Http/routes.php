@@ -19,10 +19,6 @@ Route::get('/thread/{tid}-{_}', 'ThreadController@getThread');
 Route::post('/ajax/markdown', 'MarkdownController@postParse');
 Route::post('/ajax/markdown_inline', 'MarkdownController@postInlineParse'); // for parsing inline markdown
 
-Route::get('/test', function() {
-    return PostProcessor::postProcess('Hello world https://www.youtube.com/watch?v=pOHvWX8c6Vs test');
-});
-
 // Authentication routes
 Route::group(array('prefix' => '/auth'), function() {
     Route::post('login', 'LoginController@postLogin');
