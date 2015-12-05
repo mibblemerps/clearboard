@@ -1,4 +1,12 @@
 {
+  "name": "clearboard",
+  "version": "0.1a",
+  "description": "Clearboard - a free, open-source community suite built upon Laravel.",
+  "author": "Mitchell Nelson <me@mitchfizz05.net>",
+  "contributors": [],
+  
+  "license": "MIT",
+  
   "private": true,
   "devDependencies": {
     "gulp": "^3.8.8"

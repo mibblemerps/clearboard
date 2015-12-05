@@ -1,54 +1,36 @@
 <?php
 namespace App;
 
+use App\PostProcessor\PostProcessor;
 use \Route;
 
 /*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
+ * Clearboard Routes
+ */
 
 Route::get('/', function() {
     return view('clearboard.pages.index', ['forums' => Forum::all()]);
 });
 
-Route::get('/forum/{fid}-{_}', function($fid) {
-    $forum = Forum::where('id', $fid)->first();
-    if ($forum->type == 0) { // Viewing standard forum
-        return view('clearboard.pages.forum', ['forum' => $forum]);
-    } elseif ($forum->type == 1) { // Viewing category
-        // @TODO implement viewing of categories
-        abort(501); // Not Implemented
-    } elseif ($forum->type == 2) { // Viewing redirect
-        $redirect = $forum->meta;
-        return redirect($redirect);
-    }
-});
+Route::get('/forum/{fid}-{_}', 'ForumController@getForum');
+Route::get('/thread/{tid}-{_}', 'ThreadController@getThread');
 
-Route::get('/thread/{tid}-{_}', function($tid) {
-    $thread = Thread::where('id', $tid)->firstOrFail();
+// Route for processing markdown to HTML.
+Route::post('/ajax/markdown', 'MarkdownController@postParse');
+Route::post('/ajax/markdown_inline', 'MarkdownController@postInlineParse'); // for parsing inline markdown
 
-    if ($thread->hidden) {
-        // Thread hidden, abort request
-        abort(403);
-    }
+// Posting routes
+Route::post('/ajax/new_post', 'PostController@newPost');
 
-    return view('clearboard.pages.thread', ['thread' => $thread]);
-});
-
-Route::get('/welcome', function () {
-    return view('clearboard.welcome');
-});
-
-/* AUTHENTICATION ROUTES */
+// Authentication routes
 Route::group(array('prefix' => '/auth'), function() {
     Route::post('login', 'LoginController@postLogin');
     Route::get('logout', 'Auth\AuthController@getLogout');
+});
+
+
+// Introduction route. Probably will be a way to disable at some point.
+Route::get('/welcome', function () {
+    return view('clearboard.welcome');
 });
 
