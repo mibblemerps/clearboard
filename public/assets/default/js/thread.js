@@ -5,8 +5,7 @@ var posteditor;
  * Update the width of post-content elements.
  * A limit must be applied with Javascript so word-wrapping works.
  */
-function updatePostWidth()
-{
+function updatePostWidth() {
     // Stop allowing wrapping in the middle of words
     $(".post .post-content").css("word-break", "normal");
 
