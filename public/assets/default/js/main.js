@@ -46,6 +46,9 @@ function cbPrompt(title, message, buttons) {
         // Assign callback
         if (typeof buttons[i].click === "function") {
             button.click(buttons[i].click);
+        } else {
+            // Default action is to dismiss prompt box
+            button.click(cbPromptDismiss);
         }
 
         // Display prompt
