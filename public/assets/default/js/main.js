@@ -5,6 +5,17 @@ function cbPromptDismiss() {
 }
 
 function cbPrompt(title, message, buttons) {
+    // Default buttons
+    if (typeof buttons === "undefined") {
+        buttons = [
+            {
+                label: "Okay",
+                color: "blue",
+                click: cbPromptDismiss
+            }
+        ];
+    }
+
     // Set prompt title and message
     $("#promptbox .promptbox-header").html(title);
     $("#promptbox .promptbox-message").html(message);
@@ -44,6 +55,19 @@ function cbPrompt(title, message, buttons) {
 }
 
 /**
+ * Show connection error message.
+ */
+function dialogConnectionError() {
+    cbPrompt("Connection Error", "Oh noes! There was a problem communicating with the server!", [
+        {
+            label: ":(",
+            color: "red",
+            click: cbPromptDismiss
+        }
+    ]);
+}
+
+/**
  * Send AJAX request to server to login
  * @param username
  * @param password
@@ -57,11 +81,17 @@ function login(username, password) {
         if (data.success == true) {
             location.reload(); // Logged in - reload page
         } else {
-            alert("Incorrect username/password!")
+            cbPrompt("Incorrect", "The username or password you provided was incorrect.<br>Try again?");
         }
     }).fail(function(){
         // Failed to perform login request. =\
-        alert("Login request failed.\nAre you still connected to the internet?");
+        cbPrompt("Connection Error", "Oh noes! There was a problem communicating with the server!", [
+            {
+                label: ":(",
+                color: "red",
+                click: cbPromptDismiss
+            }
+        ]);
     });
 }
 
