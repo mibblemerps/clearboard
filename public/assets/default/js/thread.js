@@ -1,6 +1,22 @@
 
 var posteditor;
 
+/**
+ * Update the width of post-content elements.
+ * A limit must be applied with Javascript so word-wrapping works.
+ */
+function updatePostWidth()
+{
+    // Stop allowing wrapping in the middle of words
+    $(".post .post-content").css("word-break", "inherit");
+
+    $(".post .post-content").css("width", "auto");
+
+    var postWidth = $(".post .post-content").width();
+
+    $(".post .post-content").css("width", postWidth + "px");
+}
+
 $(document).ready(function(){
     posteditor = new SimpleMDE({
         element: $("#postreply-box")[0],
@@ -51,4 +67,7 @@ $(document).ready(function(){
             alert("Oh noes! Something went wrong! :(");
         });
     });
+
+    // Update post widths on window resize
+    $(window).resize(updatePostWidth);
 });

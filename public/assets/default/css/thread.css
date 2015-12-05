@@ -32,6 +32,7 @@
     display: table-cell;
 
     width: calc(100% - 160px);
+    text-wrap: normal;
 
     vertical-align: top;
 }
@@ -40,6 +41,17 @@
     box-sizing: border-box;
     width: 100%;
     padding: 10px;
+
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    word-break: break-all; /* JavaScript will remove this element later once it applies proper word wrapping */
+
+    /* Adds a hyphen where the word breaks */
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
 
     font-family: "arial", sans-serif;
 }
