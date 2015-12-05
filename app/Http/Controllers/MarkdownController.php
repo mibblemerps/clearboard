@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\PostProcessor\PostProcessor;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -30,7 +31,7 @@ class MarkdownController extends Controller
      */
     public function postParse(Request $request)
     {
-        $markdown = htmlentities($request->input('markdown'));
+        $markdown = PostProcessor::postProcess($request->input('markdown'));
         return $this->parser->parse($markdown);
     }
 
@@ -42,7 +43,7 @@ class MarkdownController extends Controller
      */
     public function postInlineParse(Request $request)
     {
-        $markdown = htmlentities($request->input('markdown'));
+        $markdown = PostProcessor::postProcess($request->input('markdown'));
         return $this->parser->parseParagraph($markdown);
     }
 }
