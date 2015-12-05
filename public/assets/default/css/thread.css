@@ -104,3 +104,7 @@
 
 #postreply-header { vertical-align: middle; margin-bottom: 5px; }
 
+#postreply-submit {
+    float: right;
+}
+

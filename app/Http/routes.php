@@ -19,6 +19,9 @@ Route::get('/thread/{tid}-{_}', 'ThreadController@getThread');
 Route::post('/ajax/markdown', 'MarkdownController@postParse');
 Route::post('/ajax/markdown_inline', 'MarkdownController@postInlineParse'); // for parsing inline markdown
 
+// Posting routes
+Route::post('/ajax/new_post', 'PostController@newPost');
+
 // Authentication routes
 Route::group(array('prefix' => '/auth'), function() {
     Route::post('login', 'LoginController@postLogin');

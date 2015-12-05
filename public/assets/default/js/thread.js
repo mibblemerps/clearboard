@@ -1,6 +1,8 @@
 
+var posteditor;
+
 $(document).ready(function(){
-    var simplemde = new SimpleMDE({
+    posteditor = new SimpleMDE({
         element: $("#postreply-box")[0],
         // Autosave disabled temporarily because it keeps it's content even after submitting (Clearboard will use a custom AJAX submit function)
         /*autosave: {
@@ -18,5 +20,35 @@ $(document).ready(function(){
 
             return '<span style="color:#575757;font-weight:bold;">Loading, please wait...</span>';
         }
+    });
+
+    $("#postreply-submit").click(function() {
+        // Submit post
+        var req = $.post("/ajax/new_post", {
+            _token: window.csrf_token,
+            body: posteditor.value(),
+            thread: window.thread_id
+        });
+
+        req.done(function(data) {
+            if (data.status) {
+                // Successfully posted
+                console.log("Successfully posted");
+
+                // Clear postreply field
+                posteditor.value("");
+
+                // Render new post onto page
+                $("#postreply").before(data.html);
+            } else {
+                // Unexpected response
+                console.warn("Unexpected response when submitting post!");
+                alert("Oh noes! Something went wrong! :(");
+            }
+        });
+        req.fail(function() {
+            console.warn("Request to submit post failed!");
+            alert("Oh noes! Something went wrong! :(");
+        });
     });
 });

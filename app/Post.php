@@ -44,4 +44,13 @@ class Post extends Model
 
         return $content;
     }
+
+    /**
+     * Return partial view of post
+     * @return \Illuminate\View\View
+     */
+    public function getPostView()
+    {
+        return view('clearboard.partials.post', ['post' => $this]);
+    }
 }
