@@ -17,9 +17,6 @@
         @yield('head')
     </head>
     <body>
-        <!-- Page specific assets -->
-        @yield('page_assets')
-
         <div id="cover"></div>
 
         <div class="promptbox" id="promptbox">
@@ -73,14 +70,5 @@
         <!-- Low priority assets -->
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Lato|Merriweather'">
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-
-        <!-- InstantClick -->
-        <script type="text/javascript" data-no-instant src="//cdnjs.cloudflare.com/ajax/libs/instantclick/3.0.1/instantclick.min.js"></script>
-        <script type="text/javascript" data-no-instant>
-            InstantClick.init();
-            InstantClick.on("change", function(){
-                window.setInterval(init, 0);
-            });
-        </script>
     </body>
 </html>
