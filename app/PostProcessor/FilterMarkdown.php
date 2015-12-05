@@ -21,6 +21,7 @@ class FilterMarkdown implements Filter
         $parser = new GithubMarkdown();
         $parser->html5 = true;
         $parser->enableNewlines = true;
+        $parser->keepListStartNumber = true;
 
         return $parser->parse($post);
     }
