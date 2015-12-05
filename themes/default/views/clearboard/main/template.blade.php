@@ -17,6 +17,17 @@
         @yield('head')
     </head>
     <body>
+        <!-- Page specific assets -->
+        @yield('page_assets')
+
+        <div id="cover"></div>
+
+        <div class="promptbox" id="promptbox">
+            <div class="promptbox-header">Prompt Header</div>
+            <p class="promptbox-message">Prompt Body</p>
+            <div class="promptbox-buttons"></div>
+        </div>
+
         <div id="header">
             <div class="content-width">
                 <a href="{{ url('/') }}"><img src="{{ asset('header.png') }}" alt="{{ config('clearboard.sitename') }}" id="header-img"></a>
@@ -35,9 +46,9 @@
                                 </div>
                             @else
                                 <span class="vertical-align"></span>
-                                <span class="button" id="loginbtn">Login</span>
+                                <span class="button button-green" id="loginbtn">Login</span>
                                 <span id="userbox-or">or</span>
-                                <a href="{{ url('/register') }}"><span class="button" id="registerbtn">Register</span></a>
+                                <a href="{{ url('/register') }}"><span class="button button-green" id="registerbtn">Register</span></a>
                                 <div id="userbox-dropdown">
                                     <form id="loginform" action="{{ url('/auth/login') }}" method="POST">
                                         {!! csrf_field(); !!}
@@ -59,8 +70,17 @@
             @include('clearboard.main.footer')
         </div>
 
-
         <!-- Low priority assets -->
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Lato|Merriweather'">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+
+        <!-- InstantClick -->
+        <script type="text/javascript" data-no-instant src="//cdnjs.cloudflare.com/ajax/libs/instantclick/3.0.1/instantclick.min.js"></script>
+        <script type="text/javascript" data-no-instant>
+            InstantClick.init();
+            InstantClick.on("change", function(){
+                window.setInterval(init, 0);
+            });
+        </script>
     </body>
 </html>

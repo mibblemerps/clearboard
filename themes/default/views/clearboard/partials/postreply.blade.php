@@ -6,7 +6,7 @@
             <div id="postreply-wrapper">
                 <textarea id="postreply-box"></textarea>
             </div><br>
-            <span id="postreply-submit" class="button">Post Reply</span>
+            <span id="postreply-submit" class="button button-dark">Post Reply</span>
         </div>
     </div>
 @endif
