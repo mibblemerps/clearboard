@@ -35,9 +35,9 @@
                                 </div>
                             @else
                                 <span class="vertical-align"></span>
-                                <span class="button" id="loginbtn">Login</span>
+                                <span class="button button-green" id="loginbtn">Login</span>
                                 <span id="userbox-or">or</span>
-                                <a href="{{ url('/register') }}"><span class="button" id="registerbtn">Register</span></a>
+                                <a href="{{ url('/register') }}"><span class="button button-green" id="registerbtn">Register</span></a>
                                 <div id="userbox-dropdown">
                                     <form id="loginform" action="{{ url('/auth/login') }}" method="POST">
                                         {!! csrf_field(); !!}
