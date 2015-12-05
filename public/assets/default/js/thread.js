@@ -8,7 +8,7 @@ var posteditor;
 function updatePostWidth()
 {
     // Stop allowing wrapping in the middle of words
-    $(".post .post-content").css("word-break", "inherit");
+    $(".post .post-content").css("word-break", "normal");
 
     $(".post .post-content").css("width", "auto");
 
@@ -70,4 +70,5 @@ $(document).ready(function(){
 
     // Update post widths on window resize
     $(window).resize(updatePostWidth);
+    updatePostWidth(); // initial post width update
 });
