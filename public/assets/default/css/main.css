@@ -199,6 +199,8 @@ body {
     padding-bottom: 6px;
     width: 320px;
 
+    z-index: 45;
+
     overflow: hidden;
 
     background-color: #919191;

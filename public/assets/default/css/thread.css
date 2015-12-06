@@ -94,6 +94,10 @@
     color: #bb1429;
 }
 
+.post .post-content img {
+    max-width: 100%;
+}
+
 /* REPLY */
 
 #postreply {
