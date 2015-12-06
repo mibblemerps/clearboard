@@ -12,7 +12,7 @@ keys:
     - ~/.ssh/id_rsa
 
 folders:
-    - map: "A:/Programming/webdev/clearboard"
+    - map: "."
       to: "/home/vagrant/clearboard"
 
 sites:
