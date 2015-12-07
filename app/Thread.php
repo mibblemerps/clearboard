@@ -36,6 +36,18 @@ class Thread extends Model
     }
 
     /**
+     * Generate a user friendly URL for this thread.
+     * Example: /thread/3-Hello_World
+     * @return string
+     */
+    public function getUserFriendlyURL()
+    {
+        return url('thread/' . $this->id . '-' . urlencode(
+                str_replace(' ', '_', preg_replace('/[^A-Za-z0-9\-]/', '', $this->name))
+            ));
+    }
+
+    /**
      * Create a new thread
      * @param string $title Title of thread
      * @param integer $forumid Forum ID to host the thread
