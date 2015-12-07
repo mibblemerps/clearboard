@@ -57,14 +57,26 @@ class Post extends Model
 
     /**
      * Create a new post
-     * @param integer $threadid Thread ID
      * @param string $body Content of post, will be run through filters
+     * @param integer $threadid Thread ID
+     * @param integer| $posterid Poster's ID. Defaults to currently authenticated user
      * @param bool|false $hidden Is the post hidden from normal view?
      * @param bool|true $save Should the post be automatically saved into the database?
      * @return Post The resulting post object
      */
-    public static function newPost($threadid, $body, $hidden = false, $save = true)
+    public static function newPost($body, $threadid, $posterid = null, $hidden = false, $save = true)
     {
+        // Check users rights
+        if ( (!Auth::check()) && $posterid === null ) {
+            abort(403); // 403 Forbidden
+        }
+
+        // Check thread
+        $thread = Thread::findOrFail($threadid);
+        if ($thread->locked) {
+            abort(403); // 403 Forbidden
+        }
+
         // Run post through filters
         $body = PostProcessor::preProcess($body);
 

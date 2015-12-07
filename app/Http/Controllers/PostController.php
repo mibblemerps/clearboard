@@ -14,6 +14,8 @@ class PostController extends Controller
 {
     public function newPost(Request $request)
     {
+        // Ensure
+
         // Collect input
         $threadid = $request->input('thread', 0);
         $content = $request->input('body', '');
@@ -25,7 +27,7 @@ class PostController extends Controller
         $content = PostProcessor::preProcess($content);
 
         // Create new post
-        $post = Post::newPost($threadid, $content);
+        $post = Post::newPost($content, $threadid);
 
         // Generate response
         $resp = new Response(

@@ -62,7 +62,7 @@ class ThreadController extends Controller
         );
 
         // Create opening post
-        $post = post::newPost($thread->id, $request->input('body'));
+        $post = post::newPost($request->input('body'), $thread->id);
 
         // Generate response
         $resp = new Response(

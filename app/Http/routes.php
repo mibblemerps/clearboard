@@ -22,7 +22,7 @@ Route::post('/ajax/markdown_inline', 'MarkdownController@postInlineParse'); // f
 // Posting routes
 Route::post('/ajax/new_post', 'PostController@newPost');
 Route::post('/ajax/new_thread', 'ThreadController@newThread');
-Route::get('/newthread/{forumid}', 'ThreadController@createThread');
+Route::get('/newthread/{forumid}', 'ThreadController@createThread')->middleware('auth');
 
 // Authentication routes
 Route::group(array('prefix' => '/auth'), function() {
