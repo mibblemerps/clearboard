@@ -54,6 +54,7 @@ class Thread extends Model
      * @param bool|false $locked Is the thread locked to further replies?
      * @param bool|false $hidden Is the thread hidden from normal view?
      * @param bool|true $save Should the thread be saved to the database?
+     * @return Thread
      */
     public static function newThread($title, $forumid, $locked = false, $hidden = false, $save = true)
     {
@@ -67,5 +68,7 @@ class Thread extends Model
 
         // Save thread to database
         if ($save) { $thread->save(); }
+
+        return $thread;
     }
 }
