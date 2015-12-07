@@ -26,6 +26,15 @@ $(document).ready(function(){
     $("#newthread-submit").click(function() {
         posting = true;
 
+        if (posteditor.value() == "") {
+            // Post editor empty, abort..
+            $("#newthread-submit").addClass("button-gray");
+            setTimeout(function(){
+                $("#newthread-submit").removeClass("button-gray");
+            }, 200);
+            return false;
+        }
+
         var req = $.post("/ajax/new_thread", {
             _token: window.csrf_token,
             title: $("#newthread-title").val(),

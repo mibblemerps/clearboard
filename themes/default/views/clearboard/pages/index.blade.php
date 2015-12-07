@@ -7,6 +7,12 @@
 @endsection
 
 @section('content')
+    @if( \App\Facades\Settings::get('clearboard.board_message') !== '' )
+        <div class="board-message">
+            {!! \App\Facades\Settings::get('clearboard.board_message') !!}
+        </div>
+    @endif
+
     <h1>Forums</h1>
 
     <div id="listing">
