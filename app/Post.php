@@ -58,7 +58,7 @@ class Post extends Model
     /**
      * Create new post
      */
-    public static function newPost($threadid, $body, $hidden = false)
+    public static function newPost($threadid, $body, $hidden = false, $save = true)
     {
         // Run post through filters
         $body = PostProcessor::preProcess($body);
@@ -71,7 +71,7 @@ class Post extends Model
         $post->hidden = $hidden; // defaults to false
 
         // Put post into database
-        $post->save();
+        if ($save) { $post->save(); }
 
         return $post;
     }
