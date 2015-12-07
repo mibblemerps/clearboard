@@ -56,7 +56,12 @@ class Post extends Model
     }
 
     /**
-     * Create new post
+     * Create a new post
+     * @param integer $threadid Thread ID
+     * @param string $body Content of post, will be run through filters
+     * @param bool|false $hidden Is the post hidden from normal view?
+     * @param bool|true $save Should the post be automatically saved into the database?
+     * @return Post The resulting post object
      */
     public static function newPost($threadid, $body, $hidden = false, $save = true)
     {
