@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>{{ config('clearboard.sitename') }} - @yield('title')</title>
+        <title>{{ \App\Facades\Settings::get('clearboard.sitename') }} - @yield('title')</title>
 
         <link rel="stylesheet" type="text/css" href="{{ theme_asset('css/main.css') }}">
 
