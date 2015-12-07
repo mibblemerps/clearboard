@@ -11,7 +11,9 @@
     <div id="listing">
         <div class="listing-category">
             {{ $forum->name }}
-            <a href="{{ url('/newthread/' . $forum->id) }}"><span class="button button-green newthread-button">New Thread</span></a>
+            @if (Auth::check())
+                <a href="{{ url('/newthread/' . $forum->id) }}"><span class="button button-green newthread-button">New Thread</span></a>
+            @endif
         </div>
 
         @foreach($forum->threads as $thread)
