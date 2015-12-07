@@ -4,6 +4,7 @@ namespace App;
 
 use App\PostProcessor\PostProcessor;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Post extends Model
 {
@@ -52,5 +53,26 @@ class Post extends Model
     public function getPostView()
     {
         return view('clearboard.partials.post', ['post' => $this]);
+    }
+
+    /**
+     * Create new post
+     */
+    public static function newPost($threadid, $body, $hidden = false)
+    {
+        // Run post through filters
+        $body = PostProcessor::preProcess($body);
+
+        // Create new post
+        $post = new Post();
+        $post->thread_id = $threadid;
+        $post->poster_id = Auth::user()->id;
+        $post->body = $body;
+        $post->hidden = $hidden; // defaults to false
+
+        // Put post into database
+        $post->save();
+
+        return $post;
     }
 }
