@@ -10,7 +10,7 @@
     <script type="text/javascript" src="{{ theme_asset('js/newthread.js') }}"></script>
 
     <script type="text/javascript">
-        window.forum_id = {{ $forumid }};
+        window.forum_id = {{ $forum->id }};
     </script>
 @endsection
 
@@ -23,7 +23,7 @@
         </div>
 
         <div id="newthread-buttons">
-            <span id="newthread-discard" class="button button-red">Discard</span>
+            <a href="{{ $forum->getUserFriendlyURL() }}"><span id="newthread-discard" class="button button-red">Discard</span></a>
             <span id="newthread-submit" class="button">Create Thread</span>
         </div>
     </div>

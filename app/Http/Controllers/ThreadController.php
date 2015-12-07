@@ -85,6 +85,6 @@ class ThreadController extends Controller
     public function createThread($forumid)
     {
         $forum = Forum::findOrFail($forumid);
-        return view('clearboard.pages.newthread', ['forumid' => $forumid]);
+        return view('clearboard.pages.newthread', ['forum' => Forum::find($forumid)]);
     }
 }
