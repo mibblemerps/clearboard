@@ -1,5 +1,6 @@
 
 var posteditor;
+var posting = false; // is the thread being posted?
 
 $(document).ready(function(){
     posteditor = new SimpleMDE({
@@ -20,5 +21,29 @@ $(document).ready(function(){
 
             return '<span style="color:#575757;font-weight:bold;">Loading, please wait...</span>';
         }
+    });
+
+    $("#newthread-submit").click(function() {
+        posting = true;
+
+        var req = $.post("/ajax/new_thread", {
+            _token: window.csrf_token,
+            title: $("#newthread-title").val(),
+            forum: window.forum_id,
+            body: posteditor.value()
+        });
+        req.done(function(data) {
+            if (data.status) {
+                // Successfully posted
+                console.log("Successfully posted");
+
+                // Navigate to new thread
+                window.location = data.link;
+            }
+        });
+        req.fail(function() {
+            dialogConnectionError();
+            posting = false;
+        });
     });
 });

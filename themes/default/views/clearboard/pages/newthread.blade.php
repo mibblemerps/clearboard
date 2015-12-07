@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
     <script src="//cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
     <script type="text/javascript" src="{{ theme_asset('js/newthread.js') }}"></script>
+
+    <script type="text/javascript">
+        window.forum_id = {{ $forumid }};
+    </script>
 @endsection
 
 @section('content')
@@ -19,7 +23,7 @@
         </div>
 
         <div id="newthread-buttons">
-            <span id="newthread-submit" class="button button-red">Discard</span>
+            <span id="newthread-discard" class="button button-red">Discard</span>
             <span id="newthread-submit" class="button">Create Thread</span>
         </div>
     </div>
