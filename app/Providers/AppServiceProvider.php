@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Settings\Settings;
 use Illuminate\Support\ServiceProvider;
 use App\PostProcessor\PostProcessor;
 
@@ -26,5 +27,8 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+
+        // Init the settings class
+        $this->app['settings'] = new Settings();
     }
 }
