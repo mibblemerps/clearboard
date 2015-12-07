@@ -34,4 +34,26 @@ class Thread extends Model
         $poster = User::where('id', $posterid)->first();
         return $poster;
     }
+
+    /**
+     * Create a new thread
+     * @param string $title Title of thread
+     * @param integer $forumid Forum ID to host the thread
+     * @param bool|false $locked Is the thread locked to further replies?
+     * @param bool|false $hidden Is the thread hidden from normal view?
+     * @param bool|true $save Should the thread be saved to the database?
+     */
+    public static function newThread($title, $forumid, $locked = false, $hidden = false, $save = true)
+    {
+        // Create thread definition
+        $thread = new Thread();
+        $thread->forum_id = $forumid;
+        $thread->name = $title;
+        $thread->locked = false;
+        $thread->locked = $locked; // defaults to unlocked
+        $thread->hidden = $hidden; // defaults to not hidden
+
+        // Save thread to database
+        if ($save) { $thread->save(); }
+    }
 }
