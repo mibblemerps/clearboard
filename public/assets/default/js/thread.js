@@ -47,6 +47,17 @@ $(document).ready(function() {
 
         // Post reply
         $("#postreply-submit").click(function () {
+            if (posteditor.value() == "") {
+                // Post editor empty, abort..
+                //$("#postreply-submit").css("background-color", "#4E4E4E");
+                $("#postreply-submit").addClass("button-gray");
+                setTimeout(function(){
+                    //$("#postreply-submit").css("background-color", "");
+                    $("#postreply-submit").removeClass("button-gray");
+                }, 200);
+                return false;
+            }
+
             // Submit post
             var req = $.post("/ajax/new_post", {
                 _token: window.csrf_token,
