@@ -1,6 +1,6 @@
 <p>
     &copy; Copyright {{ date('Y') }} {{ config('clearboard.sitename') }}. All rights reserved.<br>
-    Powered by <a href="https://github.com/mitchfizz05/clearboard">Clearboard</a>.
+    Powered by <a href="https://github.com/clearboard">Clearboard</a>.
 </p>
 <p>
     <a href="#"><strong>Board Rules</strong></a> |
