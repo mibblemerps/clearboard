@@ -4,6 +4,7 @@ namespace App;
 
 use App\PostProcessor\PostProcessor;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Post extends Model
 {
@@ -52,5 +53,43 @@ class Post extends Model
     public function getPostView()
     {
         return view('clearboard.partials.post', ['post' => $this]);
+    }
+
+    /**
+     * Create a new post
+     * @param string $body Content of post, will be run through filters
+     * @param integer $threadid Thread ID
+     * @param integer| $posterid Poster's ID. Defaults to currently authenticated user
+     * @param bool|false $hidden Is the post hidden from normal view?
+     * @param bool|true $save Should the post be automatically saved into the database?
+     * @return Post The resulting post object
+     */
+    public static function newPost($body, $threadid, $posterid = null, $hidden = false, $save = true)
+    {
+        // Check users rights
+        if ( (!Auth::check()) && $posterid === null ) {
+            abort(403); // 403 Forbidden
+        }
+
+        // Check thread
+        $thread = Thread::findOrFail($threadid);
+        if ($thread->locked) {
+            abort(403); // 403 Forbidden
+        }
+
+        // Run post through filters
+        $body = PostProcessor::preProcess($body);
+
+        // Create new post
+        $post = new Post();
+        $post->thread_id = $threadid;
+        $post->poster_id = Auth::user()->id;
+        $post->body = $body;
+        $post->hidden = $hidden; // defaults to false
+
+        // Put post into database
+        if ($save) { $post->save(); }
+
+        return $post;
     }
 }

@@ -14,10 +14,12 @@ class PostController extends Controller
 {
     public function newPost(Request $request)
     {
+        // Ensure
+
         // Collect input
-        $threadId = $request->input('thread', 0);
+        $threadid = $request->input('thread', 0);
         $content = $request->input('body', '');
-        if (($content == '') || ($threadId == 0)) {
+        if (($content == '') || ($threadid == 0)) {
             abort(400); // 400 Bad Request
         }
 
@@ -25,14 +27,7 @@ class PostController extends Controller
         $content = PostProcessor::preProcess($content);
 
         // Create new post
-        $post = new Post();
-        $post->thread_id = $threadId;
-        $post->poster_id = Auth::user()->id;
-        $post->body = $content;
-        $post->hidden = false;
-
-        // Put post into database
-        $post->save();
+        $post = Post::newPost($content, $threadid);
 
         // Generate response
         $resp = new Response(
