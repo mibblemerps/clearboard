@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\PostProcessor\PostProcessor;
+use App\Facades\PostProcessor;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 

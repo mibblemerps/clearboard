@@ -16,7 +16,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         // Init the post processor
-        PostProcessor::init();
+        $this->app['postprocessor'] = new PostProcessor([
+            \App\PostProcessor\FilterYoutube::class,
+            //\App\PostProcessor\FilterCensor::class,
+            \App\PostProcessor\FilterCleanHTML::class,
+            \App\PostProcessor\FilterMarkdown::class
+        ]);
     }
 
     /**
@@ -26,8 +31,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
-
         // Init the settings class
         $this->app['settings'] = new Settings();
     }

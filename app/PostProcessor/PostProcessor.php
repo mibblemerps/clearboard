@@ -7,34 +7,29 @@ namespace App\PostProcessor;
 class PostProcessor
 {
     /**
-     * Array of filter classes to be applied to posts
-     * @var array
+     * Array of filter class names to be loaded
+     * @var string[]
      */
-    public static $filters = [
-        \App\PostProcessor\FilterYoutube::class,
-        //\App\PostProcessor\FilterCensor::class,
-        \App\PostProcessor\FilterCleanHTML::class,
-        \App\PostProcessor\FilterMarkdown::class
-    ];
+    protected $filters = [];
 
     /**
      * Array of filters which have been initiated.
      * @var \app\PostProcessor\Filter[]
      */
-    public static $filterInstances = [];
+    protected $filterInstances = [];
 
     /**
      * Register a new filter.
      * @param string $filter Fully qualified path to class (eg. \App\Foo\Bar\FilterBaz::class)
      * @param boolean $alreadyListed Is the class name already listed in the internal filters array. Almost always leave this as default.
      */
-    public static function registerFilter($filter, $alreadyListed = false)
+    public function registerFilter($filter, $alreadyListed = false)
     {
         if (!$alreadyListed) {
-            self::$filters[] = $filter;
+            $this->filters[] = $filter;
         }
 
-        self::$filterInstances[] = new $filter();
+        $this->filterInstances[] = new $filter();
     }
 
     /**
@@ -42,9 +37,9 @@ class PostProcessor
      * @param string $post Text to be processed
      * @return string Result
      */
-    public static function preProcess($post)
+    public function preProcess($post)
     {
-        foreach (self::$filterInstances as $filter) {
+        foreach ($this->filterInstances as $filter) {
             $process = $filter->preProcess($post);
             if ($process !== null) { // only modify post if the processor actually returned something
                 $post = $process;
@@ -58,9 +53,9 @@ class PostProcessor
      * @param string $post Text to be processed
      * @return string Result
      */
-    public static function postProcess($post)
+    public function postProcess($post)
     {
-        foreach (self::$filterInstances as $filter) {
+        foreach ($this->filterInstances as $filter) {
             $process = $filter->postProcess($post);
             if ($process !== null) { // only modify post if the processor actually returned something
                 $post = $process;
@@ -70,13 +65,16 @@ class PostProcessor
     }
 
     /**
-     * Perform init process, load filters.
+     * Create new post processor
+     * @param string $filters Filters to be used
      */
-    public static function init()
+    public function __construct($filters)
     {
-        // Register currently listed filters
-        foreach (self::$filters as $filter) {
-            self::registerFilter($filter);
+        $this->filters = array_merge($this->filters, $filters);
+
+        // Load filters
+        foreach ($this->filters as $filter) {
+            $this->registerFilter($filter);
         }
     }
 }
