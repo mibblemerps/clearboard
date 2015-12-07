@@ -43,7 +43,7 @@ class Thread extends Model
     public function getUserFriendlyURL()
     {
         return url('thread/' . $this->id . '-' . urlencode(
-                str_replace(' ', '_', preg_replace('/[^A-Za-z0-9\-]/', '', $this->name))
+                str_replace(' ', '_', preg_replace('/[^A-Za-z0-9 \-]/', '', $this->name))
             ));
     }
 
