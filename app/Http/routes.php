@@ -24,11 +24,6 @@ Route::post('/ajax/new_post', 'PostController@newPost');
 Route::post('/ajax/new_thread', 'ThreadController@newThread');
 Route::get('/newthread/{forumid}', 'ThreadController@createThread')->middleware('auth');
 
-Route::get('test', function() {
-    $test = \App\Facades\PostProcessor::postProcess('yay https://www.youtube.com/watch?v=fNOchIIms5w');
-    echo $test;
-});
-
 // Authentication routes
 Route::group(array('prefix' => '/auth'), function() {
     Route::post('login', 'LoginController@postLogin');
