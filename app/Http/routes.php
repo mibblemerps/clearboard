@@ -37,7 +37,7 @@ Route::group(array('prefix' => '/auth'), function() {
 
 
 // Introduction route. Probably will be a way to disable at some point.
-Route::get('/welcome', function () {
+Route::get('/clearboard/welcome', function () {
     return view('clearboard.welcome');
 });
 
