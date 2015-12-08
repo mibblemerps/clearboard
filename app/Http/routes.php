@@ -24,6 +24,11 @@ Route::post('/ajax/new_post', 'PostController@newPost');
 Route::post('/ajax/new_thread', 'ThreadController@newThread');
 Route::get('/newthread/{forumid}', 'ThreadController@createThread')->middleware('auth');
 
+// Registration
+Route::get('/register', function(){
+    return view('clearboard.pages.register');
+});
+
 // Authentication routes
 Route::group(array('prefix' => '/auth'), function() {
     Route::post('login', 'LoginController@postLogin');
