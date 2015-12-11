@@ -6,10 +6,18 @@
     <link rel="stylesheet" type="text/css" href="{{ theme_asset('css/register.css') }}">
 
     <script type="text/javascript" src="{{ theme_asset('js/register.js') }}"></script>
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 @endsection
 
 @section('content')
     <div id="listing">
+        <div class="register-error" style="display:none">
+            <ul>
+                <li data-error="username-taken">Username already taken!</li>
+            </ul>
+        </div>
+
         <div class="register-wrap">
             <h1>Register</h1>
 
@@ -39,6 +47,9 @@
                     </td>
                 </tr>
             </table>
+            <div class="register-captcha">
+                <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_PUBKEY') }}"></div>
+            </div>
             <div class="register-buttons">
                 <span class="button button-green">Register</span>
             </div>

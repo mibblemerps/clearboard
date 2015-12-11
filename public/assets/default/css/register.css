@@ -8,6 +8,9 @@
     border-radius: 4px;
 }
 
+.register-captcha { text-align: center; }
+.register-captcha .g-recaptcha { display: inline-block; }
+
 .register-wrap h1 {
     display: block;
     text-align: center;
