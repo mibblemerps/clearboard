@@ -33,7 +33,7 @@
                         <div id="userbox" class="{{ Auth::check() ? 'userbox-loggedin' : 'userbox-notloggedin' }}">
                             @if (Auth::check())
                                 <img id="userbox-img" alt="Mitchfizz05"
-                                    src="{{ Auth::user()->avatarUrl() }}">
+                                    src="{{ Auth::user()->getAvatarUrl() }}">
                                 <span id="userbox-name">{{ Auth::user()->name }}</span>
                                 <div id="userbox-dropdown">
                                     <div class="userbox-dropdown-item">My Profile</div>

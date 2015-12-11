@@ -37,7 +37,7 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $hidden = ['password', 'remember_token'];
 
-    public function avatarUrl()
+    public function getAvatarUrl()
     {
         if ($this->icon == '$gravatar') {
             // Generate gravatar link
