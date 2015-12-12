@@ -28,11 +28,12 @@ Route::get('/newthread/{forumid}', 'ThreadController@createThread')->middleware(
 Route::get('/register', function(){
     return view('clearboard.pages.register');
 });
+Route::post('/ajax/register', 'LoginController@postRegister');
 
 // Authentication routes
 Route::group(array('prefix' => '/auth'), function() {
-    Route::post('login', 'LoginController@postLogin');
-    Route::get('logout', 'Auth\AuthController@getLogout');
+    Route::post('/login', 'LoginController@postLogin');
+    Route::get('/logout', 'Auth\AuthController@getLogout');
 });
 
 
