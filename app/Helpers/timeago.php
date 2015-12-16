@@ -47,12 +47,9 @@ function format_time($time, $now = null)
     } elseif (days_ago($diff) == 1) {
         // A day ago
         return 'A day ago';
-    } elseif (days_ago($diff) < 7) {
+    } elseif (days_ago($diff) < 31) {
         // A few days ago
         return days_ago($diff) . ' days ago';
-    } elseif (days_ago($diff) == 7) {
-        // A week ago
-        return 'A week ago';
     } else {
         // Over a week old
         return date(config('clearboard.date_format'), $time);
