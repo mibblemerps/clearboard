@@ -46,7 +46,7 @@
                 </tr>
             </table>
             <div class="register-captcha">
-                <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_PUBKEY') }}"></div>
+                {!! Recaptcha::render() !!}
             </div>
             <div class="register-buttons">
                 <span class="button button-green" id="register-submit">Register</span>

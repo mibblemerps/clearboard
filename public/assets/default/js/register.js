@@ -2,8 +2,10 @@
 $(document).ready(function(){
     // Register click handler for register button
     $("#register-submit").click(function(){
-        console.log("test");
-        register( $("#register-email").val(), $("#register-username").val(), $("#register-password").val() );
+        register($("#register-email").val(),
+            $("#register-username").val(),
+            $("#register-password").val(),
+            $("#g-recaptcha-response").val());
     });
 });
 
@@ -32,14 +34,15 @@ function displayRegisterErrors(errors) {
     $(".register-error").slideDown(200);
 }
 
-function register(email, username, password) {
+function register(email, username, password, recaptcha_token) {
     // Send registration request to server
     console.log("Sending registration request to server...");
     var req = $.post("/ajax/register", {
         _token: window.csrf_token,
         email: email,
         username: username,
-        password: password
+        password: password,
+        "g-recaptcha-response": recaptcha_token
     });
     req.done(function(data){
         if (data.success) {

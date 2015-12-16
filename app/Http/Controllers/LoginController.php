@@ -48,7 +48,8 @@ class LoginController extends Controller
         $validator = \Validator::make($request->all(), array(
             'email' => 'required|email|max:128|unique:users,email',
             'username' => 'required|min:1|max:20|unique:users,name',
-            'password' => 'required|min:6|max:255'
+            'password' => 'required|min:6|max:255',
+            'g-recaptcha-response' => 'recaptcha'
         ));
 
         if ($validator->fails()) {
