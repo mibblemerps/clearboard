@@ -52,7 +52,10 @@ class LoginController extends Controller
         ));
 
         if ($validator->fails()) {
-            file_put_contents('/tmp/penis.txt', print_r($validator->errors(), true));
+            // Validator detected some problems.
+            foreach($validator->errors()->getMessages() as $error) {
+                $errors[] = $error;
+            }
         }
 
         if (count($errors) > 0) {
