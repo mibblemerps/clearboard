@@ -19,13 +19,13 @@ function displayRegisterErrors(errors) {
         return;
     }
 
-    // Display each neccesary message for each error.
-    $(".register-error li").each(function() {
-        if ( $.inArray($(this).attr("data-error"), errors) != -1 ) {
-            $(this).show();
-        } else {
-            $(this).hide();
-        }
+    // Clear old errors
+    $(".register-error ul").html("");
+
+    // Render errors
+    $.each(errors, function(i, error) {
+        console.log("render: " + error);
+        $(".register-error ul").append("<li>" + error + "</li>");
     });
 
     // Now show the actual error message

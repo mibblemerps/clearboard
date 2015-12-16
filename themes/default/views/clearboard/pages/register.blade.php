@@ -13,12 +13,7 @@
 @section('content')
     <div id="listing">
         <div class="register-error" style="display:none">
-            <ul>
-                <li data-error="missing-fields">All fields are required!</li>
-                <li data-error="username-taken">Username already taken!</li>
-                <li data-error="email-taken">Email address already in use!</li>
-                <li data-error="password-mismatch">Your passwords do not match!</li>
-            </ul>
+            <ul></ul>
         </div>
 
         <div class="register-wrap">
