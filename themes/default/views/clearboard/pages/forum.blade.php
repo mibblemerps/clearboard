@@ -16,7 +16,7 @@
             @endif
         </div>
 
-        @foreach($forum->threads as $thread)
+        @foreach($forum->threads->sortByDesc("updated_at") as $thread)
             @include('clearboard.partials.threadlisting', ['thread' => $thread])
         @endforeach
     </div>
