@@ -17,8 +17,7 @@
 }
 
 .post .post-left {
-    display: table-cell;
-
+    display: inline-block;
     width: 160px;
     box-sizing: border-box;
     padding: 14px 4px;
@@ -29,8 +28,7 @@
 }
 
 .post .post-right {
-    display: table-cell;
-
+    display: inline-block;
     width: calc(100% - 160px);
     text-wrap: normal;
 

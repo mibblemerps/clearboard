@@ -321,6 +321,10 @@ body {
     font-size: 14px;
 }
 
+.listing-entry-right {
+    float: right;
+    margin: 4px 8px;
+}
 
 .listing-category {
     display: inline-block;

@@ -25,6 +25,15 @@ class Thread extends Model
     }
 
     /**
+     * Get the latest post in the thread.
+     * @return Post
+     */
+    public function getLatestPost()
+    {
+        return Post::where('thread_id', $this->id)->orderBy('created_at', 'desc')->first();
+    }
+
+    /**
      * Fetch the initial poster of the thread
      * @return User
      */
