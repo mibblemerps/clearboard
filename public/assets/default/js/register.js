@@ -26,7 +26,6 @@ function displayRegisterErrors(errors) {
 
     // Render errors
     $.each(errors, function(i, error) {
-        console.log("render: " + error);
         $(".register-error ul").append("<li>" + error + "</li>");
     });
 
@@ -36,7 +35,6 @@ function displayRegisterErrors(errors) {
 
 function register(email, username, password, recaptcha_token) {
     // Send registration request to server
-    console.log("Sending registration request to server...");
     var req = $.post("/ajax/register", {
         _token: window.csrf_token,
         email: email,
@@ -45,15 +43,11 @@ function register(email, username, password, recaptcha_token) {
         "g-recaptcha-response": recaptcha_token
     });
     req.done(function(data){
-        console.log(data);
-
         if (data.status) {
             // Registration successful. :3
             window.location = window.base_path;
         } else {
             // Registration failed
-            console.log("Registration error:")
-            console.log(data.errors);
             displayRegisterErrors(data.errors);
         }
     });
