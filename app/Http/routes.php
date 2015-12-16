@@ -24,20 +24,21 @@ Route::post('/ajax/new_post', 'PostController@newPost');
 Route::post('/ajax/new_thread', 'ThreadController@newThread');
 Route::get('/newthread/{forumid}', 'ThreadController@createThread')->middleware('auth');
 
-Route::get('test', function() {
-    $test = \App\Facades\PostProcessor::postProcess('yay https://www.youtube.com/watch?v=fNOchIIms5w');
-    echo $test;
+// Registration
+Route::get('/register', function(){
+    return view('clearboard.pages.register');
 });
+Route::post('/ajax/register', 'LoginController@postRegister');
 
 // Authentication routes
 Route::group(array('prefix' => '/auth'), function() {
-    Route::post('login', 'LoginController@postLogin');
-    Route::get('logout', 'Auth\AuthController@getLogout');
+    Route::post('/login', 'LoginController@postLogin');
+    Route::get('/logout', 'Auth\AuthController@getLogout');
 });
 
 
 // Introduction route. Probably will be a way to disable at some point.
-Route::get('/welcome', function () {
+Route::get('/clearboard/welcome', function () {
     return view('clearboard.welcome');
 });
 

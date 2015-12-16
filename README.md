@@ -4,7 +4,7 @@ An opensource community suite built upon Laravel.
 ## What is it?
 * Modern, customisable and extensible.
 * Built upon Laravel 5.
-* Secure (mostly inherited from Laravel)
+* Secure (XSS proof, CSRF proof, SQL injection proof, etc..)
 * Free, as in freedom. Clearboard is licensed under the MIT license.
 
 ## Contributing

@@ -1,2 +1,2 @@
-<img src="{{ $post->poster()->first()->avatarUrl() }}" alt="" class="post-avatar">
+<img src="{{ $post->poster()->first()->getAvatarUrl() }}" alt="" class="post-avatar">
 <div class="post-username">{{ $post->poster()->first()->name }}</div>

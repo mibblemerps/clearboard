@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
@@ -24,30 +25,38 @@ class User extends Model implements AuthenticatableContract,
     protected $table = 'users';
 
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = ['name', 'email', 'password'];
-
-    /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
 
-    public function avatarUrl()
+    public function getAvatarUrl()
     {
-        if ($this->icon == '$gravatar') {
-            // Generate gravatar link
-            $email = trim($this->email);
-            $gravatarEndpoint = '//www.gravatar.com/avatar/';
-            $gravatarUrl = $gravatarEndpoint . md5($email) . '?size=150';
-            return $gravatarUrl;
-        } elseif ($this->icon == '') {
-            // Using default avatar
-            return theme_asset('img/profile.png');
-        }
+        // Generate Gravatar link
+        $email = trim($this->email);
+        $gravatarEndpoint = '//www.gravatar.com/avatar/';
+        $gravatarUrl = $gravatarEndpoint . md5($email) . '?size=150&d=monsterid';
+        return $gravatarUrl;
+    }
+
+    /**
+     * Register a new user and save it to the database.
+     * @param string $email
+     * @param string $username
+     * @param string $password
+     */
+    public static function register($email, $username, $password)
+    {
+        // Create user object
+        $user = new User();
+        $user->email = $email;
+        $user->name = $username;
+        $user->password = Hash::make($password);
+
+        // Save to database
+        $user->save();
+
+        return $user;
     }
 }
