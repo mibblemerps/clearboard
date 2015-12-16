@@ -33,16 +33,11 @@ class User extends Model implements AuthenticatableContract,
 
     public function getAvatarUrl()
     {
-        if ($this->icon == '$gravatar') {
-            // Generate gravatar link
-            $email = trim($this->email);
-            $gravatarEndpoint = '//www.gravatar.com/avatar/';
-            $gravatarUrl = $gravatarEndpoint . md5($email) . '?size=150';
-            return $gravatarUrl;
-        } elseif ($this->icon == '') {
-            // Using default avatar
-            return theme_asset('img/profile.png');
-        }
+        // Generate Gravatar link
+        $email = trim($this->email);
+        $gravatarEndpoint = '//www.gravatar.com/avatar/';
+        $gravatarUrl = $gravatarEndpoint . md5($email) . '?size=150&d=monsterid';
+        return $gravatarUrl;
     }
 
     /**
