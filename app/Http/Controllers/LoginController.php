@@ -47,7 +47,7 @@ class LoginController extends Controller
         // Validate all fields have been received.
         $validator = \Validator::make($request->all(), array(
             'email' => 'required|email|max:128|unique:users,email',
-            'username' => 'required|min:1|max:32|unique:users,name',
+            'username' => 'required|min:1|max:20|unique:users,name',
             'password' => 'required|min:6|max:255'
         ));
 
