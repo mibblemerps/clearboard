@@ -76,7 +76,10 @@ class LoginController extends Controller
         $password = $request->input('password');
 
         // Register user
-        User::register($email, $username, $password);
+        $user = User::register($email, $username, $password);
+
+        // Login
+        Auth::login($user);
 
         // Generate response
         $response = new Response(json_encode([

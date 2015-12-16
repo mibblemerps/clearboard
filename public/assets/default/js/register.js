@@ -45,8 +45,11 @@ function register(email, username, password, recaptcha_token) {
         "g-recaptcha-response": recaptcha_token
     });
     req.done(function(data){
-        if (data.success) {
-            console.log("Registration successful");
+        console.log(data);
+
+        if (data.status) {
+            // Registration successful. :3
+            window.location = window.base_path;
         } else {
             // Registration failed
             console.log("Registration error:")
