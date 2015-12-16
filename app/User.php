@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
@@ -49,5 +50,25 @@ class User extends Model implements AuthenticatableContract,
             // Using default avatar
             return theme_asset('img/profile.png');
         }
+    }
+
+    /**
+     * Register a new user and save it to the database.
+     * @param string $email
+     * @param string $username
+     * @param string $password
+     */
+    public static function register($email, $username, $password)
+    {
+        // Create user object
+        $user = new User();
+        $user->email = $email;
+        $user->name = $username;
+        $user->password = Hash::make($password);
+
+        // Save to database
+        $user->save();
+
+        return $user;
     }
 }

@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Auth;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Response;
 
 class LoginController extends Controller
 {
@@ -35,5 +38,48 @@ class LoginController extends Controller
                 'success' => false
             ));
         }
+    }
+
+    public function postRegister(Request $request)
+    {
+        $errors = [];
+
+        // Validate all fields have been received.
+        $validator = \Validator::make($request->all(), array(
+            'email' => 'required|email|max:128|unique:users,email',
+            'username' => 'required|min:1|max:32|unique:users,name',
+            'password' => 'required|min:6|max:255'
+        ));
+
+        if ($validator->fails()) {
+            file_put_contents('/tmp/penis.txt', print_r($validator->errors(), true));
+        }
+
+        if (count($errors) > 0) {
+            // Errors detected, generate response
+            $response = new Response(json_encode([
+                'status' => false,
+                'errors' => $errors
+            ]), 200);
+            $response->header('Content-Type', 'application/json');
+
+            return $response;
+        }
+
+        // Get input
+        $email = $request->input('email');
+        $username = $request->input('username');
+        $password = $request->input('password');
+
+        // Register user
+        User::register($email, $username, $password);
+
+        // Generate response
+        $response = new Response(json_encode([
+            'status' => true
+        ]), 200);
+        $response->header('Content-Type', 'application/json');
+
+        return $response;
     }
 }

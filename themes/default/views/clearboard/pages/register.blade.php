@@ -14,7 +14,10 @@
     <div id="listing">
         <div class="register-error" style="display:none">
             <ul>
+                <li data-error="missing-fields">All fields are required!</li>
                 <li data-error="username-taken">Username already taken!</li>
+                <li data-error="email-taken">Email address already in use!</li>
+                <li data-error="password-mismatch">Your passwords do not match!</li>
             </ul>
         </div>
 
@@ -25,7 +28,7 @@
                 <tr>
                     <td><div class="register-label">Email</div></td>
                     <td>
-                        <input type="text" id="register-email" class="register-field">
+                        <input type="text" maxlength="32" id="register-email" class="register-field">
                     </td>
                 </tr>
                 <tr>
@@ -51,7 +54,7 @@
                 <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_PUBKEY') }}"></div>
             </div>
             <div class="register-buttons">
-                <span class="button button-green">Register</span>
+                <span class="button button-green" id="register-submit">Register</span>
             </div>
         </div>
     </div>
