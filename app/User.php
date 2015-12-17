@@ -31,12 +31,17 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $hidden = ['password', 'remember_token'];
 
-    public function getAvatarUrl()
+    /**
+     * Get link to this users avatar
+     * @param int $size Size in pixels. All avatars are square.
+     * @return string Url to avatar.
+     */
+    public function getAvatarUrl($size = 150)
     {
         // Generate Gravatar link
         $email = trim($this->email);
         $gravatarEndpoint = '//www.gravatar.com/avatar/';
-        $gravatarUrl = $gravatarEndpoint . md5($email) . '?size=150&d=monsterid';
+        $gravatarUrl = $gravatarEndpoint . md5($email) . '?size=' . urlencode($size) . '&d=monsterid';
         return $gravatarUrl;
     }
 
