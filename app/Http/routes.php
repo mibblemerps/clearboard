@@ -14,6 +14,7 @@ Route::get('/', function() {
 
 Route::get('/forum/{fid}-{_}', 'ForumController@getForum');
 Route::get('/thread/{tid}-{_}', 'ThreadController@getThread');
+Route::get('/profile/{uid}-{_}', 'ProfileController@getProfile');
 
 // Route for processing markdown to HTML.
 Route::post('/ajax/markdown', 'MarkdownController@postParse');

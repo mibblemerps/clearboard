@@ -1,0 +1,31 @@
+
+#profile-wrapper {
+    padding: 10px;
+}
+
+.profile-header {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+
+    background-color: #f6f6f6;
+}
+
+.profile-image {
+    vertical-align: top;
+}
+
+.profile-username {
+    display: inline-block;
+    vertical-align: top;
+    margin: 15px 10px 5px 15px;
+
+    font-family: "lato", sans-serif;
+    font-weight: bold;
+    font-size: 34px;
+}
+
+.profile-buttons {
+    float: right;
+    margin: 5px;
+}
