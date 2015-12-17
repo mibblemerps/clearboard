@@ -33,7 +33,7 @@ class User extends Model implements AuthenticatableContract,
 
     public function group()
     {
-        return $this->belongsTo('App\Group');
+        return $this->belongsTo('App\Group', 'group', 'id');
     }
 
     /**
@@ -48,6 +48,11 @@ class User extends Model implements AuthenticatableContract,
         $gravatarEndpoint = '//www.gravatar.com/avatar/';
         $gravatarUrl = $gravatarEndpoint . md5($email) . '?size=' . urlencode($size) . '&d=monsterid';
         return $gravatarUrl;
+    }
+
+    public function hasPermissionNode($node)
+    {
+        return $this->group()->get()->first()->hasPermissionNode($node);
     }
 
     /**
