@@ -31,6 +31,11 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $hidden = ['password', 'remember_token'];
 
+    public function group()
+    {
+        return $this->belongsTo('App\Group');
+    }
+
     /**
      * Get link to this users avatar
      * @param int $size Size in pixels. All avatars are square.
