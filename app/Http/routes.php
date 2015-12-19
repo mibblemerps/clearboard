@@ -21,8 +21,8 @@ Route::post('/ajax/markdown', 'MarkdownController@postParse');
 Route::post('/ajax/markdown_inline', 'MarkdownController@postInlineParse'); // for parsing inline markdown
 
 // Posting routes
-Route::post('/ajax/new_post', 'PostController@newPost');
-Route::post('/ajax/new_thread', 'ThreadController@newThread');
+Route::post('/ajax/new_post', 'PostController@newPost')->middleware('auth');
+Route::post('/ajax/new_thread', 'ThreadController@newThread')->middleware('auth');
 Route::get('/newthread/{forumid}', 'ThreadController@createThread')->middleware('auth');
 
 // Registration
