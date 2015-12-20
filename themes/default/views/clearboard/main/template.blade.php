@@ -36,7 +36,7 @@
                                     src="{{ Auth::user()->getAvatarUrl() }}">
                                 <span id="userbox-name">{{ Auth::user()->name }}</span>
                                 <div id="userbox-dropdown">
-                                    <div class="userbox-dropdown-item">My Profile</div>
+                                    <a href="{{ Auth::user()->getProfileUrl() }}"><div class="userbox-dropdown-item">My Profile</div></a>
                                     <div class="userbox-dropdown-item">My Settings</div>
                                     <div class="userbox-dropdown-item">Support</div>
                                     <a href="{{ url('/auth/logout') }}"><div class="userbox-dropdown-item userbox-dropdown-item-warning">Logout</div></a>
