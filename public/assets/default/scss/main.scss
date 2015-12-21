@@ -41,6 +41,17 @@ h1,h2,h3,h4,h5,h6 {
   font-family: "Lato", "helvectia", "arial", sans-serif;
 }
 
+input[type=text], input[type=password] {
+  padding: 4px 6px;
+
+  font-family: "lato", sans-serif;
+  font-size: 20px;
+  font-weight: lighter;
+  border: solid 1px #DDDDDD;
+  outline: 0;
+}
+input[type=text]:focus, input[type=password]:focus { border-color: #0044DD; }
+
 /* Body formatting */
 body {
   background-color: #202126;
