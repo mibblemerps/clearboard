@@ -13,8 +13,7 @@
     font-size: 28px;
     margin-bottom: 8px; }
   .register-wrap .register-table {
-    width: 100%;
-    border-collapse: collapse; }
+    width: 100%; }
     .register-wrap .register-table td {
       padding: 6px 0; }
     .register-wrap .register-table .register-label {
