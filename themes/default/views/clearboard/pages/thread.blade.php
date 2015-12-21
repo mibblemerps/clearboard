@@ -15,9 +15,9 @@
 @endsection
 
 @section('content')
-    <div id="listing">
+    <div class="listing">
         <div class="listing-category">{{ $thread->name }}</div>
-        <div id="thread_wrapper">
+        <div class="thread-wrapper">
             @foreach($thread->posts as $post)
                 @include('clearboard.partials.post')
             @endforeach

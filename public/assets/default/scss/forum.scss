@@ -1,10 +1,12 @@
 /*
  * Forum CSS file.
  */
+
 .newthread-button {
   float: right;
   font-size: 14px;
-  padding: 4px 16px; }
+  padding: 4px 16px;
+}
 
 .thread-lastpost {
   display: inline-block;
@@ -12,33 +14,40 @@
   width: 230px;
   height: 40px;
   margin-top: 4px;
-  background-color: #f2f2f2; }
-  .thread-lastpost img {
-    height: 40px;
-    vertical-align: middle; }
-  .thread-lastpost .thread-lastpost-info {
+
+  background-color: #f2f2f2;
+
+  img { height: 40px; vertical-align: middle; }
+
+  .thread-lastpost-info {
     display: inline-block;
     vertical-align: middle;
-    line-height: 80%; }
-  .thread-lastpost .thraed-lastpost-name {
+    line-height: 80%;
+  }
+  .thraed-lastpost-name {
     font-weight: bold;
     color: #272727;
-    font-size: 16px; }
-  .thread-lastpost .thread-lastpost-when {
+    font-size: 16px;
+  }
+  .thread-lastpost-when {
     font-weight: lighter;
     color: #616161;
-    font-size: 9px; }
+    font-size: 9px;
+  }
+}
 
 .thread-stat {
   display: inline-block;
   vertical-align: middle;
   text-align: center;
   margin-right: 20px;
+
   color: #3B3B3B;
+
   font-family: "open sans", sans-serif;
   font-size: 12px;
-  font-weight: lighter; }
-  .thread-stat span {
-    font-size: 20px; }
+  font-weight: lighter;
 
-/*# sourceMappingURL=forum.css.map */
+  span { font-size: 20px; }
+}
+

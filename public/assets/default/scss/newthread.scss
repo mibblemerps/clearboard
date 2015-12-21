@@ -1,32 +1,42 @@
 /*
  * New Thread CSS File
  */
+
 #newthread {
-  padding: 15px; }
-  #newthread #newthread-title {
+  padding: 15px;
+
+  #newthread-title {
     width: calc(100% - 16px);
     padding: 6px 8px;
     margin-bottom: 8px;
+
     font-family: "lato", sans-serif;
     font-size: 20px;
     font-weight: lighter;
+
     border: solid 1px #DDDDDD;
-    outline: 0; }
-  #newthread #newthread-title:focus {
-    border-color: #0044DD; }
-  #newthread .newthread-left {
+    outline: 0;
+  }
+  #newthread-title:focus { border-color: #0044DD; }
+
+  .newthread-left {
     display: inline-block;
     vertical-align: top;
     box-sizing: border-box;
     /*width: calc(100% - 305px);*/
-    width: 100%; }
-  #newthread .newthread-right {
+    width: 100%;
+  }
+
+  .newthread-right {
     display: inline-block;
     vertical-align: top;
     box-sizing: border-box;
-    width: 300px; }
-  #newthread #newthread-buttons {
-    text-align: right;
-    margin-top: 4px; }
+    width: 300px;
+  }
 
-/*# sourceMappingURL=newthread.css.map */
+  #newthread-buttons {
+    text-align: right;
+    margin-top: 4px;
+  }
+}
+

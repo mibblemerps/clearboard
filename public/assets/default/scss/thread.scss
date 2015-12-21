@@ -1,63 +1,88 @@
 /*
  * Thread CSS File
  */
+
 .thread-wrapper {
   padding: 8px;
-  background-color: #efefef; }
+  background-color: #efefef;
+}
 
 /* Post */
 .post {
   display: table;
   width: calc(100% - 20px);
   margin: 10px;
-  background-color: white; }
-  .post .post-left {
+
+  background-color: white;
+
+  .post-left {
     display: table-cell;
     width: 160px;
     box-sizing: border-box;
     padding: 14px 4px;
     text-align: center;
-    background-color: #e1e1e1; }
-    .post .post-left .post-avatar {
-      width: 100px; }
-    .post .post-left .post-username {
+
+    background-color: #e1e1e1;
+
+    .post-avatar {
+      width: 100px;
+    }
+
+    .post-username {
       font-family: "lato", "open sans", sans-serif;
       font-size: 17px;
       font-weight: bold;
+
       margin-bottom: 6px;
+
       width: 100%;
-      word-break: break-all; }
-  .post .post-right {
+      word-break: break-all;
+    }
+  }
+
+  .post-right {
     display: table-cell;
     width: calc(100% - 160px);
     text-wrap: normal;
-    vertical-align: top; }
-    .post .post-right .post-timestamp {
+    vertical-align: top;
+
+    .post-timestamp {
       float: right;
+
       margin: 5px 5px 10px 10px;
+
       color: #a7a7a7;
       font-style: italic;
-      font-size: 13px; }
-    .post .post-right .post-content {
+      font-size: 13px;
+    }
+
+    .post-content {
       box-sizing: border-box;
       width: 100%;
       padding: 10px;
+
       overflow-wrap: break-word;
       word-wrap: break-word;
+
       /*
         Since breaking words and breaking stupidly long words doesn't work at the same time without a fixed width being
         set, we default to breaking anywhere (including the middle of words), until JavaScript can calculate the width
         and apply it, then JavaScript will remove this style.
       */
       word-break: break-all;
+
       -webkit-hyphens: auto;
       -ms-hyphens: auto;
       -moz-hyphens: auto;
       hyphens: auto;
+
       font-family: "arial", sans-serif;
-      /* Prevent images expanding outside of post */ }
-      .post .post-right .post-content img {
-        max-width: 100%; }
+
+      /* Prevent images expanding outside of post */
+      img { max-width: 100%; }
+    }
+  }
+}
 
 /* Post Reply */
 #postreply {
@@ -65,16 +90,18 @@
   padding: 10px;
   margin: 10px;
   margin-top: 20px;
-  background-color: white; }
-  #postreply #postreply-header {
-    vertical-align: middle;
-    margin-bottom: 5px; }
-  #postreply #postreply-icon {
-    height: 29px;
-    vertical-align: middle; }
-  #postreply .CodeMirror, #postreply .CodeMirror-scroll {
-    min-height: 175px !important; }
-  #postreply #postreply-submit {
-    float: right; }
+  background-color: white;
 
-/*# sourceMappingURL=thread.css.map */
+  #postreply-header { vertical-align: middle; margin-bottom: 5px; }
+
+  #postreply-icon {
+    height: 29px;
+    vertical-align: middle;
+  }
+
+  .CodeMirror, .CodeMirror-scroll {
+    min-height: 175px !important;
+  }
+
+  #postreply-submit { float: right; }
+}

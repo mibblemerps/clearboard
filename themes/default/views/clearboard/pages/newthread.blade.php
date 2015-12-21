@@ -17,12 +17,12 @@
 @section('content')
     <h1>Posting Thread</h1>
     <div id="newthread">
-        <div id="newthread-left">
+        <div class="newthread-left">
             <input type="text" id="newthread-title"><br>
             <textarea id="newthread-editor"></textarea>
         </div>
 
-        <div id="newthread-buttons">
+        <div class="newthread-buttons">
             <a href="{{ $forum->getUserFriendlyURL() }}"><span id="newthread-discard" class="button button-red">Discard</span></a>
             <span id="newthread-submit" class="button">Create Thread</span>
         </div>
