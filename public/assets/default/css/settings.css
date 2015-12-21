@@ -50,5 +50,11 @@
       margin-right: 4px; }
     #settings-wrap .settings-right .settings-control-area {
       padding: 16px; }
+      #settings-wrap .settings-right .settings-control-area h2 {
+        margin: 8px 5px 5px 10px;
+        font-family: "lato", sans-serif;
+        font-size: 21px;
+        font-weight: lighter;
+        border-bottom: solid 1px #cccccc; }
 
 /*# sourceMappingURL=settings.css.map */
