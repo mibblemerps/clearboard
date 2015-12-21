@@ -48,7 +48,7 @@
                                 <a href="{{ url('/register') }}"><span class="button button-green" id="registerbtn">Register</span></a>
                                 <div id="userbox-dropdown">
                                     <form id="loginform" action="{{ url('/auth/login') }}" method="POST">
-                                        {!! csrf_field(); !!}
+                                        {!! csrf_field() !!}
                                         <input type="text" class="input-field" id="login-username" name="username" placeholder="Username"><br>
                                         <input type="password" class="input-field" id="login-password" name="password" placeholder="Password"><br>
                                         <input type="submit" id="login-button" class="button" value="Login">
