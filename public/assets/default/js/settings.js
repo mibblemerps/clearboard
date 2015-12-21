@@ -63,7 +63,7 @@ function sudoLogin(password) {
 
             // Switch to normal security tab
             $("#tabbtn-security").data("tab", "security");
-            selectTab("security");
+            selectTab("general");
         } else {
             cbPrompt("Access Denied", "Incorrect password. Try again?")
         }
