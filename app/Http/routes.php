@@ -25,6 +25,10 @@ Route::post('/ajax/new_post', 'PostController@newPost')->middleware('auth');
 Route::post('/ajax/new_thread', 'ThreadController@newThread')->middleware('auth');
 Route::get('/newthread/{forumid}', 'ThreadController@createThread')->middleware('auth');
 
+// Account Settings
+Route::get('/settings/{userid}', 'SettingsController@view');
+Route::get('/settings', 'SettingsController@view')->middleware('auth');
+
 // Registration
 Route::get('/register', function(){
     return view('clearboard.pages.register');
