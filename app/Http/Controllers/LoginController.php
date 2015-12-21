@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Auth;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -88,5 +89,18 @@ class LoginController extends Controller
         $response->header('Content-Type', 'application/json');
 
         return $response;
+    }
+
+    public function verifyPassword(Request $request)
+    {
+        if ($request->has('password')) {
+            // Verify password against hash
+            return Hash::check(
+                $request->input('password'),
+                Auth::user()->password
+            ) ? 'true' : 'false';
+        } else {
+            abort(400); // 400 Bad Request
+        }
     }
 }

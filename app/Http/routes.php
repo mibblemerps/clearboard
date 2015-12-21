@@ -39,6 +39,7 @@ Route::post('/ajax/register', 'LoginController@postRegister');
 Route::group(array('prefix' => '/auth'), function() {
     Route::post('/login', 'LoginController@postLogin');
     Route::get('/logout', 'Auth\AuthController@getLogout');
+    Route::post('/check', 'LoginController@verifyPassword');
 });
 
 
