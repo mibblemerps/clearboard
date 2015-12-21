@@ -19,6 +19,9 @@ nbproject/
 composer.phar
 vendor/
 
+### Sass ###
+.sass-cache/
+
 ### PHPMyAdmin ###
 public/phpmyadmin/
 
