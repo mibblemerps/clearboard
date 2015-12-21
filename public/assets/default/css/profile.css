@@ -1,0 +1,24 @@
+/*
+ * Profile CSS File
+ */
+#profile-wrapper {
+  padding: 10px; }
+  #profile-wrapper .profile-header {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #f6f6f6; }
+    #profile-wrapper .profile-header .profile-username {
+      display: inline-block;
+      vertical-align: top;
+      margin: 15px 10px 5px 15px;
+      font-family: "lato", sans-serif;
+      font-weight: bold;
+      font-size: 34px; }
+    #profile-wrapper .profile-header .profile-image {
+      vertical-align: top; }
+    #profile-wrapper .profile-header .profile-buttons {
+      float: right;
+      margin: 5px; }
+
+/*# sourceMappingURL=profile.css.map */

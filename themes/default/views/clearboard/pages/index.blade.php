@@ -15,7 +15,7 @@
 
     <h1>Forums</h1>
 
-    <div id="listing">
+    <div class="listing">
         @foreach( $forums->sortBy('position') as $forum )
             @if( ($forum->type == 0) || ($forum->type == 2) )
                 @include('clearboard.partials.forumlisting', ['forum' => $forum])

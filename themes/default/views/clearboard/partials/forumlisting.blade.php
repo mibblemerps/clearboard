@@ -1,5 +1,5 @@
 <div class="listing-entry">
-    <img src="{{ theme_asset('img/unread.png') }}" alt="" class="listing-forum-hasread">
+    <img src="{{ theme_asset('img/unread.png') }}" alt="" class="listing-forum-icon">
     <div>
         <div class="listing-entry-name">
             <a href="{{ $forum->getUserFriendlyURL() }}">{{ $forum->name }}</a>

@@ -61,7 +61,7 @@ class Post extends Model
      * @param integer $threadid Thread ID
      * @param integer| $posterid Poster's ID. Defaults to currently authenticated user
      * @param bool|false $hidden Is the post hidden from normal view?
-     * @param bool|true $save Should the post be automatically saved into the database?
+     * @param bool|true $save Should the post be automatically saved into the database? Also determines whether the parent thread should be bumped.
      * @return Post The resulting post object
      */
     public static function newPost($body, $threadid, $posterid = null, $hidden = false, $save = true)
@@ -87,8 +87,13 @@ class Post extends Model
         $post->body = $body;
         $post->hidden = $hidden; // defaults to false
 
-        // Put post into database
-        if ($save) { $post->save(); }
+        if ($save) {
+            // Put post into database
+            $post->save();
+
+            // Bump thread
+            $thread->touch();
+        }
 
         return $post;
     }

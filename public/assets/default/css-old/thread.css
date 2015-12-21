@@ -1,0 +1,125 @@
+
+#thread_wrapper {
+    padding: 8px;
+
+    background-color: #efefef;
+}
+
+/* POST */
+
+.post {
+    display: table;
+
+    width: calc(100% - 20px);
+    margin: 10px;
+
+    background-color: white;
+}
+
+.post .post-left {
+    display: table-cell;
+
+    width: 160px;
+    box-sizing: border-box;
+    padding: 14px 4px;
+
+    text-align: center;
+
+    background-color: #e1e1e1;
+}
+
+.post .post-right {
+    display: table-cell;
+
+    width: calc(100% - 160px);
+    text-wrap: normal;
+
+    vertical-align: top;
+}
+
+.post .post-content {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    word-break: break-all; /* JavaScript will remove this element later once it applies proper word wrapping */
+
+    /* Adds a hyphen where the word breaks */
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
+
+    font-family: "arial", sans-serif;
+}
+
+.post .post-timestamp {
+    float: right;
+
+    margin: 5px 5px 10px 10px;
+
+    color: #a7a7a7;
+    font-style: italic;
+    font-size: 13px;
+}
+
+.post .post-avatar {
+    width: 100px;
+}
+
+.post .post-username {
+    font-family: "lato", "open sans", sans-serif;
+    font-size: 17px;
+    font-weight: bold;
+
+    margin-bottom: 6px;
+
+    width: 100%;
+    word-break: break-all;
+}
+
+.post .post-badge {
+    display: inline-block;
+    padding: 4px 20px;
+
+    border-radius: 3px;
+    border: solid 1px #cc3523;
+    background-color: #d48c8c;
+
+    font-family: "lato", sans-serif;
+    font-weight: bold;
+    color: #bb1429;
+}
+
+.post .post-content img {
+    max-width: 100%;
+}
+
+/* REPLY */
+
+#postreply {
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 10px;
+    margin-top: 20px;
+
+    background-color: white;
+}
+
+#postreply-wrapper .CodeMirror, .CodeMirror-scroll {
+    min-height: 175px !important;
+}
+
+#postreply-icon {
+    height: 29px;
+    vertical-align: middle;
+}
+
+#postreply-header { vertical-align: middle; margin-bottom: 5px; }
+
+#postreply-submit {
+    float: right;
+}

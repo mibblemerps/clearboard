@@ -31,13 +31,39 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $hidden = ['password', 'remember_token'];
 
-    public function getAvatarUrl()
+    public function group()
+    {
+        return $this->belongsTo('App\Group', 'group', 'id');
+    }
+
+    /**
+     * Get link to this users avatar
+     * @param int $size Size in pixels. All avatars are square.
+     * @return string Url to avatar.
+     */
+    public function getAvatarUrl($size = 150)
     {
         // Generate Gravatar link
         $email = trim($this->email);
         $gravatarEndpoint = '//www.gravatar.com/avatar/';
-        $gravatarUrl = $gravatarEndpoint . md5($email) . '?size=150&d=monsterid';
+        $gravatarUrl = $gravatarEndpoint . md5($email) . '?size=' . urlencode($size) . '&d=monsterid';
         return $gravatarUrl;
+    }
+
+    /**
+     * Get human friendly URL to users profile page
+     * @return string
+     */
+    public function getProfileUrl()
+    {
+        return url('/profile/' . $this->id . '-' .
+            str_replace(' ', '_', preg_replace('/[^A-Za-z0-9 \-]/', '', $this->name))
+        );
+    }
+
+    public function hasPermissionNode($node)
+    {
+        return $this->group()->get()->first()->hasPermissionNode($node);
     }
 
     /**

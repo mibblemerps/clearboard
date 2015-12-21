@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Facades\DB;
 
 class Thread extends Model
 {
@@ -22,6 +23,15 @@ class Thread extends Model
     {
         $op = Post::where('thread_id', $this->id)->first();
         return $op;
+    }
+
+    /**
+     * Get the latest post in the thread.
+     * @return Post
+     */
+    public function getLatestPost()
+    {
+        return Post::where('thread_id', $this->id)->orderBy('created_at', 'desc')->first();
     }
 
     /**

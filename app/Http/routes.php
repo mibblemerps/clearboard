@@ -14,14 +14,15 @@ Route::get('/', function() {
 
 Route::get('/forum/{fid}-{_}', 'ForumController@getForum');
 Route::get('/thread/{tid}-{_}', 'ThreadController@getThread');
+Route::get('/profile/{uid}-{_}', 'ProfileController@getProfile');
 
 // Route for processing markdown to HTML.
 Route::post('/ajax/markdown', 'MarkdownController@postParse');
 Route::post('/ajax/markdown_inline', 'MarkdownController@postInlineParse'); // for parsing inline markdown
 
 // Posting routes
-Route::post('/ajax/new_post', 'PostController@newPost');
-Route::post('/ajax/new_thread', 'ThreadController@newThread');
+Route::post('/ajax/new_post', 'PostController@newPost')->middleware('auth');
+Route::post('/ajax/new_thread', 'ThreadController@newThread')->middleware('auth');
 Route::get('/newthread/{forumid}', 'ThreadController@createThread')->middleware('auth');
 
 // Registration

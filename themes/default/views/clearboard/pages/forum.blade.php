@@ -8,7 +8,7 @@
 
 @section('content')
     <h1>Viewing Forum &dash; {{ $forum->name }}</h1><br>
-    <div id="listing">
+    <div class="listing">
         <div class="listing-category">
             {{ $forum->name }}
             @if (Auth::check())
@@ -16,7 +16,7 @@
             @endif
         </div>
 
-        @foreach($forum->threads as $thread)
+        @foreach($forum->threads->sortByDesc("updated_at") as $thread)
             @include('clearboard.partials.threadlisting', ['thread' => $thread])
         @endforeach
     </div>
