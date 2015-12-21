@@ -15,7 +15,7 @@
 @endsection
 
 @section('content')
-    <h1>Posting Thread</h1>
+    <h1>Posting Thread in {{ $forum->name }}</h1>
     <div id="newthread">
         <div class="newthread-left">
             <input type="text" id="newthread-title"><br>
