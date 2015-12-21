@@ -56,5 +56,20 @@
         font-size: 21px;
         font-weight: lighter;
         border-bottom: solid 1px #cccccc; }
+    #settings-wrap .settings-right .settings-control-area {
+      /* Security Login Panel */ }
+      #settings-wrap .settings-right .settings-control-area .security-login {
+        text-align: center; }
+        #settings-wrap .settings-right .settings-control-area .security-login img {
+          height: 64px; }
+        #settings-wrap .settings-right .settings-control-area .security-login .security-login-message {
+          font-weight: bold;
+          color: #b90000;
+          margin: 3px 0 8px 0; }
+        #settings-wrap .settings-right .settings-control-area .security-login #security-login-password {
+          width: 300px; }
+        #settings-wrap .settings-right .settings-control-area .security-login #security-login-submit {
+          font-size: 13px;
+          margin-top: 8px; }
 
 /*# sourceMappingURL=settings.css.map */

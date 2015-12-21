@@ -1,5 +1,11 @@
 
 /**
+ * Current password.5
+ * @type {string}
+ */
+var currentPassword = "";
+
+/**
  * Select a tab
  * @param tab
  */
@@ -41,7 +47,44 @@ function initTabs() {
     $("#settings-wrap .settings-control-area").show();
 }
 
+/**
+ * Attempt a login to get password for use with high-security operations such as password changing.
+ * @param password
+ */
+function sudoLogin(password) {
+    $.post(window.base_path + "/auth/check", {
+        password: password,
+        _token: window.csrf_token
+    }).done(function(data) {
+        // Check if verification passed
+        if (data == "true") {
+            // Verification passed.
+            currentPassword = password;
+
+            // Switch to normal security tab
+            $("#tabbtn-security").data("tab", "security");
+            selectTab("security");
+        } else {
+            cbPrompt("Access Denied", "Incorrect password. Try again?")
+        }
+    }).fail(function() {
+        // Password verification error
+        dialogConnectionError();
+    });
+}
+
 $(document).ready(function() {
+    // Initialize tabs
     initTabs();
-    selectTab("general");
+    selectTab("security-login");
+
+    // Setup handlers for security login
+    $("#security-login-submit").click(function() {
+        sudoLogin($("#security-login-password").val());
+    });
+    $("#security-login-password").keypress(function(event) {
+        if (event.keyCode === 13) {
+            $("#security-login-submit").click();
+        }
+    });
 });
