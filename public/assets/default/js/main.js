@@ -1,10 +1,19 @@
 
 /**
+ * Element previously focused before prompt box was opened
+ * @type {null}
+ */
+var previouslyFocused = null;
+
+/**
  * Dismiss currently active prompt box
  */
 function cbPromptDismiss() {
     $("#promptbox").fadeOut(200);
     $("#cover").fadeOut(200);
+
+    // Refocus previous element
+    previouslyFocused.focus();
 }
 
 /**
@@ -14,6 +23,12 @@ function cbPromptDismiss() {
  * @param buttons Array of objects containing: 'label', 'color' and 'click' (click is a callback function).
  */
 function cbPrompt(title, message, buttons) {
+    // Store focused element
+    previouslyFocused = $(":focus");
+
+    // Remove focus to page elements
+    $(":focus").blur();
+
     // Default buttons
     if (typeof buttons === "undefined") {
         buttons = [
@@ -122,6 +137,15 @@ $(document).ready(function(){
     // Init promptbox
     $("#promptbox").css("display", "block").hide();
     $("#cover").css("display", "block").hide();
+
+    // Allow enter key to dismiss prompt boxes
+    $(window).keypress(function(event) {
+        if (event.keyCode === 13) {
+            $("#promptbox .promptbox-button-0").click();
+            event.preventDefault();
+        }
+    });
+
 
     // To allow use of jQuery's hide and show methods
     $("#userbox-dropdown").css("display", "block").hide();
