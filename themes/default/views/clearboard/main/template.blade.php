@@ -37,7 +37,7 @@
                                 <span id="userbox-name">{{ Auth::user()->name }}</span>
                                 <div id="userbox-dropdown">
                                     <a href="{{ Auth::user()->getProfileUrl() }}"><div class="userbox-dropdown-item">My Profile</div></a>
-                                    <div class="userbox-dropdown-item">My Settings</div>
+                                    <a href="{{ url('/settings') }}"><div class="userbox-dropdown-item">My Settings</div></a>
                                     <div class="userbox-dropdown-item">Support</div>
                                     <a href="{{ url('/auth/logout') }}"><div class="userbox-dropdown-item userbox-dropdown-item-warning">Logout</div></a>
                                 </div>
