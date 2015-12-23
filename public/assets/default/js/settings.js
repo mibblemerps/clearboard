@@ -10,7 +10,7 @@ var currentPassword = "";
  * @param tab
  */
 function selectTab(tab) {
-    // Update the conntrol area
+    // Update the control area
     $("#settings-wrap .settings-pane").hide();
     $("#settings-wrap .settings-pane").each(function() {
         if ($(this).data("tab") == tab) {
