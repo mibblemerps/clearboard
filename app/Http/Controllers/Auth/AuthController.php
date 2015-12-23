@@ -86,6 +86,15 @@ class AuthController extends Controller
         $response = new Response();
         $response->header('Content-Type', 'application/json');
 
+        if ($this->hasTooManyLoginAttempts($request)) {
+            // Had too many login attempts. Lock out user.
+            $response->setContent(json_encode([
+                'success' => false,
+                'tries_remaining' => 0
+            ]));
+            return $response;
+        }
+
         // Attempt login
         if (Auth::attempt(['name' => $username, 'password' => $password])) {
             // Successful login - reset failed login attempts
