@@ -107,13 +107,17 @@ function login(username, password) {
     }, null, "json").done(function(data){
         if (data.success == true) {
             location.reload(); // Logged in - reload page
+            return;
+        } else if (data.tries_remaining == 0) {
+            // Too many login attempts
+            cbPrompt("Throttled", "Too many failed login attempts.<br>Please wait before trying again.");
         } else {
             cbPrompt("Incorrect", "The username or password you provided was incorrect.<br>Try again?");
-
-            // Reset login form
-            $("#loginform").hide().slideDown(200);
-            $("#login-loading").show().slideUp(200);
         }
+
+        // Reset login form
+        $("#loginform").hide().slideDown(200);
+        $("#login-loading").show().slideUp(200);
     }).fail(function(){
         // Failed to perform login request. =\
         cbPrompt("Connection Error", "Oh noes! There was a problem communicating with the server!", [
