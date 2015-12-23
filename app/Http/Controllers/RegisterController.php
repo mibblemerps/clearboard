@@ -3,43 +3,28 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Auth;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    public function postLogin(Request $request)
-    {
-        // Ensure arguments are present.
-        if (!($request->has('username') && $request->has('password'))) {
-            // Missing arguments!
-            abort(400); // Bad Request
-        }
-
-        $username = $request->input('username');
-        $password = $request->input('password');
-
-        // Responses will be in JSON
-        header('Content-Type: application/json');
-
-        // Attempt login
-        if (Auth::attempt(['name' => $username, 'password' => $password])) {
-            // Return success response
-            return json_encode(array(
-                'success' => true
-            ));
-        } else {
-            // Return failure response
-            return json_encode(array(
-                'success' => false
-            ));
-        }
-    }
-
+    /**
+     * JSON based interface for registering new users.
+     * Requires the following POST arguments
+     *  - email: a valid email address
+     *  - username: a unique alias for the user
+     *  - password: a password with a minimum length of 6 characters
+     *  - g-recaptcha-response: the response from a Google reCAPTCHA
+     *
+     * @param Request $request
+     * @return Response
+     */
     public function postRegister(Request $request)
     {
         $errors = [];

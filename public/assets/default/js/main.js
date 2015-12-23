@@ -1,10 +1,19 @@
 
 /**
+ * Element previously focused before prompt box was opened
+ * @type {null}
+ */
+var previouslyFocused = null;
+
+/**
  * Dismiss currently active prompt box
  */
 function cbPromptDismiss() {
     $("#promptbox").fadeOut(200);
     $("#cover").fadeOut(200);
+
+    // Refocus previous element
+    previouslyFocused.focus();
 }
 
 /**
@@ -14,6 +23,12 @@ function cbPromptDismiss() {
  * @param buttons Array of objects containing: 'label', 'color' and 'click' (click is a callback function).
  */
 function cbPrompt(title, message, buttons) {
+    // Store focused element
+    previouslyFocused = $(":focus");
+
+    // Remove focus to page elements
+    $(":focus").blur();
+
     // Default buttons
     if (typeof buttons === "undefined") {
         buttons = [
@@ -94,6 +109,10 @@ function login(username, password) {
             location.reload(); // Logged in - reload page
         } else {
             cbPrompt("Incorrect", "The username or password you provided was incorrect.<br>Try again?");
+
+            // Reset login form
+            $("#loginform").hide().slideDown(200);
+            $("#login-loading").show().slideUp(200);
         }
     }).fail(function(){
         // Failed to perform login request. =\
@@ -123,6 +142,14 @@ $(document).ready(function(){
     $("#promptbox").css("display", "block").hide();
     $("#cover").css("display", "block").hide();
 
+    // Allow enter key to dismiss prompt boxes
+    $(window).keypress(function(event) {
+        if ((event.keyCode === 13) && ($("#promptbox").is(":visible"))) {
+            $("#promptbox .promptbox-button-0").click();
+            event.preventDefault();
+        }
+    });
+
     // To allow use of jQuery's hide and show methods
     $("#userbox-dropdown").css("display", "block").hide();
 
@@ -140,7 +167,7 @@ $(document).ready(function(){
     if (!window.isLoggedIn) {
         $("#loginbtn").click(expandUserbox);
         $(document).click(function(){
-            if (!userboxHasMouse) {
+            if ($("#promptbox").is(":hidden") && !userboxHasMouse) {
                 collapseUserbox();
             }
         });
@@ -150,7 +177,9 @@ $(document).ready(function(){
             // Perform login
             login( $("#login-username").val(), $("#login-password").val() );
 
-            collapseUserbox();
+            // Slide away login form and show loading animation
+            $("#loginform").show().slideUp(200);
+            $("#login-loading").hide().slideDown(200);
 
             e.preventDefault();
         });

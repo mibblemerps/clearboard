@@ -1,6 +1,7 @@
 
 var posteditor;
 var posting = false; // is the thread being posted?
+var postComplete = false; // is the post completed and ready to be posted?
 
 $(document).ready(function(){
     posteditor = new SimpleMDE({
@@ -24,16 +25,12 @@ $(document).ready(function(){
     });
 
     $("#newthread-submit").click(function() {
-        posting = true;
-
-        if (posteditor.value() == "") {
-            // Post editor empty, abort..
-            $("#newthread-submit").addClass("button-gray");
-            setTimeout(function(){
-                $("#newthread-submit").removeClass("button-gray");
-            }, 200);
-            return false;
+        if (!postComplete) {
+            // Post incomplete
+            return;
         }
+
+        posting = true;
 
         var req = $.post("/ajax/new_thread", {
             _token: window.csrf_token,
@@ -55,4 +52,15 @@ $(document).ready(function(){
             posting = false;
         });
     });
+
+    window.setInterval(function() {
+        if ( (posteditor.value() == "") || ($("#newthread-title").val() == "") ) {
+            // Thread incomplete
+            $("#newthread-submit").addClass("button-disabled");
+            postComplete = false;
+        } else {
+            $("#newthread-submit").removeClass("button-disabled");
+            postComplete = true;
+        }
+    }, 100);
 });

@@ -25,16 +25,21 @@ Route::post('/ajax/new_post', 'PostController@newPost')->middleware('auth');
 Route::post('/ajax/new_thread', 'ThreadController@newThread')->middleware('auth');
 Route::get('/newthread/{forumid}', 'ThreadController@createThread')->middleware('auth');
 
+// Account Settings
+Route::get('/settings/{userid}', 'SettingsController@view');
+Route::get('/settings', 'SettingsController@view')->middleware('auth');
+
 // Registration
 Route::get('/register', function(){
     return view('clearboard.pages.register');
 });
-Route::post('/ajax/register', 'LoginController@postRegister');
+Route::post('/ajax/register', 'RegisterController@postRegister');
 
 // Authentication routes
 Route::group(array('prefix' => '/auth'), function() {
-    Route::post('/login', 'LoginController@postLogin');
+    Route::post('/login', 'Auth\AuthController@postAjaxLogin');
     Route::get('/logout', 'Auth\AuthController@getLogout');
+    Route::post('/check', 'Auth\AuthController@postVerify');
 });
 
 
