@@ -50,6 +50,9 @@ input[type=text]:focus, input[type=password]:focus {
 table {
   border-collapse: collapse; }
 
+.vertically-aligned * {
+  vertical-align: middle; }
+
 /* Body formatting */
 body {
   background-color: #202126;

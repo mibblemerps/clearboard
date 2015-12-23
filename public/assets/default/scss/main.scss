@@ -54,6 +54,8 @@ input[type=text]:focus, input[type=password]:focus { border-color: #0044DD; }
 
 table { border-collapse: collapse; }
 
+.vertically-aligned * { vertical-align: middle; }
+
 /* Body formatting */
 body {
   background-color: #202126;
