@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -13,33 +14,7 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    public function postLogin(Request $request)
-    {
-        // Ensure arguments are present.
-        if (!($request->has('username') && $request->has('password'))) {
-            // Missing arguments!
-            abort(400); // Bad Request
-        }
-
-        $username = $request->input('username');
-        $password = $request->input('password');
-
-        // Responses will be in JSON
-        header('Content-Type: application/json');
-
-        // Attempt login
-        if (Auth::attempt(['name' => $username, 'password' => $password])) {
-            // Return success response
-            return json_encode(array(
-                'success' => true
-            ));
-        } else {
-            // Return failure response
-            return json_encode(array(
-                'success' => false
-            ));
-        }
-    }
+    use ThrottlesLogins;
 
     public function postRegister(Request $request)
     {
@@ -89,18 +64,5 @@ class LoginController extends Controller
         $response->header('Content-Type', 'application/json');
 
         return $response;
-    }
-
-    public function verifyPassword(Request $request)
-    {
-        if ($request->has('password')) {
-            // Verify password against hash
-            return Hash::check(
-                $request->input('password'),
-                Auth::user()->password
-            ) ? 'true' : 'false';
-        } else {
-            abort(400); // 400 Bad Request
-        }
     }
 }

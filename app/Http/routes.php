@@ -37,9 +37,9 @@ Route::post('/ajax/register', 'LoginController@postRegister');
 
 // Authentication routes
 Route::group(array('prefix' => '/auth'), function() {
-    Route::post('/login', 'LoginController@postLogin');
+    Route::post('/login', 'Auth\AuthController@postAjaxLogin');
     Route::get('/logout', 'Auth\AuthController@getLogout');
-    Route::post('/check', 'LoginController@verifyPassword');
+    Route::post('/check', 'Auth\AuthController@postVerify');
 });
 
 
