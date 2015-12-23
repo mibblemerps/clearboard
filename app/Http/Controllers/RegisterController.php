@@ -14,8 +14,17 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    use ThrottlesLogins;
-
+    /**
+     * JSON based interface for registering new users.
+     * Requires the following POST arguments
+     *  - email: a valid email address
+     *  - username: a unique alias for the user
+     *  - password: a password with a minimum length of 6 characters
+     *  - g-recaptcha-response: the response from a Google reCAPTCHA
+     *
+     * @param Request $request
+     * @return Response
+     */
     public function postRegister(Request $request)
     {
         $errors = [];

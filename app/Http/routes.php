@@ -33,7 +33,7 @@ Route::get('/settings', 'SettingsController@view')->middleware('auth');
 Route::get('/register', function(){
     return view('clearboard.pages.register');
 });
-Route::post('/ajax/register', 'LoginController@postRegister');
+Route::post('/ajax/register', 'RegisterController@postRegister');
 
 // Authentication routes
 Route::group(array('prefix' => '/auth'), function() {
