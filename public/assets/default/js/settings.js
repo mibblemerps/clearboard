@@ -27,6 +27,14 @@ function selectTab(tab) {
         }
     });
 
+    // Highlight the selected tab
+    $(".tab").removeClass("tab-selected");
+    $(".tab").each(function() {
+        if ($(this).data("tab") == tab) {
+            $(this).addClass("tab-selected");
+        }
+    });
+
     // Update the title
     $("#settings-wrap .settings-right .side-header").html(title);
 }
