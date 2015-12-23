@@ -140,7 +140,7 @@ $(document).ready(function(){
 
     // Allow enter key to dismiss prompt boxes
     $(window).keypress(function(event) {
-        if (event.keyCode === 13) {
+        if ((event.keyCode === 13) && ($("#promptbox").is(":visible"))) {
             $("#promptbox .promptbox-button-0").click();
             event.preventDefault();
         }
