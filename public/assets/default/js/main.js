@@ -109,6 +109,10 @@ function login(username, password) {
             location.reload(); // Logged in - reload page
         } else {
             cbPrompt("Incorrect", "The username or password you provided was incorrect.<br>Try again?");
+
+            // Reset login form
+            $("#loginform").hide().slideDown(200);
+            $("#login-loading").show().slideUp(200);
         }
     }).fail(function(){
         // Failed to perform login request. =\
@@ -146,7 +150,6 @@ $(document).ready(function(){
         }
     });
 
-
     // To allow use of jQuery's hide and show methods
     $("#userbox-dropdown").css("display", "block").hide();
 
@@ -164,7 +167,7 @@ $(document).ready(function(){
     if (!window.isLoggedIn) {
         $("#loginbtn").click(expandUserbox);
         $(document).click(function(){
-            if (!userboxHasMouse) {
+            if ($("#promptbox").is(":hidden") && !userboxHasMouse) {
                 collapseUserbox();
             }
         });
@@ -174,7 +177,9 @@ $(document).ready(function(){
             // Perform login
             login( $("#login-username").val(), $("#login-password").val() );
 
-            collapseUserbox();
+            // Slide away login form and show loading animation
+            $("#loginform").show().slideUp(200);
+            $("#login-loading").hide().slideDown(200);
 
             e.preventDefault();
         });
