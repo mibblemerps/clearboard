@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Thread;
 use App\Post;
 use Illuminate\Http\Response;
+use Illuminate\Pagination\Paginator;
 
 class ThreadController extends Controller
 {
@@ -27,7 +28,10 @@ class ThreadController extends Controller
             abort(403);
         }
 
-        return view('clearboard.pages.thread', ['thread' => $thread]);
+        return view('clearboard.pages.thread', [
+            'thread' => $thread,
+            'posts' => Post::where('thread_id', $thread->id)->paginate(15)
+        ]);
     }
 
     /**

@@ -11,6 +11,9 @@
 
     <script type="text/javascript">
         window.thread_id = "{{ $thread->id }}";
+
+        window.thread_page = {{ $posts->currentPage() }};
+        window.thread_last_page = {{ $posts->lastPage() }};
     </script>
 @endsection
 
@@ -18,9 +21,16 @@
     <div class="listing">
         <div class="listing-category">{{ $thread->name }}</div>
         <div class="thread-wrapper">
-            @foreach($thread->posts as $post)
+            @foreach($posts as $post)
                 @include('clearboard.partials.post')
             @endforeach
+
+            @if($posts->currentPage() == $posts->lastPage()) <span id="postreply-insert-anchor"></span> @endif
+
+            {!! $posts->render() !!}
+
+            <p class="postreply-other-page-info" style="display:none;">Posted on last page...</p>
+            @if($posts->currentPage() != $posts->lastPage()) <span id="postreply-insert-anchor"></span> @endif
 
             @include('clearboard.partials.postreply')
         </div>

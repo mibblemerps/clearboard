@@ -309,5 +309,24 @@ footer {
     .listing .listing-entry .listing-entry-right {
       float: right;
       margin: 4px 8px; }
+  .listing .pagination {
+    display: block;
+    width: 100%;
+    text-align: center; }
+    .listing .pagination .pagination-button, .listing .pagination li a, .listing .pagination li.active, .listing .pagination li.disabled {
+      padding: 4px 8px;
+      border: solid 1px #b5b5b5;
+      background-color: #eeeeee;
+      border-radius: 3px;
+      font-family: "lato", sans-serif;
+      font-size: 17px;
+      color: #222222;
+      text-decoration: none; }
+    .listing .pagination li {
+      list-style-type: none;
+      display: inline-block;
+      margin-right: 5px; }
+    .listing .pagination li.active {
+      background-color: #d4d4d4 !important; }
 
 /*# sourceMappingURL=main.css.map */

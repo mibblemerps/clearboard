@@ -4,6 +4,9 @@
 .thread-wrapper {
   padding: 8px;
   background-color: #efefef; }
+  .thread-wrapper .postreply-other-page-info {
+    color: #7b7b7b;
+    font-style: italic; }
 
 /* Post */
 .post {

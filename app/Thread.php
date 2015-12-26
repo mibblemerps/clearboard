@@ -52,13 +52,20 @@ class Thread extends Model
      * Generate a user friendly URL for this thread. Relative to root of installation.
      * Example: /thread/3-Hello_World
      *
+     * @param integer $page Thread page
      * @return string
      */
-    public function getUserFriendlyURL()
+    public function getUserFriendlyURL($page = 1)
     {
-        return url('thread/' . $this->id . '-' . urlencode(
+        $url = url('thread/' . $this->id . '-' . urlencode(
                 str_replace(' ', '_', preg_replace('/[^A-Za-z0-9 \-]/', '', $this->name))
             ));
+
+        if ($page > 1) {
+            $url .= "?page=$page";
+        }
+
+        return $url;
     }
 
     /**
