@@ -30,7 +30,7 @@ class ThreadController extends Controller
 
         return view('clearboard.pages.thread', [
             'thread' => $thread,
-            'posts' => Post::where('thread_id', $thread->id)->paginate(15)
+            'posts' => Post::where('thread_id', $thread->id)->paginate(20)
         ]);
     }
 
