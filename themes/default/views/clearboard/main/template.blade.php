@@ -39,7 +39,7 @@
                                     <a href="{{ Auth::user()->getProfileUrl() }}"><div class="userbox-dropdown-item">My Profile</div></a>
                                     <a href="{{ url('/settings') }}"><div class="userbox-dropdown-item">My Settings</div></a>
                                     <div class="userbox-dropdown-item">Support</div>
-                                    <a href="{{ url('/auth/logout') }}"><div class="userbox-dropdown-item userbox-dropdown-item-warning">Logout</div></a>
+                                    <a href="{{ url('/auth/logout/?_token=' . csrf_token()) }}"><div class="userbox-dropdown-item userbox-dropdown-item-warning">Logout</div></a>
                                 </div>
                             @else
                                 <span class="vertical-align"></span>
