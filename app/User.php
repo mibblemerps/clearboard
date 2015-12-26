@@ -37,10 +37,9 @@ class User extends Model implements AuthenticatableContract,
     public function getAvatarUrl($size = 150)
     {
         // Generate Gravatar link
-        $email = trim($this->email);
-        $gravatarEndpoint = '//www.gravatar.com/avatar/';
-        $gravatarUrl = $gravatarEndpoint . md5($email) . '?size=' . urlencode($size) . '&d=monsterid';
-        return $gravatarUrl;
+        $email = trim( strtolower($this->email) );
+        $gravatarApi = '//www.gravatar.com/avatar/';
+        return $gravatarApi . md5($email) . '?s=' . urlencode($size) . '&d=monsterid';
     }
 
     /**
