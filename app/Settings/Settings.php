@@ -7,6 +7,7 @@ use Psy\Exception\RuntimeException;
 
 /**
  * Class for interacting with Clearboard settings (the ones stored in the DB).
+ *
  * @package App\Settings
  */
 class Settings

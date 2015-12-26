@@ -30,6 +30,7 @@ class Theme {
 
     /**
      * Generate Theme object from a theme metadata file.
+     *
      * @param $json
      * @return Theme
      */

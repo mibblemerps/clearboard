@@ -8,18 +8,21 @@ class PostProcessor
 {
     /**
      * Array of filter class names to be loaded
+     *
      * @var string[]
      */
     protected $filters = [];
 
     /**
      * Array of filters which have been initiated.
+     *
      * @var \app\PostProcessor\Filter[]
      */
     protected $filterInstances = [];
 
     /**
      * Register a new filter.
+     *
      * @param string $filter Fully qualified path to class (eg. \App\Foo\Bar\FilterBaz::class)
      * @param boolean $alreadyListed Is the class name already listed in the internal filters array. Almost always leave this as default.
      */
@@ -34,6 +37,7 @@ class PostProcessor
 
     /**
      * Run the input through the preprocess filters.
+     *
      * @param string $post Text to be processed
      * @return string Result
      */
@@ -50,6 +54,7 @@ class PostProcessor
 
     /**
      * Run the input through the postprocess filters.
+     *
      * @param string $post Text to be processed
      * @return string Result
      */
@@ -66,6 +71,7 @@ class PostProcessor
 
     /**
      * Create new post processor
+     *
      * @param string $filters Filters to be used
      */
     public function __construct($filters)

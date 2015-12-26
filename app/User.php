@@ -31,6 +31,7 @@ class User extends Model implements AuthenticatableContract,
 
     /**
      * Get link to this users avatar
+     *
      * @param int $size Size in pixels. All avatars are square.
      * @return string Url to avatar.
      */
@@ -44,6 +45,7 @@ class User extends Model implements AuthenticatableContract,
 
     /**
      * Get human friendly URL to users profile page
+     *
      * @return string
      */
     public function getProfileUrl()
@@ -60,9 +62,11 @@ class User extends Model implements AuthenticatableContract,
 
     /**
      * Register a new user and save it to the database.
+     *
      * @param string $email
      * @param string $username
      * @param string $password
+     * @return User
      */
     public static function register($email, $username, $password)
     {

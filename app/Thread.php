@@ -17,6 +17,7 @@ class Thread extends Model
 
     /**
      * Fetch the first post within the thread
+     *
      * @return Post
      */
     public function getOP()
@@ -27,6 +28,7 @@ class Thread extends Model
 
     /**
      * Get the latest post in the thread.
+     *
      * @return Post
      */
     public function getLatestPost()
@@ -35,7 +37,8 @@ class Thread extends Model
     }
 
     /**
-     * Fetch the initial poster of the thread
+     * Get the initial poster of the thread
+     *
      * @return User
      */
     public function getPoster()
@@ -46,8 +49,9 @@ class Thread extends Model
     }
 
     /**
-     * Generate a user friendly URL for this thread.
+     * Generate a user friendly URL for this thread. Relative to root of installation.
      * Example: /thread/3-Hello_World
+     *
      * @return string
      */
     public function getUserFriendlyURL()
@@ -58,13 +62,14 @@ class Thread extends Model
     }
 
     /**
-     * Create a new thread
+     * Create a new thread.
+     *
      * @param string $title Title of thread
      * @param integer $forumid Forum ID to host the thread
      * @param bool|false $locked Is the thread locked to further replies?
      * @param bool|false $hidden Is the thread hidden from normal view?
      * @param bool|true $save Should the thread be saved to the database?
-     * @return Thread
+     * @return Thread Created thread
      */
     public static function newThread($title, $forumid, $locked = false, $hidden = false, $save = true)
     {

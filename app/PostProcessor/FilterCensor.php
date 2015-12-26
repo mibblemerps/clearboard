@@ -5,6 +5,7 @@ namespace app\PostProcessor;
 /**
  * Censors particular words.
  * @TODO this thing sucks. Needs to be redone.
+ *
  * @package app\PostProcessor
  */
 class FilterCensor implements Filter
@@ -16,6 +17,7 @@ class FilterCensor implements Filter
 
     /**
      * List of words to be filtered
+     *
      * @var string[]
      */
     public $words = [

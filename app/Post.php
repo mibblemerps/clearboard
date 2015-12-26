@@ -12,6 +12,7 @@ class Post extends Model
 
     /**
      * Get the thread containing the post
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function thread()
@@ -21,6 +22,7 @@ class Post extends Model
 
     /**
      * Get the original poster of the post
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function poster()
@@ -31,6 +33,7 @@ class Post extends Model
     /**
      * Get body of post.
      * Automatically applies filters.
+     *
      * @param bool|false $skipFilter Should the post skip the filters?
      * @return string Post content
      */
@@ -47,7 +50,8 @@ class Post extends Model
     }
 
     /**
-     * Return partial view of post
+     * Return a blade view of this individual post.
+     *
      * @return \Illuminate\View\View
      */
     public function getPostView()
@@ -57,6 +61,7 @@ class Post extends Model
 
     /**
      * Create a new post
+     *
      * @param string $body Content of post, will be run through filters
      * @param integer $threadid Thread ID
      * @param integer| $posterid Poster's ID. Defaults to currently authenticated user
