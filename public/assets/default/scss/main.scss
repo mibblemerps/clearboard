@@ -56,6 +56,12 @@ table { border-collapse: collapse; }
 
 .vertically-aligned * { vertical-align: middle; }
 
+.emoji {
+  width: 1em;
+  height: 1em;
+  border: none;
+}
+
 .la-ball-scale-pulse > div {
   color: #141414;
 }
