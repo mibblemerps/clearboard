@@ -57,7 +57,8 @@
       -ms-hyphens: auto;
       -moz-hyphens: auto;
       hyphens: auto;
-      font-family: "arial", sans-serif;
+      font-family: "source sans pro", "arial", sans-serif;
+      font-weight: 300;
       /* Prevent images expanding outside of post */ }
       .post .post-right .post-content img {
         max-width: 100%; }
