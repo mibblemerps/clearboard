@@ -74,7 +74,14 @@ $(document).ready(function() {
                     posteditor.value("");
 
                     // Render new post onto page
-                    $("#postreply").before(data.html);
+                    $("#postreply-insert-anchor").before(data.html);
+
+                    if (window.thread_page != window.thread_last_page) {
+                        // Not on last page, show notification alerting post is on a different page
+                        window.setInterval(function() {
+                            $(".postreply-other-page-info").slideDown(400).fadeIn(500);
+                        }, 250);
+                    }
                 } else {
                     // Unexpected response
                     console.warn("Unexpected response when submitting post!");

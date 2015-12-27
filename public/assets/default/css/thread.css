@@ -4,6 +4,9 @@
 .thread-wrapper {
   padding: 8px;
   background-color: #efefef; }
+  .thread-wrapper .postreply-other-page-info {
+    color: #7b7b7b;
+    font-style: italic; }
 
 /* Post */
 .post {
@@ -54,7 +57,8 @@
       -ms-hyphens: auto;
       -moz-hyphens: auto;
       hyphens: auto;
-      font-family: "arial", sans-serif;
+      font-family: "source sans pro", "arial", sans-serif;
+      font-weight: 300;
       /* Prevent images expanding outside of post */ }
       .post .post-right .post-content img {
         max-width: 100%; }

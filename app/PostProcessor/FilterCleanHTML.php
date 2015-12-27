@@ -2,7 +2,11 @@
 
 namespace App\PostProcessor;
 
-
+/**
+ * Converts any dangerous HTML into HTML entities to prevent XSS or unwanted HTML content.
+ *
+ * @package App\PostProcessor
+ */
 class FilterCleanHTML implements Filter
 {
     public function getName()

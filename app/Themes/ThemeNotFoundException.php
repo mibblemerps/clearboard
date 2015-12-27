@@ -4,6 +4,7 @@ namespace app\Themes;
 
 /**
  * Theme not found exception
+ *
  * @package app\Themes
  */
 class ThemeNotFoundException extends \Exception {

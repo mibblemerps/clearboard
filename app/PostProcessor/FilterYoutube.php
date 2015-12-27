@@ -1,9 +1,12 @@
 <?php
 
-
 namespace App\PostProcessor;
 
-
+/**
+ * Adds YouTube embed capabilities.
+ *
+ * @package App\PostProcessor
+ */
 class FilterYoutube implements Filter
 {
     public function getName()

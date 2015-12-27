@@ -18,13 +18,6 @@ class User extends Model implements AuthenticatableContract,
     use Authenticatable, Authorizable, CanResetPassword;
 
     /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
-    protected $table = 'users';
-
-    /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
@@ -38,20 +31,21 @@ class User extends Model implements AuthenticatableContract,
 
     /**
      * Get link to this users avatar
+     *
      * @param int $size Size in pixels. All avatars are square.
      * @return string Url to avatar.
      */
     public function getAvatarUrl($size = 150)
     {
         // Generate Gravatar link
-        $email = trim($this->email);
-        $gravatarEndpoint = '//www.gravatar.com/avatar/';
-        $gravatarUrl = $gravatarEndpoint . md5($email) . '?size=' . urlencode($size) . '&d=monsterid';
-        return $gravatarUrl;
+        $email = trim( strtolower($this->email) );
+        $gravatarApi = '//www.gravatar.com/avatar/';
+        return $gravatarApi . md5($email) . '?s=' . urlencode($size) . '&d=monsterid';
     }
 
     /**
      * Get human friendly URL to users profile page
+     *
      * @return string
      */
     public function getProfileUrl()
@@ -68,9 +62,11 @@ class User extends Model implements AuthenticatableContract,
 
     /**
      * Register a new user and save it to the database.
+     *
      * @param string $email
      * @param string $username
      * @param string $password
+     * @return User
      */
     public static function register($email, $username, $password)
     {

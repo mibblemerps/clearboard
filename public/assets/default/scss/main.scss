@@ -381,5 +381,40 @@ footer {
       margin: 4px 8px;
     }
   }
+
+  .pagination {
+    display: block;
+    width: 100%;
+    text-align: center;
+
+    .pagination-button {
+      padding: 4px 8px;
+
+      border: solid 1px #b5b5b5;
+      background-color: #eeeeee;
+      border-radius: 3px;
+
+      font-family: "lato", sans-serif;
+      font-size: 17px;
+      color: #222222;
+      text-decoration: none;
+    }
+
+    li {
+      list-style-type: none;
+      display: inline-block;
+      margin-right: 5px;
+
+      a { @extend .pagination-button; }
+    }
+
+    li.active {
+      background-color: #d4d4d4 !important;
+    }
+
+    li.active, li.disabled {
+      @extend .pagination-button;
+    }
+  }
 }
 

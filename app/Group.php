@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Group extends Model
 {
+    /**
+     * Users that are members of this group.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function users()
     {
         return $this->hasMany('App\User', 'group');
@@ -13,6 +18,7 @@ class Group extends Model
 
     /**
      * Get the parent group
+     *
      * @return Group
      */
     public function parent()
@@ -26,8 +32,9 @@ class Group extends Model
     }
 
     /**
-     * Check if this group has a particular permissino node.
+     * Check if this group has a particular permission node.
      * *Does* take into account inheritance.
+     *
      * @param $node
      * @return bool
      */

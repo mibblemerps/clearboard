@@ -4,6 +4,11 @@ namespace App\PostProcessor;
 
 use cebe\markdown\GithubMarkdown;
 
+/**
+ * Parses markdown into HTML to be displayed to the end user.
+ *
+ * @package App\PostProcessor
+ */
 class FilterMarkdown implements Filter
 {
     public function getName()

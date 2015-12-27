@@ -8,14 +8,20 @@ class Forum extends Model
 {
     protected $table = 'forums';
 
+    /**
+     * Get threads posted under this forum.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function threads()
     {
         return $this->hasMany('App\Thread');
     }
 
     /**
-     * Generate a user friendly URL for this forum.
+     * Generate a user friendly URL for this forum. Relative to root of installation.
      * Example: /forum/2-General-Discussion
+     *
      * @return string
      */
     public function getUserFriendlyURL()
