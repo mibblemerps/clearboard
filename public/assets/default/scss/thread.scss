@@ -89,6 +89,10 @@
         display: block;
       }
 
+      p {
+        margin: 0 0 18px 0;
+      }
+
       /* Prevent images expanding outside of post */
       img { max-width: 100%; }
     }
