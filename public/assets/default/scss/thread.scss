@@ -82,7 +82,12 @@
       hyphens: auto;
 
       font-family: "source sans pro", "arial", sans-serif;
+      font-size: 18px;
       font-weight: 300;
+
+      h1,h2,h3,h4,h5,h6 {
+        display: block;
+      }
 
       /* Prevent images expanding outside of post */
       img { max-width: 100%; }
@@ -107,6 +112,14 @@
 
   .CodeMirror, .CodeMirror-scroll {
     min-height: 175px !important;
+  }
+
+  .CodeMirror {
+    .editor-preview {
+      h1,h2,h3,h4,h5,h6 {
+        display: block;
+      }
+    }
   }
 
   #postreply-submit { float: right; }

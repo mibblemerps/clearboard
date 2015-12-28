@@ -53,20 +53,20 @@ function format_time($time, $now = null)
 
     if ($diff < 60) {
         // Less than a minute ago
-        return 'Moments ago';
+        return 'moments ago';
     } elseif (minutes_ago($diff) == 1) {
         // A minute ago
-        return 'A minute ago';
+        return 'a minute ago';
     } elseif (minutes_ago($diff) < 60) {
         // A few minutes ago
         return minutes_ago($diff) . ' minutes ago';
     } elseif (hours_ago($diff) == 1) {
-        return 'An hour ago';
+        return 'an hour ago';
     } elseif (hours_ago($diff) < 24) {
         return hours_ago($diff) . ' hours ago';
     } elseif (days_ago($diff) == 1) {
         // A day ago
-        return 'A day ago';
+        return 'a day ago';
     } elseif (days_ago($diff) < 31) {
         // A few days ago
         return days_ago($diff) . ' days ago';

@@ -3,6 +3,7 @@
     <head>
         <title>{{ \App\Facades\Settings::get('clearboard.sitename') }} - @yield('title')</title>
 
+        <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
         <link rel="stylesheet" type="text/css" href="{{ theme_asset('css/main.css') }}">
 
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js" type="text/javascript"></script>

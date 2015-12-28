@@ -58,8 +58,11 @@
       -moz-hyphens: auto;
       hyphens: auto;
       font-family: "source sans pro", "arial", sans-serif;
+      font-size: 18px;
       font-weight: 300;
       /* Prevent images expanding outside of post */ }
+      .post .post-right .post-content h1, .post .post-right .post-content h2, .post .post-right .post-content h3, .post .post-right .post-content h4, .post .post-right .post-content h5, .post .post-right .post-content h6 {
+        display: block; }
       .post .post-right .post-content img {
         max-width: 100%; }
 
@@ -78,6 +81,8 @@
     vertical-align: middle; }
   #postreply .CodeMirror, #postreply .CodeMirror-scroll {
     min-height: 175px !important; }
+  #postreply .CodeMirror .editor-preview h1, #postreply .CodeMirror .editor-preview h2, #postreply .CodeMirror .editor-preview h3, #postreply .CodeMirror .editor-preview h4, #postreply .CodeMirror .editor-preview h5, #postreply .CodeMirror .editor-preview h6 {
+    display: block; }
   #postreply #postreply-submit {
     float: right; }
 

@@ -20,7 +20,8 @@ class AppServiceProvider extends ServiceProvider
             \App\PostProcessor\FilterYoutube::class,
             //\App\PostProcessor\FilterCensor::class,
             \App\PostProcessor\FilterCleanHTML::class,
-            \App\PostProcessor\FilterMarkdown::class
+            \App\PostProcessor\FilterMarkdown::class,
+            \App\PostProcessor\FilterSmilies::class,
         ]);
     }
 

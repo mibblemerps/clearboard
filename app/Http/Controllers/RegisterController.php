@@ -12,7 +12,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 
-class LoginController extends Controller
+class RegisterController extends Controller
 {
     /**
      * JSON based interface for registering new users.
