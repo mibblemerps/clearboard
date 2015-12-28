@@ -55,6 +55,12 @@ class User extends Model implements AuthenticatableContract,
         );
     }
 
+    /**
+     * Does the user (or more specifically their group and child groups) have a specific permission node?
+     *
+     * @param string $node
+     * @return boolean
+     */
     public function hasPermissionNode($node)
     {
         return $this->group()->get()->first()->hasPermissionNode($node);
