@@ -2,6 +2,12 @@
  * Thread CSS File
  */
 
+.thread-header {
+  .thread-locked {
+    margin-right: 4px;
+  }
+}
+
 .thread-wrapper {
   padding: 8px;
   background-color: #efefef;

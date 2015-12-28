@@ -19,7 +19,12 @@
 
 @section('content')
     <div class="listing">
-        <div class="listing-category">{{ $thread->name }}</div>
+        <div class="listing-category thread-header">
+            @if ($thread->locked)
+                <i class="fa fa-lock thread-locked" title="This thread is closed to new replies"></i>
+            @endif
+            {{ $thread->name }}
+        </div>
         <div class="thread-wrapper">
             @foreach($posts as $post)
                 @include('clearboard.partials.post')
