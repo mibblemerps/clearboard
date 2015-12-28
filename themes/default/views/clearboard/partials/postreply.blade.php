@@ -1,4 +1,4 @@
-@if (Auth::check())
+@if (Auth::check() && (!$thread->locked))
     <div id="postreply">
         <img src="{{ Auth::user()->getAvatarUrl() }}" id="postreply-icon">
         <h2 id="postreply-header">Post Reply</h2>
