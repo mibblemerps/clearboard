@@ -1,6 +1,9 @@
 /*
  * Thread CSS File
  */
+.thread-header .thread-locked {
+  margin-right: 4px; }
+
 .thread-wrapper {
   padding: 8px;
   background-color: #efefef; }
@@ -63,6 +66,8 @@
       /* Prevent images expanding outside of post */ }
       .post .post-right .post-content h1, .post .post-right .post-content h2, .post .post-right .post-content h3, .post .post-right .post-content h4, .post .post-right .post-content h5, .post .post-right .post-content h6 {
         display: block; }
+      .post .post-right .post-content p {
+        margin: 0 0 18px 0; }
       .post .post-right .post-content img {
         max-width: 100%; }
 

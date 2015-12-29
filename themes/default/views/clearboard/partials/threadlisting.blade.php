@@ -3,6 +3,9 @@
     <div>
         <div class="listing-entry-name">
             <a href="{{ $thread->getUserFriendlyURL() }}">{{ $thread->name }}</a>
+            @if ($thread->locked)
+                <i class="fa fa-lock" title="This thread is closed to new replies"></i>
+            @endif
         </div>
         <br>
         <div class="listing-entry-desc">

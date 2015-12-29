@@ -2,6 +2,12 @@
  * Thread CSS File
  */
 
+.thread-header {
+  .thread-locked {
+    margin-right: 4px;
+  }
+}
+
 .thread-wrapper {
   padding: 8px;
   background-color: #efefef;
@@ -87,6 +93,10 @@
 
       h1,h2,h3,h4,h5,h6 {
         display: block;
+      }
+
+      p {
+        margin: 0 0 18px 0;
       }
 
       /* Prevent images expanding outside of post */
