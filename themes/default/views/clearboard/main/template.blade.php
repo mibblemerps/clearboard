@@ -74,6 +74,7 @@
         </footer>
 
         <!-- Low priority assets -->
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,300|Open+Sans:400,700|Lato">
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="{{ theme_asset('libs/load-awesome/css/ball-scale-pulse.min.css') }}">
