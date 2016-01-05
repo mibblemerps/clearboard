@@ -176,16 +176,24 @@ $(document).ready(function(){
             }
         });
 
-        // Bind form submit event to the login form
-        $("#loginform").submit(function(e){
-            // Perform login
-            login( $("#login-username").val(), $("#login-password").val() );
+        $("#loginform").ajaxForm({
+            beforeSubmit: function() {
+                $("#loginform").show().slideUp(200);
+                $("#login-loading").hide().slideDown(200);
+            },
+            success: function(response) {
+                if (response.success) {
+                    location.reload();
+                    return;
+                } else if (response.tries_remaining == 0) {
+                    cbPrompt("Throttled", "Too many failed login attempts.<br>Please wait before trying again.");
+                } else {
+                    cbPrompt("Incorrect", "The username or password you provided was incorrect.<br>Try again?");
+                }
 
-            // Slide away login form and show loading animation
-            $("#loginform").show().slideUp(200);
-            $("#login-loading").hide().slideDown(200);
-
-            e.preventDefault();
+                $("#loginform").hide().slideDown(200);
+                $("#login-loading").show().slideUp(200);
+            }
         });
     }
 

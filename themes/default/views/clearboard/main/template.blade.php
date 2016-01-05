@@ -53,7 +53,7 @@
                                     <div id="login-loading" style="display:none;">
                                         <div class="la-ball-scale-pulse"><div></div><div></div></div>
                                     </div>
-                                    <form id="loginform" action="{{ url('/auth/login') }}" method="POST">
+                                    <form id="loginform" class="ajaxform" action="{{ url('/auth/login') }}" method="POST">
                                         {!! csrf_field() !!}
                                         <input type="text" class="input-field" id="login-username" name="username" placeholder="Username"><br>
                                         <input type="password" class="input-field" id="login-password" name="password" placeholder="Password"><br>
