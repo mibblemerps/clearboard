@@ -17,4 +17,20 @@ class UserTest extends TestCase
             $user->getAvatarUrl(150)
         );
     }
+
+    /**
+     * Test that profile links are being generated correctly.
+     */
+    public function testGeneratedProfileLink()
+    {
+        $user = new User();
+        $user->id = 1;
+        $user->email = 'me@mitchfizz05.net';
+        $user->name = 'Mitchfizz05';
+
+        $this->assertEquals(
+            url('/profile/1-Mitchfizz05'),
+            $user->getProfileUrl()
+        );
+    }
 }
