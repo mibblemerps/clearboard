@@ -100,8 +100,8 @@ function dialogConnectionError() {
  * @param password
  */
 function login(username, password) {
-    $.post(window.base_path + "/auth/login", {
-        _token: window.csrf_token,
+    $.post(clearboard.basePath + "/auth/login", {
+        _token: clearboard.csrfToken,
         username: username,
         password: password
     }, null, "json").done(function(data){
@@ -162,13 +162,13 @@ $(document).ready(function(){
     $("#userbox").mouseleave(function(){ userboxHasMouse = false; });
 
     // Userbox click handler (for logged in users)
-    if (window.isLoggedIn) {
+    if (clearboard.isLoggedIn) {
         $("#userbox").mouseenter(expandUserbox);
         $("#userbox").mouseleave(collapseUserbox);
     }
 
     // Userbox click handler (for non-logged in users)
-    if (!window.isLoggedIn) {
+    if (!clearboard.isLoggedIn) {
         $("#loginbtn").click(expandUserbox);
         $(document).click(function(){
             if ($("#promptbox").is(":hidden") && !userboxHasMouse) {
@@ -192,8 +192,8 @@ $(document).ready(function(){
 });
 
 function processMarkdown(markdown, inline, callback) {
-    var request = $.post(window.base_path + "/ajax/markdown" + (inline ? "_inline" : ""), {
-        _token: window.csrf_token,
+    var request = $.post(clearboard.basePath + "/ajax/markdown" + (inline ? "_inline" : ""), {
+        _token: clearboard.csrfToken,
         markdown: markdown
     });
     request.done(callback);

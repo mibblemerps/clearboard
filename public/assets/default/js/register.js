@@ -36,7 +36,7 @@ function displayRegisterErrors(errors) {
 function register(email, username, password, recaptcha_token) {
     // Send registration request to server
     var req = $.post("/ajax/register", {
-        _token: window.csrf_token,
+        _token: clearboard.csrfToekn,
         email: email,
         username: username,
         password: password,
@@ -45,7 +45,7 @@ function register(email, username, password, recaptcha_token) {
     req.done(function(data){
         if (data.status) {
             // Registration successful. :3
-            window.location = window.base_path;
+            window.location = clearboard.basePath;
         } else {
             // Registration failed
             displayRegisterErrors(data.errors);

@@ -33,7 +33,7 @@ $(document).ready(function(){
         posting = true;
 
         var req = $.post("/ajax/new_thread", {
-            _token: window.csrf_token,
+            _token: clearboard.csrfToken,
             title: $("#newthread-title").val(),
             forum: window.forum_id,
             body: posteditor.value()
