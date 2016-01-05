@@ -1,6 +1,6 @@
 {
   "name": "clearboard",
-  "version": "0.1.0",
+  "version": "0.1.0+dev",
   "description": "Clearboard - a free, open-source community suite built upon Laravel.",
   "author": "Mitchfizz05 <me@mitchfizz05.net>",
   "contributors": [],
