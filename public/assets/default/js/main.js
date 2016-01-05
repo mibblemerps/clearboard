@@ -6,6 +6,12 @@
 var previouslyFocused = null;
 
 /**
+ * Is the mouse currently hovering over the userbox?
+ * @type {boolean}
+ */
+var userboxHasMouse = false;
+
+/**
  * Dismiss currently active prompt box
  */
 function cbPromptDismiss() {
@@ -130,21 +136,46 @@ function login(username, password) {
     });
 }
 
-// Is the mouse currently hovering over the userbox?
-var userboxHasMouse = false;
-
+/**
+ * Expand the userbox.
+ */
 function expandUserbox() {
     $("#userbox-dropdown").stop().slideDown(250);
 }
 
+/**
+ * Collapse the userbox.
+ */
 function collapseUserbox() {
     $("#userbox-dropdown").stop().slideUp(250);
+}
+
+/**
+ * Send markdown to the server for processing.
+ * @param markdown Markdown string
+ * @param inline Should block elements be excluded?
+ * @param callback Callback once markdown is processed.
+ */
+function processMarkdown(markdown, inline, callback) {
+    var request = $.post(clearboard.basePath + "/ajax/markdown" + (inline ? "_inline" : ""), {
+        _token: clearboard.csrfToken,
+        markdown: markdown
+    });
+    request.done(callback);
+    request.fail(function(){
+        // Request failed!
+        console.log("Warning! Failed to get response from server to parse markdown!");
+        callback(null);
+    });
 }
 
 $(document).ready(function(){
     // Init promptbox
     $("#promptbox").css("display", "block").hide();
     $("#cover").css("display", "block").hide();
+
+    // Init userbox
+    $("#userbox-dropdown").css("display", "block").hide();
 
     // Allow enter key to dismiss prompt boxes
     $(window).keypress(function(event) {
@@ -154,17 +185,14 @@ $(document).ready(function(){
         }
     });
 
-    // To allow use of jQuery's hide and show methods
-    $("#userbox-dropdown").css("display", "block").hide();
-
     // Apply the event handlers to maintain the userboxHasMouse variable
-    $("#userbox").mouseenter(function(){ userboxHasMouse = true; });
-    $("#userbox").mouseleave(function(){ userboxHasMouse = false; });
+    $("#userbox").mouseenter(function(){ userboxHasMouse = true; })
+        .mouseleave(function(){ userboxHasMouse = false; });
 
     // Userbox click handler (for logged in users)
     if (clearboard.isLoggedIn) {
-        $("#userbox").mouseenter(expandUserbox);
-        $("#userbox").mouseleave(collapseUserbox);
+        $("#userbox").mouseenter(expandUserbox)
+            .mouseleave(collapseUserbox);
     }
 
     // Userbox click handler (for non-logged in users)
@@ -198,17 +226,4 @@ $(document).ready(function(){
     }
 
 });
-
-function processMarkdown(markdown, inline, callback) {
-    var request = $.post(clearboard.basePath + "/ajax/markdown" + (inline ? "_inline" : ""), {
-        _token: clearboard.csrfToken,
-        markdown: markdown
-    });
-    request.done(callback);
-    request.fail(function(){
-        // Request failed!
-        console.log("Warning! Failed to get response from server to parse markdown!");
-        callback(null);
-    });
-}
 
