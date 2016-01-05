@@ -1,6 +1,6 @@
 {
     "name": "clearboard/clearboard",
-    "version": "",
+    "version": "0.1.0",
     "description": "An open-source community suite built upon Laravel for the modern web.",
     "keywords": ["clearboard", "forum", "board"],
     "license": "MIT",
