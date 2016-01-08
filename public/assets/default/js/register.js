@@ -36,7 +36,7 @@ function displayRegisterErrors(errors) {
 function register(email, username, password, recaptcha_token) {
     // Send registration request to server
     var req = $.post("/ajax/register", {
-        _token: clearboard.csrfToekn,
+        _token: clearboard.csrfToken,
         email: email,
         username: username,
         password: password,
