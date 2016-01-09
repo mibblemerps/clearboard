@@ -70,7 +70,7 @@
             @yield('content')
         </div>
         <footer>
-            @include('clearboard.main.footer')
+            @include('clearboard.common.footer')
         </footer>
 
         <!-- Low priority assets -->

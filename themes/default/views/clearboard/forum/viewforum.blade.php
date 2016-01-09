@@ -1,4 +1,4 @@
-@extends('clearboard.main.template')
+@extends('clearboard.common.template')
 
 @section('title', $forum->name)
 
@@ -17,7 +17,7 @@
         </div>
 
         @foreach($forum->threads->sortByDesc("updated_at") as $thread)
-            @include('clearboard.partials.threadlisting', ['thread' => $thread])
+            @include('clearboard.forum.partials.thread', ['thread' => $thread])
         @endforeach
     </div>
     

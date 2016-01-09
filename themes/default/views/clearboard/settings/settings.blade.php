@@ -1,4 +1,4 @@
-@extends('clearboard.main.template')
+@extends('clearboard.common.template')
 
 @section('title', 'Account Settings')
 
@@ -27,17 +27,17 @@
 
                 <!-- General Settings -->
                 <div class="settings-pane" data-tab="general">
-                    @include('clearboard.pages.settings.general')
+                    @include('clearboard.settings.tabs.general')
                 </div>
 
                 <!-- Security Settings -->
                 <div class="settings-pane" data-tab="security">
-                    @include('clearboard.pages.settings.security')
+                    @include('clearboard.settings.tabs.security')
                 </div>
 
                 <!-- Security login tab -->
                 <div class="settings-pane" data-tab="security-login">
-                    @include('clearboard.pages.settings.security-login')
+                    @include('clearboard.settings.tabs.security-login')
                 </div>
 
             </div>

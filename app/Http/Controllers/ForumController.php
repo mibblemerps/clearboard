@@ -20,7 +20,7 @@ class ForumController extends Controller
 
         if ($forum->type == 0) {
             // Viewing standard forum
-            return view('clearboard.pages.forum', ['forum' => $forum]);
+            return view('clearboard.forum.viewforum', ['forum' => $forum]);
 
         } elseif ($forum->type == 1) {
             // Viewing category

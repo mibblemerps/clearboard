@@ -16,6 +16,6 @@ class ProfileController extends Controller
      */
     public function getProfile($uid)
     {
-        return view('clearboard.pages.profile', ['user' => User::findOrFail($uid)]);
+        return view('clearboard.profile.viewprofile', ['user' => User::findOrFail($uid)]);
     }
 }

@@ -56,7 +56,7 @@ class Post extends Model
      */
     public function getPostView()
     {
-        return view('clearboard.partials.post', ['post' => $this]);
+        return view('clearboard.thread.partials.post', ['post' => $this]);
     }
 
     /**

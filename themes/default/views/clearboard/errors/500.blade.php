@@ -1,4 +1,4 @@
-@extends('clearboard.main.template')
+@extends('clearboard.common.template')
 
 @section('title', '500 Internal Server Error')
 

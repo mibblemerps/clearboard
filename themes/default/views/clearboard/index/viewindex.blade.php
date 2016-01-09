@@ -1,4 +1,4 @@
-@extends('clearboard.main.template')
+@extends('clearboard.common.template')
 
 @section('title', 'Index')
 
@@ -18,7 +18,7 @@
     <div class="listing">
         @foreach( $forums->sortBy('position') as $forum )
             @if( ($forum->type == 0) || ($forum->type == 2) )
-                @include('clearboard.partials.forumlisting', ['forum' => $forum])
+                @include('clearboard.index.partials.forum', ['forum' => $forum])
             @elseif($forum->type == 1)
                 <div class="listing-category">{{ $forum->name }}</div>
             @endif

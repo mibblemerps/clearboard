@@ -1,4 +1,4 @@
-@extends('clearboard.main.template')
+@extends('clearboard.common.template')
 
 @section('title', 'Posting Thread')
 
