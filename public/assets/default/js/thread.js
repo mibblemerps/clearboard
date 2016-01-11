@@ -9,7 +9,7 @@ function updatePostWidth() {
     // Stop allowing wrapping in the middle of words
     $(".post .post-content").css("word-break", "normal");
 
-    //$(".post .post-content").css("width", "auto");
+    $(".post .post-content").css("width", "auto");
 
     var postWidth = $(".post .post-right").width();
 
