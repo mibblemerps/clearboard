@@ -26,7 +26,7 @@ class User extends Model implements AuthenticatableContract,
 
     public function group()
     {
-        return $this->belongsTo('App\Group', 'group', 'id');
+        return $this->belongsTo('App\Group');
     }
 
     /**
@@ -41,6 +41,16 @@ class User extends Model implements AuthenticatableContract,
         $email = trim( strtolower($this->email) );
         $gravatarApi = '//www.gravatar.com/avatar/';
         return $gravatarApi . md5($email) . '?s=' . urlencode($size) . '&d=monsterid';
+    }
+
+    /**
+     * Style this users username according to their groups styling rules.
+     *
+     * @return string
+     */
+    public function getStyledUsername()
+    {
+        return $this->group()->first()->styleUsername($this->name);
     }
 
     /**
