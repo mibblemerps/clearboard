@@ -28,7 +28,7 @@ class ThreadController extends Controller
             abort(403);
         }
 
-        return view('clearboard.pages.thread', [
+        return view('clearboard.thread.viewthread', [
             'thread' => $thread,
             'posts' => Post::where('thread_id', $thread->id)->paginate(20)
         ]);
@@ -89,6 +89,6 @@ class ThreadController extends Controller
     public function createThread($forumid)
     {
         $forum = Forum::findOrFail($forumid);
-        return view('clearboard.pages.newthread', ['forum' => Forum::find($forumid)]);
+        return view('clearboard.thread.newthread', ['forum' => Forum::find($forumid)]);
     }
 }

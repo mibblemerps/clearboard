@@ -60,9 +60,9 @@ function initTabs() {
  * @param password
  */
 function sudoLogin(password) {
-    $.post(window.base_path + "/auth/check", {
+    $.post(clearboard.basePath + "/auth/check", {
         password: password,
-        _token: window.csrf_token
+        _token: clearboard.csrfToken
     }).done(function(data) {
         // Check if verification passed
         if (data == "true") {

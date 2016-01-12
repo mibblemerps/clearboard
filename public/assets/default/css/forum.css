@@ -41,4 +41,11 @@
   .thread-stat span {
     font-size: 20px; }
 
+.no-threads {
+  font-family: "lato", sans-serif;
+  font-size: 21px;
+  font-weight: lighter;
+  margin-top: 15px;
+  text-align: center; }
+
 /*# sourceMappingURL=forum.css.map */

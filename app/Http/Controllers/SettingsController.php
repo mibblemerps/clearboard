@@ -14,6 +14,6 @@ class SettingsController extends Controller
     {
         if ($userid === null) { $userid = Auth::user()->id; }
 
-        return view('clearboard.pages.settings', ['user' => User::find($userid)]);
+        return view('clearboard.settings.settings', ['user' => User::find($userid)]);
     }
 }

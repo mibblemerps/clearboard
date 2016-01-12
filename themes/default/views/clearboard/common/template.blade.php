@@ -10,9 +10,11 @@
         <script src="{{ theme_asset('js/main.js') }}"></script>
 
         <script type="text/javascript">
-            window.base_path = "{{ url() }}";
-            window.isLoggedIn = {{ Auth::check() ? 'true' : 'false' }};
-            window.csrf_token = "{{ csrf_token() }}";
+            window.clearboard = {
+                basePath: "{{ url() }}",
+                isLoggedIn: {{ Auth::check() ? 'true' : 'false' }},
+                csrfToken: "{{ csrf_token() }}"
+            };
         </script>
 
         @yield('head')
@@ -51,7 +53,7 @@
                                     <div id="login-loading" style="display:none;">
                                         <div class="la-ball-scale-pulse"><div></div><div></div></div>
                                     </div>
-                                    <form id="loginform" action="{{ url('/auth/login') }}" method="POST">
+                                    <form id="loginform" class="ajaxform" action="{{ url('/auth/login') }}" method="POST">
                                         {!! csrf_field() !!}
                                         <input type="text" class="input-field" id="login-username" name="username" placeholder="Username"><br>
                                         <input type="password" class="input-field" id="login-password" name="password" placeholder="Password"><br>
@@ -68,10 +70,11 @@
             @yield('content')
         </div>
         <footer>
-            @include('clearboard.main.footer')
+            @include('clearboard.common.footer')
         </footer>
 
         <!-- Low priority assets -->
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,300|Open+Sans:400,700|Lato">
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="{{ theme_asset('libs/load-awesome/css/ball-scale-pulse.min.css') }}">

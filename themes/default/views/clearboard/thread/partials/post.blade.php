@@ -1,6 +1,6 @@
 <div class="post">
     <div class="post-left">
-        @include('clearboard.partials.thread-userpane')
+        @include('clearboard.thread.partials.userinfo')
     </div>
     <div class="post-right">
         <div class="post-content">

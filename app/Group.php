@@ -52,4 +52,15 @@ class Group extends Model
             }
         }
     }
+
+    /**
+     * Style any username with this groups username styling rules.
+     *
+     * @param string $username
+     * @return string
+     */
+    public function styleUsername($username)
+    {
+        return str_replace('$username', $username, $this->username_formatting);
+    }
 }

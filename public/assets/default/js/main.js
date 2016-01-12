@@ -6,6 +6,12 @@
 var previouslyFocused = null;
 
 /**
+ * Is the mouse currently hovering over the userbox?
+ * @type {boolean}
+ */
+var userboxHasMouse = false;
+
+/**
  * Dismiss currently active prompt box
  */
 function cbPromptDismiss() {
@@ -100,8 +106,8 @@ function dialogConnectionError() {
  * @param password
  */
 function login(username, password) {
-    $.post(window.base_path + "/auth/login", {
-        _token: window.csrf_token,
+    $.post(clearboard.basePath + "/auth/login", {
+        _token: clearboard.csrfToken,
         username: username,
         password: password
     }, null, "json").done(function(data){
@@ -130,70 +136,29 @@ function login(username, password) {
     });
 }
 
-// Is the mouse currently hovering over the userbox?
-var userboxHasMouse = false;
-
+/**
+ * Expand the userbox.
+ */
 function expandUserbox() {
     $("#userbox-dropdown").stop().slideDown(250);
 }
 
+/**
+ * Collapse the userbox.
+ */
 function collapseUserbox() {
     $("#userbox-dropdown").stop().slideUp(250);
 }
 
-$(document).ready(function(){
-    // Init promptbox
-    $("#promptbox").css("display", "block").hide();
-    $("#cover").css("display", "block").hide();
-
-    // Allow enter key to dismiss prompt boxes
-    $(window).keypress(function(event) {
-        if ((event.keyCode === 13) && ($("#promptbox").is(":visible"))) {
-            $("#promptbox .promptbox-button-0").click();
-            event.preventDefault();
-        }
-    });
-
-    // To allow use of jQuery's hide and show methods
-    $("#userbox-dropdown").css("display", "block").hide();
-
-    // Apply the event handlers to maintain the userboxHasMouse variable
-    $("#userbox").mouseenter(function(){ userboxHasMouse = true; });
-    $("#userbox").mouseleave(function(){ userboxHasMouse = false; });
-
-    // Userbox click handler (for logged in users)
-    if (window.isLoggedIn) {
-        $("#userbox").mouseenter(expandUserbox);
-        $("#userbox").mouseleave(collapseUserbox);
-    }
-
-    // Userbox click handler (for non-logged in users)
-    if (!window.isLoggedIn) {
-        $("#loginbtn").click(expandUserbox);
-        $(document).click(function(){
-            if ($("#promptbox").is(":hidden") && !userboxHasMouse) {
-                collapseUserbox();
-            }
-        });
-
-        // Bind form submit event to the login form
-        $("#loginform").submit(function(e){
-            // Perform login
-            login( $("#login-username").val(), $("#login-password").val() );
-
-            // Slide away login form and show loading animation
-            $("#loginform").show().slideUp(200);
-            $("#login-loading").hide().slideDown(200);
-
-            e.preventDefault();
-        });
-    }
-
-});
-
+/**
+ * Send markdown to the server for processing.
+ * @param markdown Markdown string
+ * @param inline Should block elements be excluded?
+ * @param callback Callback once markdown is processed.
+ */
 function processMarkdown(markdown, inline, callback) {
-    var request = $.post(window.base_path + "/ajax/markdown" + (inline ? "_inline" : ""), {
-        _token: window.csrf_token,
+    var request = $.post(clearboard.basePath + "/ajax/markdown" + (inline ? "_inline" : ""), {
+        _token: clearboard.csrfToken,
         markdown: markdown
     });
     request.done(callback);
@@ -203,4 +168,62 @@ function processMarkdown(markdown, inline, callback) {
         callback(null);
     });
 }
+
+$(document).ready(function(){
+    // Init promptbox
+    $("#promptbox").css("display", "block").hide();
+    $("#cover").css("display", "block").hide();
+
+    // Init userbox
+    $("#userbox-dropdown").css("display", "block").hide();
+
+    // Allow enter key to dismiss prompt boxes
+    $(window).keypress(function(event) {
+        if ((event.keyCode === 13) && ($("#promptbox").is(":visible"))) {
+            $("#promptbox .promptbox-button-0").click();
+            event.preventDefault();
+        }
+    });
+
+    // Apply the event handlers to maintain the userboxHasMouse variable
+    $("#userbox").mouseenter(function(){ userboxHasMouse = true; })
+        .mouseleave(function(){ userboxHasMouse = false; });
+
+    // Userbox click handler (for logged in users)
+    if (clearboard.isLoggedIn) {
+        $("#userbox").mouseenter(expandUserbox)
+            .mouseleave(collapseUserbox);
+    }
+
+    // Userbox click handler (for non-logged in users)
+    if (!clearboard.isLoggedIn) {
+        $("#loginbtn").click(expandUserbox);
+        $(document).click(function(){
+            if ($("#promptbox").is(":hidden") && !userboxHasMouse) {
+                collapseUserbox();
+            }
+        });
+
+        $("#loginform").ajaxForm({
+            beforeSubmit: function() {
+                $("#loginform").show().slideUp(200);
+                $("#login-loading").hide().slideDown(200);
+            },
+            success: function(response) {
+                if (response.success) {
+                    location.reload();
+                    return;
+                } else if (response.tries_remaining == 0) {
+                    cbPrompt("Throttled", "Too many failed login attempts.<br>Please wait before trying again.");
+                } else {
+                    cbPrompt("Incorrect", "The username or password you provided was incorrect.<br>Try again?");
+                }
+
+                $("#loginform").hide().slideDown(200);
+                $("#login-loading").show().slideUp(200);
+            }
+        });
+    }
+
+});
 

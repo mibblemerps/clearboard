@@ -26,7 +26,7 @@ class User extends Model implements AuthenticatableContract,
 
     public function group()
     {
-        return $this->belongsTo('App\Group', 'group', 'id');
+        return $this->belongsTo('App\Group');
     }
 
     /**
@@ -44,6 +44,16 @@ class User extends Model implements AuthenticatableContract,
     }
 
     /**
+     * Style this users username according to their groups styling rules.
+     *
+     * @return string
+     */
+    public function getStyledUsername()
+    {
+        return $this->group()->first()->styleUsername($this->name);
+    }
+
+    /**
      * Get human friendly URL to users profile page
      *
      * @return string
@@ -55,6 +65,12 @@ class User extends Model implements AuthenticatableContract,
         );
     }
 
+    /**
+     * Does the user (or more specifically their group and child groups) have a specific permission node?
+     *
+     * @param string $node
+     * @return boolean
+     */
     public function hasPermissionNode($node)
     {
         return $this->group()->get()->first()->hasPermissionNode($node);

@@ -1,4 +1,4 @@
-@extends('clearboard.main.template')
+@extends('clearboard.common.template')
 
 @section('title', $forum->name)
 
@@ -16,9 +16,13 @@
             @endif
         </div>
 
-        @foreach($forum->threads->sortByDesc("updated_at") as $thread)
-            @include('clearboard.partials.threadlisting', ['thread' => $thread])
-        @endforeach
+        @if($forum->threads->count() == 0)
+            <div class="no-threads">This forum is empty at the moment.</div>
+        @else
+            @foreach($forum->threads->sortByDesc("updated_at") as $thread)
+                @include('clearboard.forum.partials.thread', ['thread' => $thread])
+            @endforeach
+        @endif
     </div>
     
 @endsection

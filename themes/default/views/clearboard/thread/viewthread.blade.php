@@ -1,4 +1,4 @@
-@extends('clearboard.main.template')
+@extends('clearboard.common.template')
 
 @section('title', $thread->name)
 
@@ -27,7 +27,7 @@
         </div>
         <div class="thread-wrapper">
             @foreach($posts as $post)
-                @include('clearboard.partials.post')
+                @include('clearboard.thread.partials.post')
             @endforeach
 
             @if($posts->currentPage() == $posts->lastPage()) <span id="postreply-insert-anchor"></span> @endif
@@ -37,7 +37,7 @@
             <p class="postreply-other-page-info" style="display:none;">Posted on last page...</p>
             @if($posts->currentPage() != $posts->lastPage()) <span id="postreply-insert-anchor"></span> @endif
 
-            @include('clearboard.partials.postreply')
+            @include('clearboard.thread.partials.postreply')
         </div>
     </div>
 @endsection

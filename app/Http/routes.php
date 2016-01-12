@@ -9,7 +9,7 @@ use \Route;
  */
 
 Route::get('/', function() {
-    return view('clearboard.pages.index', ['forums' => Forum::all()]);
+    return view('clearboard.index.viewindex', ['forums' => Forum::all()]);
 });
 
 Route::get('/forum/{fid}-{_}', 'ForumController@getForum');
@@ -34,7 +34,7 @@ Route::get('/settings', 'SettingsController@view')->middleware('auth');
 
 // Registration
 Route::get('/register', function(){
-    return view('clearboard.pages.register');
+    return view('clearboard.register.register');
 });
 Route::post('/ajax/register', 'RegisterController@postRegister');
 

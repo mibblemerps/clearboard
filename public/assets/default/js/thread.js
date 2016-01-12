@@ -9,7 +9,7 @@ function updatePostWidth() {
     // Stop allowing wrapping in the middle of words
     $(".post .post-content").css("word-break", "normal");
 
-    //$(".post .post-content").css("width", "auto");
+    $(".post .post-content").css("width", "auto");
 
     var postWidth = $(".post .post-right").width();
 
@@ -23,7 +23,7 @@ $(document).ready(function(){
 });
 
 $(document).ready(function() {
-    if (window.isLoggedIn) {
+    if (clearboard.isLoggedIn) {
         // Create post editor
         posteditor = new SimpleMDE({
             element: $("#postreply-box")[0],
@@ -60,7 +60,7 @@ $(document).ready(function() {
 
             // Submit post
             var req = $.post("/ajax/new_post", {
-                _token: window.csrf_token,
+                _token: clearboard.csrfToken,
                 body: posteditor.value(),
                 thread: window.thread_id
             });

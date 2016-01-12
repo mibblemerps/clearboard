@@ -1,8 +1,18 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "clearboard/clearboard",
+    "version": "0.1.0+dev",
+    "description": "An open-source community suite built upon Laravel for the modern web.",
+    "keywords": ["clearboard", "forum", "board"],
     "license": "MIT",
+    "homepage": "http://clearboard.pw",
+
+    "authors": [
+        {
+            "name": "Mitchfizz05",
+            "email": "me@mitchfizz05.net"
+        }
+    ],
+
     "type": "project",
     "require": {
         "php": ">=5.5.9",
@@ -10,7 +20,8 @@
         "laravel/homestead": "^2.1",
         "barryvdh/laravel-ide-helper": "^2.1",
         "cebe/markdown": "^1.1",
-        "greggilbert/recaptcha": "^2.0"
+        "greggilbert/recaptcha": "^2.0",
+        "doctrine/dbal": "^2.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
