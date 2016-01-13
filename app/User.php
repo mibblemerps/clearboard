@@ -50,7 +50,7 @@ class User extends Model implements AuthenticatableContract,
      */
     public function getStyledUsername()
     {
-        return $this->group()->first()->styleUsername($this->name);
+        return $this->group()->first()->styleUsername(htmlentities($this->name));
     }
 
     /**
