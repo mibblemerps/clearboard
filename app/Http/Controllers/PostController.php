@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\Facades\PostProcessor;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -14,7 +15,11 @@ class PostController extends Controller
 {
     public function newPost(Request $request)
     {
-        // Ensure
+        // Validate input
+        $this->validate($request, [
+            'thread' => 'numeric|exists:threads,id',
+            'body' => 'string|min:1|max:2000'
+        ]);
 
         // Collect input
         $threadid = $request->input('thread', 0);
