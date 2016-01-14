@@ -13,6 +13,7 @@ It works by groups having a set of "permission nodes", which is just a string of
 | cb.profile.view | View profiles |
 | cb.thread.create | Create a new thread |
 | cb.post.create | Post replies to threads |
+| cb.post.create.inLocked | Post replies to threads even if they're locked. |
 | cb.post.edit | Edit own posts
 | cb.post.edit.others | Edit other peoples posts |
 | cb.login | Can the user login? |
