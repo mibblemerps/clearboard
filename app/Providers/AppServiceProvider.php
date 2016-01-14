@@ -5,6 +5,11 @@ namespace App\Providers;
 use App\Settings\Settings;
 use Illuminate\Support\ServiceProvider;
 use App\PostProcessor\PostProcessor;
+use App\PostProcessor\FilterYoutube;
+use App\PostProcessor\FilterCensor;
+use App\PostProcessor\FilterCleanHTML;
+use App\PostProcessor\FilterMarkdown;
+use App\PostProcessor\FilterSmilies;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,11 +22,11 @@ class AppServiceProvider extends ServiceProvider
     {
         // Init the post processor
         $this->app['postprocessor'] = new PostProcessor([
-            \App\PostProcessor\FilterYoutube::class,
-            //\App\PostProcessor\FilterCensor::class,
-            \App\PostProcessor\FilterCleanHTML::class,
-            \App\PostProcessor\FilterMarkdown::class,
-            \App\PostProcessor\FilterSmilies::class,
+            FilterYoutube::class,
+            FilterCensor::class,
+            FilterCleanHTML::class,
+            FilterMarkdown::class,
+            FilterSmilies::class,
         ]);
     }
 
