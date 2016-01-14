@@ -50,7 +50,28 @@ class User extends Model implements AuthenticatableContract,
      */
     public function getStyledUsername()
     {
-        return $this->group()->first()->styleUsername($this->name);
+        return $this->group()->first()->styleUsername(htmlentities($this->name));
+    }
+
+    /**
+     * Does the user have a badge?
+     * @return bool
+     */
+    public function hasBadge()
+    {
+        return !!$this->group->badge;
+    }
+
+    /**
+     * Get the users badge (url).
+     * @return null|string Absolute URL to badge. Returns null if user has no badge.
+     */
+    public function getBadge()
+    {
+        if (!$this->group->badge) {
+            return null;
+        }
+        return url($this->group->badge);
     }
 
     /**

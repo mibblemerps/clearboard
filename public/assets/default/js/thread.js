@@ -85,12 +85,12 @@ $(document).ready(function() {
                 } else {
                     // Unexpected response
                     console.warn("Unexpected response when submitting post!");
-                    alert("Oh noes! Something went wrong! :(");
+                    dialogConnectionError();
                 }
             });
             req.fail(function () {
-                console.warn("Request to submit post failed!");
-                alert("Oh noes! Something went wrong! :(");
+                console.warn("AJAX error occurred when submitting post!");
+                dialogConnectionError();
             });
         });
     }
