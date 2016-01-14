@@ -19,13 +19,13 @@
   background-color: white; }
   .post .post-left {
     display: table-cell;
-    width: 160px;
+    width: 200px;
     box-sizing: border-box;
     padding: 14px 4px;
     text-align: center;
     background-color: #e1e1e1; }
     .post .post-left .post-avatar {
-      width: 100px; }
+      width: 125px; }
     .post .post-left .post-username {
       font-family: "lato", "open sans", sans-serif;
       font-size: 17px;
@@ -35,7 +35,7 @@
       word-break: break-all; }
   .post .post-right {
     display: table-cell;
-    width: calc(100% - 160px);
+    width: calc(100% - 200px);
     text-wrap: normal;
     vertical-align: top; }
     .post .post-right .post-timestamp {
