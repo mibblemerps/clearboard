@@ -82,17 +82,12 @@ class AuthController extends Controller
         $username = $request->input('username');
         $password = $request->input('password');
 
-        // Begin formulating response
-        $response = new Response();
-        $response->header('Content-Type', 'application/json');
-
         if ($this->hasTooManyLoginAttempts($request)) {
             // Had too many login attempts. Lock out user.
-            $response->setContent(json_encode([
+            return [
                 'success' => false,
                 'tries_remaining' => 0
-            ]));
-            return $response;
+            ];
         }
 
         // Attempt login
@@ -101,21 +96,19 @@ class AuthController extends Controller
             $this->clearLoginAttempts($request);
 
             // Return success response
-            $response->setContent(json_encode([
+            return [
                 'success' => true
-            ]));
+            ];
         } else {
             // Increment failed login attempt counter
             $this->incrementLoginAttempts($request);
 
             // Return failure response
-            $response->setContent(json_encode([
+            return [
                 'success' => false,
                 'tries_remaining' => $this->retriesLeft($request)
-            ]));
+            ];
         }
-
-        return $response;
     }
 
     /**

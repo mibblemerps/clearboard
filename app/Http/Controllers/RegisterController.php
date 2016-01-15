@@ -45,14 +45,11 @@ class RegisterController extends Controller
         }
 
         if (count($errors) > 0) {
-            // Errors detected, generate response
-            $response = new Response(json_encode([
+            // Errors detected, abort with errors.
+            return [
                 'status' => false,
                 'errors' => $errors
-            ]), 200);
-            $response->header('Content-Type', 'application/json');
-
-            return $response;
+            ];
         }
 
         // Get input
@@ -66,12 +63,9 @@ class RegisterController extends Controller
         // Login
         Auth::login($user);
 
-        // Generate response
-        $response = new Response(json_encode([
+        // All good. :)
+        return [
             'status' => true
-        ]), 200);
-        $response->header('Content-Type', 'application/json');
-
-        return $response;
+        ];
     }
 }

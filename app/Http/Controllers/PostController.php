@@ -37,16 +37,10 @@ class PostController extends Controller
         // Create new post
         $post = Post::newPost($content, $threadid);
 
-        // Generate response
-        $resp = new Response(
-            json_encode([
-                'status' => true,
-                'html' => $post->getPostView()->render() // return html of post so it can be embeded into page
-            ]),
-            200 // 200 OK
-        );
-        $resp->header('Content-Type', 'application/json');
-
-        return $resp;
+        // Response
+        return [
+            'status' => true,
+            'html' => $post->getPostView()->render() // return html of post so it can be embedded into page
+        ];
     }
 }
