@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Thread;
 use App\Facades\PostProcessor;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
@@ -10,6 +11,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
@@ -23,10 +25,11 @@ class PostController extends Controller
 
         // Collect input
         $threadid = $request->input('thread', 0);
+        $thread = Thread::find($threadid);
         $content = $request->input('body', '');
-        if (($content == '') || ($threadid == 0)) {
-            abort(400); // 400 Bad Request
-        }
+
+        // Check for authorization.
+        $this->authorize('reply', $thread);
 
         // Run post through filters
         $content = PostProcessor::preProcess($content);

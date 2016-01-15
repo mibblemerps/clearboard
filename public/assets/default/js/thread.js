@@ -85,6 +85,7 @@ $(document).ready(function() {
                 } else {
                     // Unexpected response
                     console.warn("Unexpected response when submitting post!");
+                    console.log(data);
                     dialogConnectionError();
                 }
             });

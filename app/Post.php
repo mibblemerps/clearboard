@@ -76,11 +76,8 @@ class Post extends Model
             abort(403); // 403 Forbidden
         }
 
-        // Check thread
+        // Find thread
         $thread = Thread::findOrFail($threadid);
-        if ($thread->locked) {
-            abort(403); // 403 Forbidden
-        }
 
         // Run post through filters
         $body = PostProcessor::preProcess($body);
