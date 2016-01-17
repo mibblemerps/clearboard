@@ -11,7 +11,7 @@
 
         <script type="text/javascript">
             window.clearboard = {
-                basePath: "{{ url() }}",
+                basePath: "{{ url('') }}",
                 isLoggedIn: {{ Auth::check() ? 'true' : 'false' }},
                 csrfToken: "{{ csrf_token() }}"
             };
