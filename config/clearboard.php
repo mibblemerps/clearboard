@@ -2,14 +2,18 @@
 
 return [
     
-    /*
-     * Name of community.
-     */
+    // Name of community
     'sitename' => 'Clearboard',
 
-    /*
-     * Default theme to apply to visitors.
-     */
+    // Footer links
+    'rules_url' => '#',
+    'tos_url' => '#',
+    'privacy_url' => '#',
+
+    // Board message (displayed at the top of the index page).
+    'board_message' => '',
+
+    // Default theme
     'theme' => 'default',
 
     /*
