@@ -4,10 +4,14 @@ namespace App\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class Settings extends Facade
+/**
+ * Class Userconfig
+ * @package App\Userconfig
+ */
+class Userconfig extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'settings';
+        return 'userconfig';
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Settings\Settings;
+use App\Userconfig\Userconfig;
 use Illuminate\Support\ServiceProvider;
 use App\PostProcessor\PostProcessor;
 use App\PostProcessor\FilterYoutube;
@@ -37,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // Init the settings class
-        $this->app['settings'] = new Settings();
+        // Load user config.
+        $this->app['userconfig'] = new Userconfig(base_path('userconfig/config.json'));
     }
 }

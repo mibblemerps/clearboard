@@ -151,6 +151,7 @@ return [
         /*
          * Application Service Providers...
          */
+        App\Providers\ConfigurationServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
