@@ -122,6 +122,11 @@ class Userconfig
      */
     public function set($key, $value)
     {
+        if ($key === null) {
+            // Null value, clear config value.
+            return $this->clear($key);
+        }
+
         // Parse configuration key.
         $group = explode('.', $key)[0];
         $key = explode('.', $key)[1];
