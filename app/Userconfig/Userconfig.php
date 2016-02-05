@@ -65,6 +65,11 @@ class Userconfig
      */
     protected function loadConfig()
     {
+        if (!file_exists($this->configPath)) {
+            // User config does not exist. Create a blank one.
+            file_put_contents($this->configPath, '{}');
+        }
+
         $this->userconfig = json_decode(file_get_contents($this->configPath), true);
         if ($this->userconfig === null) {
             // Parse failed
