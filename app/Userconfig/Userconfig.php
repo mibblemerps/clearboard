@@ -117,6 +117,12 @@ class Userconfig
         if (count($this->userconfig[$group]) == 0) {
             unset($this->userconfig[$group]);
         }
+
+        // Flush config changes to file.
+        if ($this->autoflush) {
+            // Automatically save changes.
+            $this->flushConfig();
+        }
     }
 
     /**
