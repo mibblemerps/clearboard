@@ -18,7 +18,6 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
         "laravel/homestead": "^2.1",
-        "barryvdh/laravel-ide-helper": "^2.1",
         "cebe/markdown": "^1.1",
         "greggilbert/recaptcha": "^2.0",
         "doctrine/dbal": "^2.5"

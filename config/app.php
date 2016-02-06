@@ -164,11 +164,6 @@ return [
          */
         Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
 
-        /*
-         * Laravel IDE Helper
-         */
-        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-
     ],
 
     /*
