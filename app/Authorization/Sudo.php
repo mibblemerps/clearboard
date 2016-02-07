@@ -20,6 +20,11 @@ class Sudo
      */
     public static function isSudo(Request $request)
     {
+        if (Auth::check()) {
+            // Not logged-in users cannot be in sudo mode. That'd be stupid.
+            return false;
+        }
+
         $sudoExpiry = $request->session()->get('sudo') + config('auth.sudo.expire') * 60;
 
         return ( ($sudoExpiry !== null) && (time() < $sudoExpiry) );
