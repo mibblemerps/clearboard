@@ -1,9 +1,7 @@
 <?php
 namespace App;
 
-use App\PostProcessor\PostProcessor;
-use Illuminate\Http\Request;
-use \Route;
+use Illuminate\Support\Facades\Route;
 
 /*
  * Clearboard Routes
