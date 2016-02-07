@@ -2,6 +2,7 @@
 namespace App;
 
 use App\PostProcessor\PostProcessor;
+use Illuminate\Http\Request;
 use \Route;
 
 /*
@@ -32,6 +33,13 @@ Route::get('/newthread/{forumid}', 'ThreadController@createThread')->middleware(
 Route::get('/settings/{userid}', 'SettingsController@view');
 Route::get('/settings', 'SettingsController@view')->middleware('auth');
 
+Route::get('/test', function(Request $session) {
+    $session->session()->put('sudo', time());
+});
+Route::get('/test2', function(Request $request) {
+    echo Authorization\Sudo::isSudo($request) ? 'sudo' : 'not sudo';
+});
+
 // Registration
 Route::get('/register', function(){
     return view('clearboard.register.register');
@@ -42,7 +50,7 @@ Route::post('/ajax/register', 'RegisterController@postRegister');
 Route::group(array('prefix' => '/auth'), function() {
     Route::post('/login', 'Auth\AuthController@postAjaxLogin');
     Route::get('/logout', 'Auth\AuthController@getLogout')->middleware('get_csrf');
-    Route::post('/check', 'Auth\AuthController@postVerify');
+    Route::post('/sudo', 'Auth\AuthController@postSudo');
 });
 
 

@@ -56,19 +56,16 @@ function initTabs() {
 }
 
 /**
- * Attempt a login to get password for use with high-security operations such as password changing.
+ * Attempt to enter sudo mode.
  * @param password
  */
 function sudoLogin(password) {
-    $.post(clearboard.basePath + "/auth/check", {
+    $.post(clearboard.basePath + "/auth/sudo", {
         password: password,
         _token: clearboard.csrfToken
     }).done(function(data) {
         // Check if verification passed
-        if (data == "true") {
-            // Verification passed.
-            currentPassword = password;
-
+        if (data.status) {
             // Switch to normal security tab
             $("#tabbtn-security").data("tab", "security");
             selectTab("security");

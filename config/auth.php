@@ -104,4 +104,17 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Sudo
+    |--------------------------------------------------------------------------
+    |
+    | When a user attempts to make significant changes, we prompt for the user
+    | to enter sudo mode.
+    |
+    */
+    'sudo' => [
+        'expire' => 30 // in minutes
+    ],
+
 ];

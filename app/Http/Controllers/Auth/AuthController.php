@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Authorization\Sudo;
 use App\User;
 use Illuminate\Http\Response;
 use Validator;
@@ -112,22 +113,29 @@ class AuthController extends Controller
     }
 
     /**
-     * Verify own password. Used within user settings to see if a provided password is correct and able to be sent
-     * along with security changes such as password changes.
+     * Request to enter sudo mode. This allows the user to make dangerous changes for a short while.
      *
      * Takes 1 POST argument, "password".
      *
      * @param Request $request
      * @return string
      */
-    public function postVerify(Request $request)
+    public function postSudo(Request $request)
     {
         if ($request->has('password')) {
             // Verify password against hash
-            return Hash::check(
+            $valid = Hash::check(
                 $request->input('password'),
                 Auth::user()->password
-            ) ? 'true' : 'false';
+            );
+
+            if ($valid) {
+                // Authenticated. Enter sudo mode.
+                Sudo::enableSudo($request);
+                return ['status' => true];
+            } else {
+                abort(401); // 401 Unauthorized
+            }
         } else {
             abort(400); // 400 Bad Request
         }
