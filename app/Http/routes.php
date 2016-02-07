@@ -33,13 +33,6 @@ Route::get('/newthread/{forumid}', 'ThreadController@createThread')->middleware(
 Route::get('/settings/{userid}', 'SettingsController@view');
 Route::get('/settings', 'SettingsController@view')->middleware('auth');
 
-Route::get('/test', function(Request $session) {
-    $session->session()->put('sudo', time());
-});
-Route::get('/test2', function(Request $request) {
-    echo Authorization\Sudo::isSudo($request) ? 'sudo' : 'not sudo';
-});
-
 // Registration
 Route::get('/register', function(){
     return view('clearboard.register.register');
