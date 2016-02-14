@@ -21,7 +21,7 @@
         </div>
 
         <div class="thread-lastpost">
-            <img src="{{ $thread->getLatestPost()->poster->getAvatarUrl() }}">
+            <img src="{{ $thread->getLatestPost()->poster->getAvatarUrl(40) }}">
             <div class="thread-lastpost-info">
                 <span class="thread-lastpost-name">{{ $thread->getLatestPost()->poster->name }}</span><br>
                 <span class="thread-lastpost-when">Posted {{ format_time($thread->getLatestPost()->created_at->timestamp) }}</span>
