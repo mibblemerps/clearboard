@@ -29,7 +29,9 @@ class PostController extends Controller
         $content = $request->input('body', '');
 
         // Check for authorization.
-        $this->authorize('reply', $thread);
+        if (!$request->user()->hasPermissionNode('cb.post.create')) {
+            abort(403); // 403 Forbidden
+        }
 
         // Run post through filters
         $content = PostProcessor::preProcess($content);

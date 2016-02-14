@@ -11,6 +11,7 @@ use App\PostProcessor\FilterCensor;
 use App\PostProcessor\FilterCleanHTML;
 use App\PostProcessor\FilterMarkdown;
 use App\PostProcessor\FilterSmilies;
+use Illuminate\View\Compilers\BladeCompiler;
 
 class AppServiceProvider extends ServiceProvider
 {

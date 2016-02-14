@@ -25,6 +25,7 @@
             @endif
             {{ $thread->name }}
         </div>
+
         <div class="thread-wrapper">
             @foreach($posts as $post)
                 @include('clearboard.thread.partials.post')

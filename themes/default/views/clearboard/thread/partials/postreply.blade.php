@@ -1,4 +1,4 @@
-@can('reply', $thread)
+@hasperm('cb.post.create')
     <div id="postreply">
         <img src="{{ Auth::user()->getAvatarUrl() }}" id="postreply-icon">
         <h2 id="postreply-header">Post Reply</h2>
@@ -9,4 +9,4 @@
             <span id="postreply-submit" class="button button-dark">Post Reply</span>
         </div>
     </div>
-@endcan
+@endperm
