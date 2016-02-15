@@ -331,6 +331,15 @@ footer {
 
   a { color: inherit; text-decoration: none; }
   a:hover { text-decoration: underline; }
+
+  #debuginfo {
+    font-size: 11px;
+
+    span {
+      display: inline-block;
+      margin: 0 5px;
+    }
+  }
 }
 
 /* Content Listings */

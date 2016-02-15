@@ -7,3 +7,15 @@
     <a href="{{ config('clearboard.tos_url') }}"><strong>Terms of Service</strong></a> |
     <a href="{{ config('clearboard.privacy_url') }}"><strong>Privacy Policy</strong></a>
 </p>
+
+@if (config('app.debug'))
+    <p id="debuginfo">
+        <?php
+            // Git HEAD
+            if (function_exists('exec')) {
+                $githead = exec('git rev-parse --short=7 HEAD');
+                echo "<span><strong>Git HEAD: </strong> <em>$githead</em> </span>";
+            }
+        ?>
+    </p>
+@endif
