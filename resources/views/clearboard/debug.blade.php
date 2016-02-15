@@ -10,6 +10,10 @@
             // Script execution time
             $executiontime = round(microtime(true) - SCRIPT_START, 4);
             echo "<span><strong>Generated in: </strong> <em>{$executiontime}s</em> </span>";
+
+            // PHP version
+            $phpversion = PHP_VERSION;
+            echo "<span><strong>PHP Version: </strong> <em>$phpversion</em></span>";
         ?>
     </p>
 @endif
