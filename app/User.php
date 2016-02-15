@@ -12,10 +12,9 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Support\Facades\Hash;
 
 class User extends Model implements AuthenticatableContract,
-                                    AuthorizableContract,
                                     CanResetPasswordContract
 {
-    use Authenticatable, Authorizable, CanResetPassword;
+    use Authenticatable, CanResetPassword;
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -95,6 +94,18 @@ class User extends Model implements AuthenticatableContract,
     public function hasPermissionNode($node)
     {
         return $this->group()->get()->first()->hasPermissionNode($node);
+    }
+
+    /**
+     * Does the user (or more specifically their group and child groups) have a specific permission node?
+     * Wrapper for hasPermissionNode().
+     *
+     * @param $node
+     * @return bool
+     */
+    public function can($node)
+    {
+        return $this->hasPermissionNode($node);
     }
 
     /**

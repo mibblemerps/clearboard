@@ -3,24 +3,34 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Thread;
 use App\Facades\PostProcessor;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
     public function newPost(Request $request)
     {
-        // Ensure
+        // Validate input
+        $this->validate($request, [
+            'thread' => 'numeric|exists:threads,id',
+            'body' => 'string|min:1|max:2000'
+        ]);
 
         // Collect input
         $threadid = $request->input('thread', 0);
+        $thread = Thread::find($threadid);
         $content = $request->input('body', '');
-        if (($content == '') || ($threadid == 0)) {
-            abort(400); // 400 Bad Request
+
+        // Check for authorization.
+        if (!$request->user()->hasPermissionNode('cb.post.create')) {
+            abort(403); // 403 Forbidden
         }
 
         // Run post through filters
@@ -29,16 +39,10 @@ class PostController extends Controller
         // Create new post
         $post = Post::newPost($content, $threadid);
 
-        // Generate response
-        $resp = new Response(
-            json_encode([
-                'status' => true,
-                'html' => $post->getPostView()->render() // return html of post so it can be embeded into page
-            ]),
-            200 // 200 OK
-        );
-        $resp->header('Content-Type', 'application/json');
-
-        return $resp;
+        // Response
+        return [
+            'status' => true,
+            'html' => $post->getPostView()->render() // return html of post so it can be embedded into page
+        ];
     }
 }

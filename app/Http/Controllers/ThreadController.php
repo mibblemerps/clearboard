@@ -68,17 +68,11 @@ class ThreadController extends Controller
         // Create opening post
         $post = post::newPost($request->input('body'), $thread->id);
 
-        // Generate response
-        $resp = new Response(
-            json_encode([
-                'status' => true,
-                'link' => $thread->getUserFriendlyURL()
-            ]),
-            200 // 200 OK
-        );
-        $resp->header('Content-Type', 'application/json');
-
-        return $resp;
+        // Respond
+        return [
+            'status' => true,
+            'link' => $thread->getUserFriendlyURL()
+        ];
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Authorization\Sudo;
 use App\User;
 use Illuminate\Http\Response;
 use Validator;
@@ -82,17 +83,12 @@ class AuthController extends Controller
         $username = $request->input('username');
         $password = $request->input('password');
 
-        // Begin formulating response
-        $response = new Response();
-        $response->header('Content-Type', 'application/json');
-
         if ($this->hasTooManyLoginAttempts($request)) {
             // Had too many login attempts. Lock out user.
-            $response->setContent(json_encode([
+            return [
                 'success' => false,
                 'tries_remaining' => 0
-            ]));
-            return $response;
+            ];
         }
 
         // Attempt login
@@ -101,40 +97,45 @@ class AuthController extends Controller
             $this->clearLoginAttempts($request);
 
             // Return success response
-            $response->setContent(json_encode([
+            return [
                 'success' => true
-            ]));
+            ];
         } else {
             // Increment failed login attempt counter
             $this->incrementLoginAttempts($request);
 
             // Return failure response
-            $response->setContent(json_encode([
+            return [
                 'success' => false,
                 'tries_remaining' => $this->retriesLeft($request)
-            ]));
+            ];
         }
-
-        return $response;
     }
 
     /**
-     * Verify own password. Used within user settings to see if a provided password is correct and able to be sent
-     * along with security changes such as password changes.
+     * Request to enter sudo mode. This allows the user to make dangerous changes for a short while.
      *
      * Takes 1 POST argument, "password".
      *
      * @param Request $request
      * @return string
      */
-    public function postVerify(Request $request)
+    public function postSudo(Request $request)
     {
         if ($request->has('password')) {
             // Verify password against hash
-            return Hash::check(
+            $valid = Hash::check(
                 $request->input('password'),
                 Auth::user()->password
-            ) ? 'true' : 'false';
+            );
+
+            if ($valid) {
+                // Authenticated. Enter sudo mode.
+                Sudo::enableSudo($request);
+                return ['status' => true];
+            } else {
+                abort(401); // 401 Unauthorized
+            }
         } else {
             abort(400); // 400 Bad Request
         }

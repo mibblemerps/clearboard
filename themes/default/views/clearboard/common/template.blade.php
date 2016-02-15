@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>{{ \App\Facades\Settings::get('clearboard.sitename') }} - @yield('title')</title>
+        <title>{{ config('clearboard.sitename') }} - @yield('title')</title>
 
         <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
         <link rel="stylesheet" type="text/css" href="{{ theme_asset('css/main.css') }}">
@@ -11,7 +11,7 @@
 
         <script type="text/javascript">
             window.clearboard = {
-                basePath: "{{ url() }}",
+                basePath: "{{ url('') }}",
                 isLoggedIn: {{ Auth::check() ? 'true' : 'false' }},
                 csrfToken: "{{ csrf_token() }}"
             };
@@ -36,7 +36,7 @@
                         <div id="userbox" class="{{ Auth::check() ? 'userbox-loggedin' : 'userbox-notloggedin' }}">
                             @if (Auth::check())
                                 <img id="userbox-useravatar" alt="Mitchfizz05"
-                                    src="{{ Auth::user()->getAvatarUrl() }}">
+                                    src="{{ Auth::user()->getAvatarUrl(70) }}">
                                 <span id="userbox-name">{{ Auth::user()->name }}</span>
                                 <div id="userbox-dropdown">
                                     <a href="{{ Auth::user()->getProfileUrl() }}"><div class="userbox-dropdown-item">My Profile</div></a>

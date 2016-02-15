@@ -1,8 +1,7 @@
 <?php
 namespace App;
 
-use App\PostProcessor\PostProcessor;
-use \Route;
+use Illuminate\Support\Facades\Route;
 
 /*
  * Clearboard Routes
@@ -42,7 +41,7 @@ Route::post('/ajax/register', 'RegisterController@postRegister');
 Route::group(array('prefix' => '/auth'), function() {
     Route::post('/login', 'Auth\AuthController@postAjaxLogin');
     Route::get('/logout', 'Auth\AuthController@getLogout')->middleware('get_csrf');
-    Route::post('/check', 'Auth\AuthController@postVerify');
+    Route::post('/sudo', 'Auth\AuthController@postSudo');
 });
 
 

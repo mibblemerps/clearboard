@@ -3,8 +3,15 @@
 namespace App\Providers;
 
 use App\Settings\Settings;
+use App\Userconfig\Userconfig;
 use Illuminate\Support\ServiceProvider;
 use App\PostProcessor\PostProcessor;
+use App\PostProcessor\FilterYoutube;
+use App\PostProcessor\FilterCensor;
+use App\PostProcessor\FilterCleanHTML;
+use App\PostProcessor\FilterMarkdown;
+use App\PostProcessor\FilterSmilies;
+use Illuminate\View\Compilers\BladeCompiler;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,11 +24,11 @@ class AppServiceProvider extends ServiceProvider
     {
         // Init the post processor
         $this->app['postprocessor'] = new PostProcessor([
-            \App\PostProcessor\FilterYoutube::class,
-            //\App\PostProcessor\FilterCensor::class,
-            \App\PostProcessor\FilterCleanHTML::class,
-            \App\PostProcessor\FilterMarkdown::class,
-            \App\PostProcessor\FilterSmilies::class,
+            FilterYoutube::class,
+            FilterCensor::class,
+            FilterCleanHTML::class,
+            FilterMarkdown::class,
+            FilterSmilies::class,
         ]);
     }
 
@@ -32,7 +39,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // Init the settings class
-        $this->app['settings'] = new Settings();
+        // Load user config.
+        $this->app['userconfig'] = new Userconfig(base_path('userconfig/config.json'));
     }
 }
