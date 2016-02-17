@@ -109,6 +109,15 @@ class User extends Model implements AuthenticatableContract,
     }
 
     /**
+     * Update the users last active timestamp.
+     */
+    public function updateLastActive()
+    {
+        $this->last_active = time();
+        $this->save();
+    }
+
+    /**
      * Register a new user and save it to the database.
      *
      * @param string $email
