@@ -1,36 +1,36 @@
 /*
  * Profile CSS File
  */
-.profile-header {
+#profile-header {
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
   background-color: #f6f6f6; }
-  .profile-header .profile-image {
+  #profile-header #profile-image {
     vertical-align: top; }
-  .profile-header .profile-header-inner {
+  #profile-header #profile-header-inner {
     display: inline-block;
     vertical-align: top;
     margin-left: 15px; }
-    .profile-header .profile-header-inner #profile-username {
+    #profile-header #profile-header-inner #profile-username {
       display: inline-block;
       margin: 15px 10px 5px 0;
       font-family: "lato", sans-serif;
       font-weight: bold;
       font-size: 34px; }
-    .profile-header .profile-header-inner .profile-group {
+    #profile-header #profile-header-inner #profile-group {
       font-size: 19px !important;
       /* override any custom styling */
       font-weight: bold; }
-    .profile-header .profile-header-inner .profile-infos {
+    #profile-header #profile-header-inner #profile-info {
       color: #545454;
       margin-top: 8px; }
-      .profile-header .profile-header-inner .profile-infos .profile-info {
+      #profile-header #profile-header-inner #profile-info .profile-info {
         display: inline-block;
         margin-right: 10px; }
-        .profile-header .profile-header-inner .profile-infos .profile-info i {
+        #profile-header #profile-header-inner #profile-info .profile-info i {
           margin-right: 3px; }
-  .profile-header .profile-buttons {
+  #profile-header #profile-buttons {
     float: right;
     margin: 5px; }
 
