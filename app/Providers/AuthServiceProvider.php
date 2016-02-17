@@ -17,12 +17,12 @@ class AuthServiceProvider extends ServiceProvider
     {
         // Blade directive to check if user has permission node.
         Blade::directive('hasperm', function ($expression) {
-            return "<?php if (Auth::user()->can({$expression})): ?>";
+            return "<?php if ((Auth::user() !== null) && Auth::user()->can({$expression})): ?>";
         });
 
         // Blade directive to see if user is missing permission node.
         Blade::directive('missingperm', function ($expression) {
-            return "<?php if (!Auth::user()->can({$expression})): ?>";
+            return "<?php if ((Auth::user() !== null) && !Auth::user()->can({$expression})): ?>";
         });
 
         // Blade directive to end permission node check block.
