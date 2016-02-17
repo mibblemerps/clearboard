@@ -276,6 +276,11 @@ footer {
     text-decoration: none; }
   footer a:hover {
     text-decoration: underline; }
+  footer #debuginfo {
+    font-size: 11px; }
+    footer #debuginfo span {
+      display: inline-block;
+      margin: 0 5px; }
 
 /* Content Listings */
 .listing {

@@ -7,3 +7,5 @@
     <a href="{{ config('clearboard.tos_url') }}"><strong>Terms of Service</strong></a> |
     <a href="{{ config('clearboard.privacy_url') }}"><strong>Privacy Policy</strong></a>
 </p>
+
+@include('clearboard.debug')
