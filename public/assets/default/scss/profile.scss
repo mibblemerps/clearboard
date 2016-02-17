@@ -2,53 +2,49 @@
  * Profile CSS File
  */
 
-#profile-wrapper {
+.profile-header {
+  width: 100%;
   padding: 10px;
+  box-sizing: border-box;
 
-  .profile-header {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
+  background-color: #f6f6f6;
 
-    background-color: #f6f6f6;
+  .profile-image { vertical-align: top; }
 
-    .profile-image { vertical-align: top; }
+  .profile-header-inner {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 15px;
 
-    .profile-header-inner {
+    #profile-username {
       display: inline-block;
-      vertical-align: top;
-      margin-left: 15px;
+      margin: 15px 10px 5px 0;
 
-      #profile-username {
+      font-family: "lato", sans-serif;
+      font-weight: bold;
+      font-size: 34px;
+    }
+
+    .profile-group {
+      font-size: 19px !important; /* override any custom styling */
+      font-weight: bold;
+    }
+
+    .profile-infos {
+      color: #545454;
+      margin-top: 8px;
+
+      .profile-info {
         display: inline-block;
-        margin: 15px 10px 5px 0;
+        margin-right: 10px;
 
-        font-family: "lato", sans-serif;
-        font-weight: bold;
-        font-size: 34px;
-      }
-
-      .profile-group {
-        font-size: 19px !important; /* override any custom styling */
-        font-weight: bold;
-      }
-
-      .profile-infos {
-        color: #545454;
-        margin-top: 8px;
-
-        .profile-info {
-          display: inline-block;
-          margin-right: 10px;
-
-          i { margin-right: 3px; }
-        }
+        i { margin-right: 3px; }
       }
     }
+  }
 
-    .profile-buttons {
-      float: right;
-      margin: 5px;
-    }
+  .profile-buttons {
+    float: right;
+    margin: 5px;
   }
 }

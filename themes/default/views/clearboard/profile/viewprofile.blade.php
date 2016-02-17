@@ -7,25 +7,23 @@
 @endsection
 
 @section('content')
-    <div id="profile-wrapper">
-        <div class="profile-header">
-            <div class="profile-buttons">
-                <span class="button">Edit Profile</span>
-            </div>
+    <div class="profile-header">
+        <div class="profile-buttons">
+            <span class="button">Edit Profile</span>
+        </div>
 
-            <img src="{{ $user->getAvatarUrl(128) }}" alt="{{ $user->name }}" class="profile-image">
-            <div class="profile-header-inner">
-                <div id="profile-username">{{ $user->name }}</div><br>
-                <div class="profile-group">{!! $user->group->styleUsername($user->group->name) !!}</div>
-                <div class="profile-infos">
-                    <div class="profile-info">
-                        <i class="fa fa-clock-o"></i>
-                        Last active {{ format_time($user->last_active) }}
-                    </div>
-                    <div class="profile-info">
-                        <i class="fa fa-calendar"></i>
-                        Joined {{ date('j F Y', $user->created_at->timestamp) }}.
-                    </div>
+        <img src="{{ $user->getAvatarUrl(128) }}" alt="{{ $user->name }}" class="profile-image">
+        <div class="profile-header-inner">
+            <div id="profile-username">{{ $user->name }}</div><br>
+            <div class="profile-group">{!! $user->group->styleUsername($user->group->name) !!}</div>
+            <div class="profile-infos">
+                <div class="profile-info">
+                    <i class="fa fa-clock-o"></i>
+                    Last active {{ format_time($user->last_active) }}
+                </div>
+                <div class="profile-info">
+                    <i class="fa fa-calendar"></i>
+                    Joined {{ date('j F Y', $user->created_at->timestamp) }}.
                 </div>
             </div>
         </div>
