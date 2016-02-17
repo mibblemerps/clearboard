@@ -2,6 +2,8 @@
  * Profile CSS File
  */
 
+@import 'partials/tabs';
+
 #profile-header {
   width: 100%;
   padding: 10px;
@@ -47,4 +49,8 @@
     float: right;
     margin: 5px;
   }
+}
+
+#profile-body {
+  margin-top: 10px;
 }
