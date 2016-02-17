@@ -8,15 +8,27 @@
     padding: 10px;
     box-sizing: border-box;
     background-color: #f6f6f6; }
-    #profile-wrapper .profile-header .profile-username {
-      display: inline-block;
-      vertical-align: top;
-      margin: 15px 10px 5px 15px;
-      font-family: "lato", sans-serif;
-      font-weight: bold;
-      font-size: 34px; }
     #profile-wrapper .profile-header .profile-image {
       vertical-align: top; }
+    #profile-wrapper .profile-header .profile-header-inner {
+      display: inline-block;
+      vertical-align: top;
+      margin-left: 15px; }
+      #profile-wrapper .profile-header .profile-header-inner #profile-username {
+        display: inline-block;
+        margin: 15px 10px 5px 0;
+        font-family: "lato", sans-serif;
+        font-weight: bold;
+        font-size: 34px; }
+      #profile-wrapper .profile-header .profile-header-inner .profile-group {
+        font-size: 19px !important;
+        /* override any custom styling */
+        font-weight: bold; }
+      #profile-wrapper .profile-header .profile-header-inner .profile-infos {
+        color: #545454;
+        margin-top: 8px; }
+        #profile-wrapper .profile-header .profile-header-inner .profile-infos .profile-info i {
+          margin-right: 5px; }
     #profile-wrapper .profile-header .profile-buttons {
       float: right;
       margin: 5px; }

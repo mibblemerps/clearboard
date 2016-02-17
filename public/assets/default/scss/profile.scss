@@ -12,17 +12,36 @@
 
     background-color: #f6f6f6;
 
-    .profile-username {
+    .profile-image { vertical-align: top; }
+
+    .profile-header-inner {
       display: inline-block;
       vertical-align: top;
-      margin: 15px 10px 5px 15px;
+      margin-left: 15px;
 
-      font-family: "lato", sans-serif;
-      font-weight: bold;
-      font-size: 34px;
+      #profile-username {
+        display: inline-block;
+        margin: 15px 10px 5px 0;
+
+        font-family: "lato", sans-serif;
+        font-weight: bold;
+        font-size: 34px;
+      }
+
+      .profile-group {
+        font-size: 19px !important; /* override any custom styling */
+        font-weight: bold;
+      }
+
+      .profile-infos {
+        color: #545454;
+        margin-top: 8px;
+
+        .profile-info {
+          i { margin-right: 5px; }
+        }
+      }
     }
-
-    .profile-image { vertical-align: top; }
 
     .profile-buttons {
       float: right;

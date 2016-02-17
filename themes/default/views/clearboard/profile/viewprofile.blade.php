@@ -14,8 +14,20 @@
             </div>
 
             <img src="{{ $user->getAvatarUrl(128) }}" alt="{{ $user->name }}" class="profile-image">
-            <div class="profile-username">{{ $user->name }}</div>
+            <div class="profile-header-inner">
+                <div id="profile-username">{{ $user->name }}</div><br>
+                <div class="profile-group">{!! $user->group->styleUsername($user->group->name) !!}</div>
+                <div class="profile-infos">
+                    <div class="profile-info">
+                        <i class="fa fa-calendar"></i>
+                        Joined {{ date('j F Y', $user->created_at->timestamp) }}.
+                    </div>
+                </div>
+            </div>
         </div>
 
+        <div>
+
+        </div>
     </div>
 @endsection
