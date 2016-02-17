@@ -6,56 +6,6 @@
 var currentPassword = "";
 
 /**
- * Select a tab
- * @param tab
- */
-function selectTab(tab) {
-    // Update the control area
-    $("#settings-wrap .settings-pane").hide();
-    $("#settings-wrap .settings-pane").each(function() {
-        if ($(this).data("tab") == tab) {
-            $(this).show();
-            return false;
-        }
-    });
-
-    // Get the title of the tab from the tab button
-    var title = "";
-    $("#settings-wrap .tab").each(function() {
-        if ($(this).data("tab") == tab) {
-            title = $(this).html();
-        }
-    });
-
-    // Highlight the selected tab
-    $(".tab").removeClass("tab-selected");
-    $(".tab").each(function() {
-        if ($(this).data("tab") == tab) {
-            $(this).addClass("tab-selected");
-        }
-    });
-
-    // Update the title
-    $("#settings-wrap .settings-right .side-header").html(title);
-}
-
-/**
- * Initialize the tab system
- */
-function initTabs() {
-    // Assign click handler to tab buttons
-    $(".tab").click(function() {
-        selectTab($(this).data("tab"));
-    });
-
-    // Hide all the settings panes
-    $("#settings-wrap .settings-pane").hide();
-
-    // Show the settings control area
-    $("#settings-wrap .settings-control-area").show();
-}
-
-/**
  * Attempt to enter sudo mode.
  * @param password
  */
@@ -79,10 +29,6 @@ function sudoLogin(password) {
 }
 
 $(document).ready(function() {
-    // Initialize tabs
-    initTabs();
-    selectTab("general");
-
     // Setup handlers for security login
     $("#security-login-submit").click(function() {
         sudoLogin($("#security-login-password").val());

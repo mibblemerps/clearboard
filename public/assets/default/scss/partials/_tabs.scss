@@ -1,0 +1,86 @@
+/*
+A common set of styles for a tab system like what's used in account settings.
+*/
+
+div.tabs {
+  display: inline-block;
+  box-sizing: border-box;
+  vertical-align: top;
+  width: 215px;
+  margin: 0;
+  padding: 0;
+
+  border: solid 1px #eaeaea;
+  border-bottom: none;
+  border-top: none;
+
+  div.tab {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 6px 10px;
+
+    font-size: 16px;
+    color: #696969;
+    background-color: white;
+    border-bottom: solid 1px #eaeaea;
+
+    cursor: pointer;
+
+    i.fa {
+      margin-right: 4px;
+    }
+  }
+
+  div.tab:hover {
+    background-color: #f9f9f9;
+  }
+
+  div.tab-selected {
+    color: #1e1e1e;
+    font-weight: bold;
+  }
+
+  div.tab-header {
+    width: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 6px 10px;
+
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #e7e7e7;
+    border-top: 1px solid #e7e7e7;
+
+    color: #393939;
+    font-family: "lato", sans-serif;
+    font-size: 18px;
+  }
+}
+
+div.tab-view {
+  /* display: inline-block; */
+  display: none;
+
+  box-sizing: border-box;
+  vertical-align: top;
+  width: calc(100% - 225px);
+
+  border: solid 1px #eaeaea;
+
+  .tab-header {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 6px 10px;
+
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #e7e7e7;
+
+    color: #393939;
+    font-family: "lato", sans-serif;
+    font-size: 18px;
+  }
+
+  .tab-content {
+    margin: 10px;
+  }
+}
