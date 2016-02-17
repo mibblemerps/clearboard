@@ -34,7 +34,7 @@ function selectTab(tab) {
     });
 
     // Update the title
-    $("#settings-wrap .settings-right .side-header").html(title);
+    $(".tab-view .tab-header").html(title);
 }
 
 /**
