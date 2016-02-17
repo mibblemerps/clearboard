@@ -19,15 +19,15 @@
                 <div class="profile-group">{!! $user->group->styleUsername($user->group->name) !!}</div>
                 <div class="profile-infos">
                     <div class="profile-info">
+                        <i class="fa fa-clock-o"></i>
+                        Last active {{ format_time($user->last_active) }}
+                    </div>
+                    <div class="profile-info">
                         <i class="fa fa-calendar"></i>
                         Joined {{ date('j F Y', $user->created_at->timestamp) }}.
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div>
-
         </div>
     </div>
 @endsection

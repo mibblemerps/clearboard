@@ -27,8 +27,11 @@
       #profile-wrapper .profile-header .profile-header-inner .profile-infos {
         color: #545454;
         margin-top: 8px; }
-        #profile-wrapper .profile-header .profile-header-inner .profile-infos .profile-info i {
-          margin-right: 5px; }
+        #profile-wrapper .profile-header .profile-header-inner .profile-infos .profile-info {
+          display: inline-block;
+          margin-right: 10px; }
+          #profile-wrapper .profile-header .profile-header-inner .profile-infos .profile-info i {
+            margin-right: 3px; }
     #profile-wrapper .profile-header .profile-buttons {
       float: right;
       margin: 5px; }

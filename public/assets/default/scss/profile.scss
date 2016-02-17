@@ -38,7 +38,10 @@
         margin-top: 8px;
 
         .profile-info {
-          i { margin-right: 5px; }
+          display: inline-block;
+          margin-right: 10px;
+
+          i { margin-right: 3px; }
         }
       }
     }
