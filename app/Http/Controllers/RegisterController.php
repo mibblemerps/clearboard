@@ -15,6 +15,16 @@ use Illuminate\Support\Facades\Hash;
 class RegisterController extends Controller
 {
     /**
+     * Registration page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function view()
+    {
+        return view('clearboard.register.register');
+    }
+
+    /**
      * JSON based interface for registering new users.
      * Requires the following POST arguments
      *  - email: a valid email address

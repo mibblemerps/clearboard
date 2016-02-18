@@ -14,7 +14,7 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getProfile($uid)
+    public function view($uid)
     {
         return view('clearboard.profile.viewprofile', ['user' => User::findOrFail($uid)]);
     }
