@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\User;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -25,7 +25,7 @@ class User extends Model implements AuthenticatableContract,
 
     public function group()
     {
-        return $this->belongsTo('App\Group');
+        return $this->belongsTo('App\User\Group');
     }
 
     /**
