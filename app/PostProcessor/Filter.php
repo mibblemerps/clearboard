@@ -1,6 +1,6 @@
 <?php
 
-namespace app\PostProcessor;
+namespace App\PostProcessor;
 
 /**
  * Post filter. Allows things such as converting YouTube links into embedded videos.

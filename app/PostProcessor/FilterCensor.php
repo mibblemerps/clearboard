@@ -1,6 +1,6 @@
 <?php
 
-namespace app\PostProcessor;
+namespace App\PostProcessor;
 
 /**
  * Censors particular words.
