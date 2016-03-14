@@ -44,6 +44,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::post('/login', 'Auth\AuthController@postAjaxLogin');
         Route::get('/logout', 'Auth\AuthController@getLogout')->middleware('get_csrf');
         Route::post('/sudo', 'Auth\AuthController@postSudo');
+        Route::get('/ping', function () { return ''; }); // a simple request that returns nothing to update the existence of a user.
     });
 
     // Introduction route. Probably will be a way to disable at some point.

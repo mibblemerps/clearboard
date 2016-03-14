@@ -137,6 +137,14 @@ function login(username, password) {
 }
 
 /**
+ * Send a ping to Clearboard every so often to indicate we are still here.
+ * Time between pings shouldn't be any longer than 60 seconds, as that's when the time unit rolls over.
+ */
+function sendPing() {
+    $.get(window.clearboard.basePath + "/auth/ping");
+}
+
+/**
  * Expand the userbox.
  */
 function expandUserbox() {
@@ -225,5 +233,7 @@ $(document).ready(function(){
         });
     }
 
+    // Send a ping every 45 seconds.
+    setInterval(sendPing, 1000 * 45);
 });
 
