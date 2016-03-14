@@ -12,7 +12,7 @@ function selectTab(tab) {
     $(".tab-pane").hide().each(function() {
         if ($(this).data("tab") == tab) {
             console.log("show" + tab);
-            $(this).show();
+            $(this).css("display", "inline-block");
             return false;
         }
     });
@@ -51,20 +51,7 @@ function selectDefaultTab()
     });
 }
 
-/**
- * Initialize the tab system
- */
-function initTabs() {
-    // Hide all the settings panes
-    $(".tab-pane").hide();
-
-    // Show the settings control area
-    $(".tab-view").css("display", "inline-block");
-}
-
 $(document).ready(function() {
-    // Initialize tabs
-    initTabs();
     selectDefaultTab();
 
     // Assign click handler to tab buttons

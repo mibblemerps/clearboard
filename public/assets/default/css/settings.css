@@ -43,9 +43,11 @@ div.tabs {
     font-family: "lato", sans-serif;
     font-size: 18px; }
 
+div.tab-pane {
+  width: 100%; }
+
 div.tab-view {
-  /* display: inline-block; */
-  display: none;
+  display: inline-block;
   box-sizing: border-box;
   vertical-align: top;
   width: calc(100% - 225px);
