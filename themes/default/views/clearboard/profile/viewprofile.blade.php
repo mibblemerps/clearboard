@@ -5,6 +5,7 @@
 @section('head')
     <link rel="stylesheet" type="text/css" href="{{ theme_asset('css/profile.css') }}">
 
+    <script type="text/javascript" src="{{ theme_asset('js/viewprofile.js') }}"></script>
     <script type="text/javascript" src="{{ theme_asset('js/partials/tabs.js') }}"></script>
 @endsection
 
