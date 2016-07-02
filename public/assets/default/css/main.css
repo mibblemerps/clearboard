@@ -7,7 +7,6 @@ html, body {
   margin: 0;
   padding: 0; }
 
-/* Page variables */
 /* Utilities */
 .clear {
   clear: both; }
@@ -26,10 +25,6 @@ html, body {
   padding: 0;
   z-index: 50;
   background-color: rgba(0, 0, 0, 0.4); }
-
-.content-width {
-  width: 81%;
-  margin: 0 auto; }
 
 h1, h2, h3, h4, h5, h6 {
   display: inline-block;
@@ -153,6 +148,8 @@ body {
   width: 100%;
   height: 90px;
   background-color: #2d58a3; }
+  #header .container, #header .container-fluid {
+    padding: 0; }
   #header .header-right {
     display: flex;
     float: right;
@@ -254,17 +251,13 @@ body {
 
 /* Main content wrapper */
 #wrapper {
-  width: 81%;
-  margin: 0 auto;
-  box-sizing: border-box;
-  padding: 14px;
+  padding-top: 16px;
+  padding-bottom: 16px;
   background-color: white;
   border: solid 1px #48484e;
   border-top: none; }
 
 footer {
-  width: 81%;
-  margin: 0 auto;
   margin-top: 5px;
   text-align: center;
   font-family: "open sans", "arial", sans-serif;

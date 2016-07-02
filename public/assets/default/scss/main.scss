@@ -7,9 +7,6 @@
 /* Remove page padding */
 html,body { margin: 0; padding: 0; }
 
-/* Page variables */
-$content-width: 81%;
-
 /* Utilities */
 .clear { clear: both; }
 
@@ -31,8 +28,6 @@ $content-width: 81%;
 
   background-color: rgba(0, 0, 0, 0.4);
 }
-
-.content-width { width: $content-width; margin: 0 auto; }
 
 h1,h2,h3,h4,h5,h6 {
   display: inline-block;
@@ -165,6 +160,10 @@ body {
   height: 90px;
 
   background-color: #2d58a3;
+
+  .container, .container-fluid {
+    padding: 0;
+  }
 
   .header-right {
     display: flex;
@@ -304,22 +303,14 @@ body {
 
 /* Main content wrapper */
 #wrapper {
-  width: $content-width;
-  margin: 0 auto;
-
-  box-sizing: border-box;
-  padding: 14px;
-
+  padding-top: 16px;
+  padding-bottom: 16px;
   background-color: white;
-
   border: solid 1px #48484e;
   border-top: none;
 }
 
 footer {
-  width: $content-width;
-  margin: 0 auto;
-
   margin-top: 5px;
   text-align: center;
 

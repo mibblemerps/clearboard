@@ -31,7 +31,7 @@
         </div>
 
         <div id="header">
-            <div class="content-width">
+            <div class="container">
                 <a href="{{ url('/') }}"><img src="{{ asset('header.png') }}" alt="{{ config('clearboard.sitename') }}" id="header-img"></a>
                 <div class="header-right">
                     <div class="header-right-inner">
@@ -68,12 +68,10 @@
                 </div>
             </div>
         </div>
-        <div id="wrapper">
+        <div id="wrapper" class="container">
             @yield('content')
         </div>
-        <footer>
-            @include('clearboard.common.footer')
-        </footer>
+        @include('clearboard.common.footer')
 
         <!-- Low priority assets -->
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
