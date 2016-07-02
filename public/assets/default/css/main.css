@@ -302,9 +302,10 @@ footer {
     .listing .listing-entry div, .listing .listing-entry img {
       display: inline-block; }
     .listing .listing-entry .listing-entry-icon {
-      margin-right: 5px; }
+      margin-right: 5px;
+      vertical-align: top; }
     .listing .listing-entry .listing-entry-name {
-      margin-bottom: 4px; }
+      margin-bottom: 0px; }
       .listing .listing-entry .listing-entry-name a {
         color: #216aa4;
         font-family: "lato", "arial", sans-serif;
