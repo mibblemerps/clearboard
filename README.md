@@ -1,6 +1,8 @@
 # Clearboard
 An opensource community suite built upon Laravel.
 
+![Clearboard Screenshot](https://raw.githubusercontent.com/clearboard/clearboard/dev/screenshot.png)
+
 ## What is it?
 * Modern, customisable and extensible.
 * Built upon Laravel 5.
