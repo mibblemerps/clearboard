@@ -11,7 +11,25 @@ var previouslyFocused = null;
  */
 var userboxHasMouse = false;
 
+/**
+ * Check if a given modal is currently visible (open).
+ * If no modal is given, will check if _any_ modal is open.
+ *
+ * @param element
+ * @returns boolean
+ */
+function isModalVisible(element)
+{
+    if (element === undefined) {
+        element = $(".modal");
+    }
+
+    return !!(element.data('bs.modal') || {})._isShown;
+}
+
 function showGenericModal(title, message) {
+    var previouslyFocused = $(":focus");
+
     $("#modal-generic").modal("show");
 
     $("#modal-generic").find(".modal-title").html(title);
@@ -20,6 +38,9 @@ function showGenericModal(title, message) {
     $("#modal-generic").one("shown.bs.modal", function () {
         // Focus default button (also allows enter to dismiss dialog)
         $("#modal-generic .btn-default").focus();
+    }).one("hidden.bs.modal", function () {
+        // Refocus original element.
+        previouslyFocused.focus();
     });
 }
 
@@ -113,42 +134,6 @@ function dialogConnectionError() {
 }
 
 /**
- * Send AJAX request to server to login
- * @param username
- * @param password
- */
-function login(username, password) {
-    $.post(clearboard.basePath + "/auth/login", {
-        _token: clearboard.csrfToken,
-        username: username,
-        password: password
-    }, null, "json").done(function(data){
-        if (data.success == true) {
-            location.reload(); // Logged in - reload page
-            return;
-        } else if (data.tries_remaining == 0) {
-            // Too many login attempts
-            cbPrompt("Throttled", "Too many failed login attempts.<br>Please wait before trying again.");
-        } else {
-            cbPrompt("Incorrect", "The username or password you provided was incorrect.<br>Try again?");
-        }
-
-        // Reset login form
-        $("#loginform").hide().slideDown(200);
-        $("#login-loading").show().slideUp(200);
-    }).fail(function(){
-        // Failed to perform login request. =\
-        cbPrompt("Connection Error", "Oh noes! There was a problem communicating with the server!", [
-            {
-                label: ":(",
-                color: "red",
-                click: cbPromptDismiss
-            }
-        ]);
-    });
-}
-
-/**
  * Send a ping to Clearboard every so often to indicate we are still here.
  * Time between pings shouldn't be any longer than 60 seconds, as that's when the time unit rolls over.
  */
@@ -234,13 +219,13 @@ $(document).ready(function(){
                     location.reload();
                     return;
                 } else if (response.tries_remaining == 0) {
-                    cbPrompt("Throttled", "Too many failed login attempts.<br>Please wait before trying again.");
+                    showGenericModal("Throttled", "Too many failed password attempts.<br>Please wait a while and try again.");
                 } else {
-                    cbPrompt("Incorrect", "The username or password you provided was incorrect.<br>Try again?");
+                    showGenericModal("Incorrect", "The username/password you entered was incorrect.<br>Please try again.");
                 }
 
-                $("#loginform").hide().slideDown(200);
-                $("#login-loading").show().slideUp(200);
+                $("#loginform").show().slideDown(200);
+                $("#login-loading").hide().slideUp(200);
             }
         });
     }
