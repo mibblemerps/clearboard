@@ -30,50 +30,31 @@
             <div class="promptbox-buttons"></div>
         </div>
 
-        <div id="header">
-            <div class="content-width">
-                <a href="{{ url('/') }}"><img src="{{ asset('header.png') }}" alt="{{ config('clearboard.sitename') }}" id="header-img"></a>
-                <div class="header-right">
-                    <div class="header-right-inner">
-                        <div id="userbox" class="{{ Auth::check() ? 'userbox-loggedin' : 'userbox-notloggedin' }}">
-                            @if (Auth::check())
-                                <img id="userbox-useravatar" alt="Mitchfizz05"
-                                    src="{{ Auth::user()->getAvatarUrl(70) }}">
-                                <span id="userbox-name">{{ Auth::user()->name }}</span>
-                                <div id="userbox-dropdown">
-                                    <a href="{{ Auth::user()->getProfileUrl() }}"><div class="userbox-dropdown-item">My Profile</div></a>
-                                    <a href="{{ url('/settings') }}"><div class="userbox-dropdown-item">My Settings</div></a>
-                                    <div class="userbox-dropdown-item">Support</div>
-                                    <a href="{{ url('/auth/logout/?_token=' . csrf_token()) }}"><div class="userbox-dropdown-item userbox-dropdown-item-warning">Logout</div></a>
-                                </div>
-                            @else
-                                <span class="vertical-align"></span>
-                                <span class="button button-green" id="loginbtn">Login</span>
-                                <span class="userbox-or">or</span>
-                                <a href="{{ url('/register') }}"><span class="button button-green" id="registerbtn">Register</span></a>
-                                <div id="userbox-dropdown">
-                                    <div id="login-loading" style="display:none;">
-                                        <div class="la-ball-scale-pulse"><div></div><div></div></div>
-                                    </div>
-                                    <form id="loginform" class="ajaxform" action="{{ url('/auth/login') }}" method="POST">
-                                        {!! csrf_field() !!}
-                                        <input type="text" class="input-field" id="login-username" name="username" placeholder="Username"><br>
-                                        <input type="password" class="input-field" id="login-password" name="password" placeholder="Password"><br>
-                                        <input type="submit" id="login-button" class="button" value="Login">
-                                    </form>
-                                </div>
-                            @endif
-                        </div>
+        <div class="modal fade" id="modal-generic" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Hello world!</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p class="modal-message">
+                            Stuff! Hello world! yey
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Okay</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="wrapper">
+
+        @include('clearboard.common.header')
+
+        <div id="wrapper" class="container">
             @yield('content')
         </div>
-        <footer>
-            @include('clearboard.common.footer')
-        </footer>
+        @include('clearboard.common.footer')
 
         <!-- Low priority assets -->
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
