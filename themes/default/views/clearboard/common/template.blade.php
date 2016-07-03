@@ -30,6 +30,25 @@
             <div class="promptbox-buttons"></div>
         </div>
 
+        <div class="modal fade" id="modal-generic" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Hello world!</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p class="modal-message">
+                            Stuff! Hello world! yey
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Okay</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         @include('clearboard.common.header')
 
         <div id="wrapper" class="container">

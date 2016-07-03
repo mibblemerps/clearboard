@@ -11,6 +11,18 @@ var previouslyFocused = null;
  */
 var userboxHasMouse = false;
 
+function showGenericModal(title, message) {
+    $("#modal-generic").modal("show");
+
+    $("#modal-generic").find(".modal-title").html(title);
+    $("#modal-generic").find(".modal-message").html(message);
+
+    $("#modal-generic").one("shown.bs.modal", function () {
+        // Focus default button (also allows enter to dismiss dialog)
+        $("#modal-generic .btn-default").focus();
+    });
+}
+
 /**
  * Dismiss currently active prompt box
  */
