@@ -19,7 +19,7 @@ class ThreadController extends Controller
      * @param integer $tid Thread ID
      * @return \Illuminate\View\View
      */
-    public function getThread($tid)
+    public function view($tid)
     {
         $thread = Thread::where('id', $tid)->firstOrFail();
 
@@ -39,7 +39,7 @@ class ThreadController extends Controller
      * @param Request $request
      * @return string
      */
-    public function newThread(Request $request)
+    public function createApi(Request $request)
     {
         // Validate input
         $this->validate($request, [
@@ -80,7 +80,7 @@ class ThreadController extends Controller
      * @param integer $forumid Forum ID
      * @return \Illuminate\View\View
      */
-    public function createThread($forumid)
+    public function create($forumid)
     {
         $forum = Forum::findOrFail($forumid);
         return view('clearboard.thread.newthread', ['forum' => Forum::find($forumid)]);

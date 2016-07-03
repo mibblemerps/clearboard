@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\User\User;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -14,6 +14,16 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
+    /**
+     * Registration page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function view()
+    {
+        return view('clearboard.register.register');
+    }
+
     /**
      * JSON based interface for registering new users.
      * Requires the following POST arguments

@@ -1,6 +1,6 @@
 <?php
 
-use App\User;
+use App\User\User;
 
 class UserTest extends TestCase
 {

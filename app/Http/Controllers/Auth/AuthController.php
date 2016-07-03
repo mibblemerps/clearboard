@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Authorization\Sudo;
-use App\User;
-use Illuminate\Http\Response;
-use Validator;
+use App\User\Sudo;
+use App\User\User;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;

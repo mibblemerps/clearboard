@@ -14,7 +14,7 @@ class ForumController extends Controller
      * @param integer $fid Forum ID
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
      */
-    public function getForum($fid)
+    public function view($fid)
     {
         $forum = Forum::where('id', $fid)->first();
 
