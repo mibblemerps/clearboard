@@ -2,23 +2,22 @@
  * Profile CSS File
  */
 
-@import 'partials/tabs';
-
-#profile-header {
+/* Profile header */
+.profile-header {
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
 
   background-color: #f6f6f6;
 
-  #profile-image { vertical-align: top; }
+  .profile-image { vertical-align: top; }
 
-  #profile-header-inner {
+  .profile-header-inner {
     display: inline-block;
     vertical-align: top;
     margin-left: 15px;
 
-    #profile-username {
+    .profile-username {
       display: inline-block;
       margin: 15px 10px 5px 0;
 
@@ -27,12 +26,12 @@
       font-size: 34px;
     }
 
-    #profile-group {
+    .profile-group {
       font-size: 19px !important; /* override any custom styling */
       font-weight: bold;
     }
 
-    #profile-info {
+    .profile-infos {
       color: #545454;
       margin-top: 8px;
 
@@ -45,12 +44,17 @@
     }
   }
 
-  #profile-buttons {
+  .profile-buttons {
     float: right;
     margin: 5px;
   }
 }
 
-#profile-body {
+.profile-body {
   margin-top: 10px;
+}
+
+/* Profile sidebar (tabs) */
+.profile-sidebar {
+
 }

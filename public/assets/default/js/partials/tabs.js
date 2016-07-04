@@ -1,61 +1,54 @@
 /*
-Provides tab functionality.
-Should be used with tabs scss partial.
+Provides tabbed panel functionality.
  */
 
-/**
- * Select a tab
- * @param tab
- */
-function selectTab(tab) {
-    // Update the control area
-    $(".tab-pane").hide().each(function() {
-        if ($(this).data("tab") == tab) {
-            console.log("show" + tab);
-            $(this).css("display", "inline-block");
-            return false;
-        }
-    });
+window.TabbedPanel = {
 
-    // Get the title of the tab from the tab button
-    var title = "";
-    $(".tab").each(function() {
-        if ($(this).data("tab") == tab) {
-            title = $(this).html();
-        }
-    });
+    /**
+     * Select a tab in a tab group.
+     *
+     * @param tabGroup Tab group class name.
+     * @param tab Tab name to change to
+     */
+    selectTab: function (tabGroup, tab) {
+        var tabClass = "." + tabGroup;
 
-    // Highlight the selected tab
-    $(".tab").removeClass("tab-selected");
-    $(".tab").each(function() {
-        if ($(this).data("tab") == tab) {
-            $(this).addClass("tab-selected");
-        }
-    });
+        // Show only the selected tab.
+        $(tabClass).find(".tabbedpanel-panel").each(function () {
+            if ($(this).attr("data-tab") == tab) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
 
-    // Update the title
-    $(".tab-view .tab-header").html(title);
-}
+        // Highlight selected tab button.
+        $(tabClass).find(".tabbedpanel-tabs").children().each(function () {
+            if ($(this).attr("data-tab") == tab) {
+                $(this).addClass("active");
+            } else {
+                $(this).removeClass("active");
+            }
+        });
+    },
 
-/**
- * Find and select the default tab.
- */
-function selectDefaultTab()
-{
-    $(".tab").each(function() {
-        if ($(this).data("tab-default")) {
-            // Found default tab.
-            selectTab($(this).data("tab"));
-            return true;
-        }
-    });
-}
+    /**
+     * Initialize a tab group by assigning click handlers to tab buttons and selecting the default tab.
+     *
+     * @param tabGroup
+     */
+    initTabbedPanel: function (tabGroup) {
+        var tabClass = "." + tabGroup;
 
-$(document).ready(function() {
-    selectDefaultTab();
+        $(tabClass).find(".tabbedpanel-tabs").children().click(function () {
+            var tab = $(this).attr("data-tab");
+            if (tab !== undefined) {
+                TabbedPanel.selectTab(tabGroup, tab);
+            }
+        });
 
-    // Assign click handler to tab buttons
-    $(".tab").click(function() {
-        selectTab($(this).data("tab"));
-    });
-});
+        var activeTab = $(tabClass).find(".tabbedpanel-tabs").find(".active").attr("data-tab");
+        TabbedPanel.selectTab(tabGroup, activeTab);
+    }
+
+};

@@ -56,6 +56,13 @@ table {
 .la-ball-scale-pulse > div {
   color: #141414; }
 
+/* Tabbed Panels */
+.nav li {
+  cursor: pointer; }
+
+.tabbedpanel-panel {
+  display: none; }
+
 /* Body formatting */
 body {
   background-color: #202126;
