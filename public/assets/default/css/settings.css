@@ -1,25 +1,25 @@
 /*
  * Settings CSS File
  */
-.tab-content {
+.tabbedpanel-panel[data-tab='security-login'] {
   /* Security Login Panel */ }
-  .tab-content h2 {
+  .tabbedpanel-panel[data-tab='security-login'] h2 {
     margin: 8px 5px 10px 5px;
     font-family: "lato", sans-serif;
     font-size: 21px;
     font-weight: lighter;
     border-bottom: solid 1px #cccccc; }
-  .tab-content .security-login {
+  .tabbedpanel-panel[data-tab='security-login'] .security-login {
     text-align: center; }
-    .tab-content .security-login img {
+    .tabbedpanel-panel[data-tab='security-login'] .security-login img {
       height: 64px; }
-    .tab-content .security-login .security-login-message {
+    .tabbedpanel-panel[data-tab='security-login'] .security-login .security-login-message {
       font-weight: bold;
       color: #b90000;
       margin: 2px 0 8px 0; }
-    .tab-content .security-login #security-login-password {
+    .tabbedpanel-panel[data-tab='security-login'] .security-login #security-login-password {
       width: 300px; }
-    .tab-content .security-login #security-login-submit {
+    .tabbedpanel-panel[data-tab='security-login'] .security-login #security-login-submit {
       font-size: 13px;
       margin-top: 8px; }
 

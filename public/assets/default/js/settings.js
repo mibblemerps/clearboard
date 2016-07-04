@@ -1,6 +1,6 @@
 
 /**
- * Current password.5
+ * Current password.
  * @type {string}
  */
 var currentPassword = "";
@@ -17,8 +17,8 @@ function sudoLogin(password) {
         // Check if verification passed
         if (data.status) {
             // Switch to normal security tab
-            $("#tabbtn-security").data("tab", "security");
-            selectTab("security");
+            $("#tabbtn-security").attr("data-tab", "security");
+            TabbedPanel.selectTab("tabbedpanel-settings", "security");
         } else {
             cbPrompt("Access Denied", "Incorrect password. Try again?")
         }
