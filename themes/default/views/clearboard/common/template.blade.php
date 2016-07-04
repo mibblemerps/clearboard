@@ -8,6 +8,7 @@
         <link rel="stylesheet" type="text/css" href="{{ theme_asset('css/main.css') }}">
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.12.0/axios.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script src="{{ theme_asset('js/main.js') }}"></script>
 
