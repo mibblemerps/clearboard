@@ -131,7 +131,7 @@ class AuthController extends Controller
             if ($valid) {
                 // Authenticated. Enter sudo mode.
                 Sudo::enableSudo($request);
-                return ['status' => true];
+                return ok();
             } else {
                 abort(401); // 401 Unauthorized
             }
