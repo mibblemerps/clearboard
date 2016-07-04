@@ -121,16 +121,12 @@ function cbPrompt(title, message, buttons) {
 }
 
 /**
- * Show connection error message.
+ * Show connection error message and prompt the user to reload.
  */
 function dialogConnectionError() {
-    cbPrompt("Connection Error", "Oh noes! There was a problem communicating with the server!", [
-        {
-            label: ":(",
-            color: "red",
-            click: cbPromptDismiss
-        }
-    ]);
+    if (confirm("Something went wrong communicating with the server.\nReload the page?")) {
+        location.reload();
+    }
 }
 
 /**
