@@ -10,21 +10,19 @@ var currentPassword = "";
  * @param password
  */
 function sudoLogin(password) {
-    $.post(clearboard.basePath + "/auth/sudo", {
+    axios.post(clearboard.basePath + "/auth/sudo", {
         password: password,
         _token: clearboard.csrfToken
-    }).done(function(data) {
-        // Check if verification passed
-        if (data.status) {
-            // Switch to normal security tab
-            $("#tabbtn-security").attr("data-tab", "security");
-            TabbedPanel.selectTab("tabbedpanel-settings", "security");
+    }).then(function (resp) {
+        // Switch to normal security tab
+        $("#tabbtn-security").attr("data-tab", "security");
+        TabbedPanel.selectTab("tabbedpanel-settings", "security");
+    }).catch(function (err) {
+        if (err.status == 401) {
+            showGenericModal("Incorrect", "The username/password you entered was incorrect.<br>Please try again.");
         } else {
-            cbPrompt("Access Denied", "Incorrect password. Try again?")
+            dialogConnectionError();
         }
-    }).fail(function() {
-        // Password verification error
-        dialogConnectionError();
     });
 }
 
