@@ -5,8 +5,8 @@
 @section('head')
     <link rel="stylesheet" type="text/css" href="{{ theme_asset('css/thread.css') }}">
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
-    <script src="//cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
     <script type="text/javascript" src="{{ theme_asset('js/thread.js') }}"></script>
 
     <script type="text/javascript">
