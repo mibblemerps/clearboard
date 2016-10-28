@@ -13,7 +13,7 @@ class AddForumMetaField extends Migration
     public function up()
     {
         Schema::table('forums', function(Blueprint $table) {
-            $table->string('meta', 255); // meta field for extra information (eg. URL for a redirect forum)
+            $table->string('meta', 255)->default(''); // meta field for extra information (eg. URL for a redirect forum)
         });
     }
 
