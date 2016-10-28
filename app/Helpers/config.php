@@ -4,8 +4,8 @@ if (!function_exists('setconfig')) {
     /**
      * Save a config value. Will be persisted on disk.
      *
-     * @param $key Setting key. Example: 'clearboard.sitename'
-     * @param $value New value.
+     * @param string $key Setting key. Example: 'clearboard.sitename'
+     * @param object $value New value.
      */
     function setconfig($key, $value)
     {

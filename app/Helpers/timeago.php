@@ -8,7 +8,7 @@ if (!function_exists('minutes_ago')) {
     /**
      * Minutes within a particular number of seconds.
      *
-     * @param $timestamp
+     * @param int $timestamp
      * @return float
      */
     function minutes_ago($timestamp)
@@ -21,7 +21,7 @@ if (!function_exists('hours_ago')) {
     /**
      * Hours within a particular number of seconds.
      *
-     * @param $timestamp
+     * @param int $timestamp
      * @return float
      */
     function hours_ago($timestamp)
@@ -34,7 +34,7 @@ if (!function_exists('days_ago')) {
     /**
      * Days ago within a particular number of seconds.
      *
-     * @param $timestamp
+     * @param int $timestamp
      * @return float
      */
     function days_ago($timestamp)
