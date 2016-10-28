@@ -15,6 +15,14 @@ use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
+    /**
+     * Create a new post.
+     *
+     * @param Request $request
+     * @return array
+     * @throws \Exception
+     * @throws \Throwable
+     */
     public function apiCreate(Request $request)
     {
         // Validate input
