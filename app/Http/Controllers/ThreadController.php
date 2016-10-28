@@ -39,7 +39,7 @@ class ThreadController extends Controller
      * @param Request $request
      * @return string
      */
-    public function createApi(Request $request)
+    public function apiCreate(Request $request)
     {
         // Validate input
         $this->validate($request, [

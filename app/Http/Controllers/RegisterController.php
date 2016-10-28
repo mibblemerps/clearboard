@@ -35,7 +35,7 @@ class RegisterController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function postRegister(Request $request)
+    public function apiRegister(Request $request)
     {
         $errors = [];
 

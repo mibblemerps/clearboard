@@ -73,7 +73,7 @@ class AuthController extends Controller
      * @param Request $request
      * @return string
      */
-    public function postAjaxLogin(Request $request)
+    public function apiLogin(Request $request)
     {
         // Ensure arguments are present.
         if (!( $request->has('username') && $request->has('password') )) {
@@ -119,7 +119,7 @@ class AuthController extends Controller
      * @param Request $request
      * @return string
      */
-    public function postSudo(Request $request)
+    public function apiSudo(Request $request)
     {
         if ($request->has('password')) {
             // Verify password against hash

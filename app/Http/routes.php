@@ -25,8 +25,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/ajax/markdown_inline', 'MarkdownController@postInlineParse'); // for parsing inline markdown
 
     // Posting routes
-    Route::post('/ajax/new_post', 'PostController@createApi')->middleware('auth');
-    Route::post('/ajax/new_thread', 'ThreadController@createApi')->middleware('auth');
+    Route::post('/ajax/new_post', 'PostController@apiCreate')->middleware('auth');
+    Route::post('/ajax/new_thread', 'ThreadController@apiCreate')->middleware('auth');
     Route::get('/newthread/{forumid}', 'ThreadController@create')->middleware('auth');
 
     // Account Settings
@@ -37,13 +37,13 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/register', function(){
         return view('clearboard.register.register');
     });
-    Route::post('/ajax/register', 'RegisterController@postRegister');
+    Route::post('/ajax/register', 'RegisterController@apiRegister');
 
     // Authentication routes
     Route::group(array('prefix' => '/auth'), function() {
-        Route::post('/login', 'Auth\AuthController@postAjaxLogin');
+        Route::post('/login', 'Auth\AuthController@apiLogin');
         Route::get('/logout', 'Auth\AuthController@getLogout')->middleware('get_csrf');
-        Route::post('/sudo', 'Auth\AuthController@postSudo');
+        Route::post('/sudo', 'Auth\AuthController@apiSudo');
         Route::get('/ping', function () { return ''; }); // a simple request that returns nothing to update the existence of a user.
     });
 
