@@ -17,7 +17,7 @@ class AddStylingColumnsToGroupsTable extends Migration
             $table->string('username_formatting')->default('$username');
 
             // A path relative to the public directory to a small image to be placed below a users name on their posts.
-            $table->string('badge');
+            $table->string('badge')->default('');
         });
     }
 

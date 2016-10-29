@@ -1,9 +1,5 @@
 <?php
 
-/*
- * Global helper functions for Clearboard
- */
-
 if (!function_exists('joinPath')) {
     /**
      * Combines filesystem paths.

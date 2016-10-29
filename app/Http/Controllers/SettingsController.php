@@ -10,6 +10,12 @@ use App\User\User;
 
 class SettingsController extends Controller
 {
+    /**
+     * View settings page.
+     *
+     * @param int|null $userid User ID of settings to view. Defaults to current user.
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function view($userid = null)
     {
         if ($userid === null) { $userid = Auth::user()->id; }
